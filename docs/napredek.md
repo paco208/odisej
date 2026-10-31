@@ -35,7 +35,7 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
 - [x] R8 (statično preverjeno v dex/manifestu)
 - [ ] Servis po minifikaciji preverjen na napravi (release build)
 - [x] GitHub Actions (napisano; teče šele po pushu — ni preverjeno)
-- [ ] README
+- [x] README (posnetki zaslona: TODO, naredi Jakob)
 
 ---
 
@@ -78,3 +78,5 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
 - 2026-10-31 — CI: isti ukazi kot lokalno. JDK 25, ker ga zahteva `gradle-daemon-jvm.properties`.
   Release se v CI ne gradi, ker ključa tam ni (in ga ne sme biti). Poročila se naložijo vedno,
   tudi ob napaki, da vidiš, kateri test/lint je padel.
+- 2026-10-31 — README: kako deluje, zasebnost, strogi način s pošteno opombo o sistemskem
+  izklopu, namestitev, omejitve, gradnja, postopek ob posodobitvi Instagrama.

@@ -5,7 +5,7 @@ uporabnika vrne nazaj. Zasebnost po zasnovi: brez interneta, samo Instagram, bre
 branja besedil. Celotna zasnova: **CONTEXT.md** (vir resnice).
 
 ## Trenutna faza
-**F0 — postavitev.** Stanje sproti v `docs/napredek.md`.
+**F0–F4 implementirano, čaka ročni test na napravi.** Stanje sproti v `docs/napredek.md`.
 
 ## Zlata pravila (CONTEXT.md §4) — ne krši brez izrecnega dovoljenja
 1. Nikoli ne dodaj `INTERNET`, `ACCESS_NETWORK_STATE` ali mrežne/analitične knjižnice.
@@ -33,25 +33,28 @@ branja besedil. Celotna zasnova: **CONTEXT.md** (vir resnice).
 ./gradlew testDebugUnitTest        # enotski testi (detektor)
 ./gradlew lintDebug                # lint
 ./gradlew installDebug             # namesti na povezano napravo
-./gradlew checkNoInternet          # (F0) pade, če je INTERNET v združenem manifestu
+./gradlew checkNoInternet          # pade, če je INTERNET v združenem manifestu (del check)
 
 adb devices
 adb logcat -s OdisejDump OdisejService           # debug izpis drevesa / servisa
-scripts/dump-ui.sh <ime-zaslona>               # uiautomator dump → dumps/
+scripts/collect-dumps.sh                       # vodeni dumpi (samo ID-ji) → dumps/*.tree.txt
 adb shell settings get secure enabled_accessibility_services   # je servis vklopljen?
 ```
 
 ## Struktura
 ```
 app/src/main/java/si/odisej/
-  MainActivity.java
-  service/ReelsAccessibilityService.java
-  detect/{UiNode, AccessibilityUiNode, DetectionRules, ReelsDetector}.java
-  action/BackAction.java
+  MainActivity.java                       stanje, števec, premor, nastavitve
+  service/{ReelsAccessibilityService, ServiceStatus}.java
+  detect/{UiNode, AccessibilityUiNode, DetectionRules, ReelsDetector, ScreenState}.java
+  action/{BlockPolicy, BlockAction, BackAction, BlockOverlay, Debouncer}.java
+  settings/{Prefs, BlockStats, PauseCountdown}.java
+app/src/debug/.../service/TreeDumper.java     debug dumper (OdisejDump); src/release = prazen
 app/src/main/res/xml/accessibility_service_config.xml
-app/src/test/java/si/odisej/detect/     # testi detektorja na ponarejenih drevesih
+app/src/test/java/si/odisej/              testi (detektor na drevesih, logika)
+app/src/test/resources/trees/             očiščena drevesa (samo ID/razred/meje/zastavice)
 docs/      napredek.md, zaznava.md
-scripts/   dump-ui.sh
+scripts/   collect-dumps.sh (F1 dumpi), dump-ui.sh (uiautomator, zasebno)
 dumps/     zasebni dumpi (gitignore)
 ```
 
