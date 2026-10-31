@@ -18,4 +18,15 @@
     <string name="privacy_body">• No internet permission — nothing can leave your phone.\n• Watches only Instagram.\n• Reads only view IDs and class names, never text or messages.\n• Stores nothing about your screen.</string>
 
     <string name="toast_blocked">Reels are blocked — Odisej</string>
+
+    <string name="overlay_title">Reels are blocked</string>
+    <string name="overlay_body">You tied yourself to the mast. The Sirens can sing — you don\'t have to steer toward them.</string>
+    <string name="overlay_btn_messages">Go to messages</string>
+    <string name="overlay_btn_home">Go to feed</string>
+
+    <string name="settings_title">Settings</string>
+    <string name="mode_label">When Reels open</string>
+    <string name="mode_overlay">Show a blocking screen</string>
+    <string name="mode_back">Go back immediately</string>
+    <string name="allow_dm_reels">Allow reels sent to me in DMs (the next one is blocked)</string>
 </resources>

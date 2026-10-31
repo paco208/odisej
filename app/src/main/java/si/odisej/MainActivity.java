@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -14,6 +16,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import si.odisej.service.ServiceStatus;
+import si.odisej.settings.Prefs;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private View restrictedTitle;
     private View restrictedBody;
     private View openAppInfo;
+    private Prefs prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,15 @@ public class MainActivity extends AppCompatActivity {
         openAppInfo.setOnClickListener(v ->
                 startActivity(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
                         Uri.fromParts("package", getPackageName(), null))));
+
+        prefs = new Prefs(this);
+        RadioGroup modeGroup = findViewById(R.id.mode_group);
+        modeGroup.check(prefs.getMode() == Prefs.Mode.BACK ? R.id.mode_back : R.id.mode_overlay);
+        modeGroup.setOnCheckedChangeListener((group, checkedId) ->
+                prefs.setMode(checkedId == R.id.mode_back ? Prefs.Mode.BACK : Prefs.Mode.OVERLAY));
+        CompoundButton allowDm = findViewById(R.id.switch_allow_dm);
+        allowDm.setChecked(prefs.isDmReelsAllowed());
+        allowDm.setOnCheckedChangeListener((button, checked) -> prefs.setDmReelsAllowed(checked));
     }
 
     @Override

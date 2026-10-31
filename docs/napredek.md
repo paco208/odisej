@@ -16,6 +16,12 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
 - [x] Izbrani signali zapisani v CONTEXT.md §11
 - [x] `UiNode`, `DetectionRules`, `ReelsDetector` + testi
 
+## F3 — v2
+- [x] Overlay (`TYPE_ACCESSIBILITY_OVERLAY`) z gumboma Sporočila / Feed
+- [x] Izjema za reel iz DM (strukturni signal)
+- [x] Nastavitev: overlay / nazaj
+- [ ] Ročni test overlaya na napravi
+
 ## F2 — MVP (v1)
 - [x] Throttle + klasifikacija v servisu
 - [x] `BackAction` z debounce + toast
@@ -50,3 +56,6 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
 - 2026-10-31 — F2: servis klasificira in ukrepa. Throttle je *trailing* (zadnji dogodek v oknu
   se vedno obdela), ker *leading* throttle lahko izpusti končno stanje zaslona. Z zavihka Reels
   klik na Home namesto BACK (D19). Na napravi še ni preverjeno.
+- 2026-10-31 — F3: overlay + DM izjema + nastavitev načina. Past: servis zaradi Z2 ne izve, da
+  je uporabnik zapustil Instagram, zato bi overlay ostal čez zaganjalnik → med prikazom preverjamo
+  samo ime paketa aktivnega okna (D21). DM izjema brez zgodovine zaslonov, ker jo loči že drevo.

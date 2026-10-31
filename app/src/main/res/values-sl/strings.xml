@@ -16,4 +16,15 @@
     <string name="privacy_body">• Brez dovoljenja za internet — nič ne more zapustiti telefona.\n• Spremlja samo Instagram.\n• Bere samo ID-je pogledov in imena razredov, nikoli besedil ali sporočil.\n• O zaslonu ne shrani ničesar.</string>
 
     <string name="toast_blocked">Reelsi so blokirani — Odisej</string>
+
+    <string name="overlay_title">Reelsi so blokirani</string>
+    <string name="overlay_body">Privezal si se na jambor. Sirene lahko pojejo — ni ti treba pluti k njim.</string>
+    <string name="overlay_btn_messages">Na sporočila</string>
+    <string name="overlay_btn_home">Na feed</string>
+
+    <string name="settings_title">Nastavitve</string>
+    <string name="mode_label">Ko se odprejo Reelsi</string>
+    <string name="mode_overlay">Pokaži zaslon z blokado</string>
+    <string name="mode_back">Takoj pojdi nazaj</string>
+    <string name="allow_dm_reels">Dovoli reele, poslane v DM (naslednji je blokiran)</string>
 </resources>

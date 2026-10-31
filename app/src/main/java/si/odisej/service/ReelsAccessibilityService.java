@@ -11,12 +11,14 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import si.odisej.BuildConfig;
 import si.odisej.action.BackAction;
 import si.odisej.action.BlockAction;
+import si.odisej.action.BlockOverlay;
 import si.odisej.action.BlockPolicy;
 import si.odisej.action.Debouncer;
 import si.odisej.detect.AccessibilityUiNode;
 import si.odisej.detect.DetectionRules;
 import si.odisej.detect.ReelsDetector;
 import si.odisej.detect.ScreenState;
+import si.odisej.settings.Prefs;
 
 /**
  * Instagram dogodek → filter paketa → throttle → koren → ReelsDetector → ukrep.
@@ -35,6 +37,8 @@ public class ReelsAccessibilityService extends AccessibilityService {
     private final Handler handler = new Handler(Looper.getMainLooper());
     private final Runnable classifyRunnable = this::classifyNow;
 
+    private Prefs prefs;
+    private BlockOverlay overlay;
     private boolean classifyPending;
     private long lastClassifyAt;
     private ScreenState lastState = ScreenState.OTHER;
@@ -42,12 +46,17 @@ public class ReelsAccessibilityService extends AccessibilityService {
     @Override
     protected void onServiceConnected() {
         super.onServiceConnected();
+        prefs = new Prefs(this);
+        overlay = new BlockOverlay(this);
         dumper.attach(this);
     }
 
     @Override
     public void onDestroy() {
         handler.removeCallbacks(classifyRunnable);
+        if (overlay != null) {
+            overlay.hide();
+        }
         dumper.detach(this);
         super.onDestroy();
     }
@@ -78,6 +87,9 @@ public class ReelsAccessibilityService extends AccessibilityService {
 
     private void classifyNow() {
         classifyPending = false;
+        if (prefs == null) {
+            return;
+        }
         lastClassifyAt = SystemClock.uptimeMillis();
         AccessibilityNodeInfo root = instagramRoot();
         if (root == null) {
@@ -89,7 +101,15 @@ public class ReelsAccessibilityService extends AccessibilityService {
         }
         lastState = state;
 
-        BlockAction action = BlockPolicy.decide(state);
+        BlockAction action = BlockPolicy.decide(state, prefs.getMode(), prefs.isDmReelsAllowed());
+        if (action == BlockAction.OVERLAY) {
+            // Overlay je idempotenten (ostane, dokler smo v Reelsih), zato brez debounce.
+            if (overlay.show() && BuildConfig.DEBUG) {
+                Log.d(TAG, "overlay prikazan");
+            }
+            return;
+        }
+        overlay.hide();
         if (action == BlockAction.NONE || !debouncer.tryAcquire(SystemClock.uptimeMillis())) {
             return;
         }

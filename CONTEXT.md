@@ -274,7 +274,14 @@ zlonamerne programske opreme in v nasprotju z zgodbo projekta.
 - **D20** Trailing throttle 300 ms (dogodki v oknu → ena klasifikacija na koncu okna, nad
   najnovejšim drevesom) + debounce 1500 ms po ukrepu. Logika v čisti Javi (`Debouncer`,
   `BlockPolicy`) zaradi testov.
-- *(D21+)*
+- **D21** Overlay: `TYPE_ACCESSIBILITY_OVERLAY`, `FLAG_NOT_FOCUSABLE` (sistemski "nazaj" gre
+  Instagramu). Ker servis vidi le dogodke Instagrama (Z2), med prikazom overlaya vsako sekundo
+  preveri **samo ime paketa** aktivnega okna; če ni Instagram (Home, zaklep), se overlay skrije.
+  Prehodni audio focus, da reel za overlayem utihne.
+- **D22** DM izjema izvedljiva strukturno (brez zgodovine zaslonov): reel z vrstico za odgovor =
+  REELS_FROM_DM → dovoljen; poteg na naslednjega → REELS_VIEWER → blokiran. Privzeto vklopljena.
+- **D23** Privzeti način = overlay (pove, kaj se dogaja, in ne posega v sklad "nazaj").
+- *(D24+)*
 
 ## 12. Odprta vprašanja
 - Q1: ~~Kateri ID-ji so zanesljivi?~~ → D15 (za Instagram 453.0.0.57.79).

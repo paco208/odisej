@@ -6,5 +6,7 @@ public enum BlockAction {
     /** Klik na zavihek Home (z zavihka Reels; neodvisno od sklada "nazaj"). */
     GO_HOME,
     /** GLOBAL_ACTION_BACK (iz viewerja čez cel zaslon). */
-    BACK
+    BACK,
+    /** Prekrivno okno čez cel zaslon (v2). */
+    OVERLAY
 }
