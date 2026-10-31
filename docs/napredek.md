@@ -135,3 +135,16 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
   ~100dp praznine. Položaj računa čista funkcija `OverlayLayout.settledTop` (testi tudi za majhen
   zaslon, kjer ima 48dp do navigacije prednost). Moj prvi testni primer za to ni nič preverjal
   (pri 45 % centriranje ni prekoračilo meje) — popravljen z izračunanim primerom.
+- 2026-10-31 — Oznake števcev: velika številka je zdaj "ustavljenih danes" — kolikokrat je Odisej
+  posredoval (trenutek premora ali nazaj). Siva vrstica "pogledanih N · M min v Reelsih" so reeli,
+  ki si jih res gledal, ker niso bili blokirani (premor ali reel iz DM). 40 in 17 sta torej dve
+  različni stvari: 40-krat ustavljen, 17 reelov pogledanih med premorom/iz DM.
+- 2026-10-31 — Spodnja vrstica odrezana, drugič. Tokrat izmerjeno na napravi z `dumpsys activity
+  top` (samo naša aktivnost): ScrollView 0–2712px, vsebina 125–2858px. Zgornji inset je torej
+  deloval; vsebina (972dp) je bila 100dp višja od vidnega dela (872dp), odkar so prišli 7-dnevni
+  stolpci, in vrstica "Brez interneta …" je bila na koncu drsnega seznama. Prvi popravek
+  (`clipToPadding`) je zdravil napačno diagnozo ("riše se pod navigacijo"): spremenil je le to, da
+  se vrstica ne riše več POD navigacijo, ampak se ODREŽE na njenem robu — videti enako. Lekcija:
+  najprej izmeri, potem popravljaj. Rešitev: vrstica je pripeta pod drsno vsebino, inseti so na
+  korenu; padding samo na drsni vsebini bi pomagal le pri drsenju do konca.
+  Po popravku na napravi še ni izmerjeno (telefon je bil v uporabi).

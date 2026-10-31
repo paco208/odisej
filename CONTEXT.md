@@ -338,7 +338,12 @@ zlonamerne programske opreme in v nasprotju z zgodbo projekta.
   Kompozicija je en blok (krog → 32 → stavek → 48 → akcije). Po dihanju v enem 300 ms
   animatorju: okvir kroga 224 → 96dp, prostor za besedilo → višina stavka, blok → središče na
   45 % višine (`OverlayLayout.settledTop`); spodnjih 48dp + navigacija ima prednost. Nadomešča D36.
-- *(D39+)*
+- **D39** Glavni zaslon: vrstica o zasebnosti je pripeta pod drsno vsebino, inseti na korenu
+  (zgoraj statusna, spodaj navigacijska vrstica). Izmerjeno na napravi (`dumpsys activity top`):
+  vsebina 972dp, viden del 872dp — vrstica je bila na koncu drsnega seznama, zato odrezana na
+  robu navigacije, dokler nisi pomaknil do konca. Inset je ves čas deloval (vsebina pri y=125px).
+  Oznake: "ustavljenih danes" (overlay/nazaj) in "pogledanih N · M min v Reelsih" (premor, DM).
+- *(D40+)*
 
 ## 12. Odprta vprašanja
 - Q1: ~~Kateri ID-ji so zanesljivi?~~ → D15 (za Instagram 453.0.0.57.79).

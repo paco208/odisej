@@ -46,7 +46,13 @@ Odisej is built so you don't have to trust it:
 4. **Reels sent to you in DMs** can be watched (optional, on by default). Swiping to the next,
    suggested reel is blocked.
 5. When Reels are **not** blocked (during a pause, or a reel from a DM), Odisej counts the reels
-   you watched and the time spent, shown as one line under today's number. It counts a new reel
+   you watched and the time spent, shown as one line under today's number.
+
+   The main screen shows two different counts:
+   - **stopped today** (the big number) — times Odisej stepped in: the moment of pause was shown
+     or it went back for you;
+   - **watched** (the grey line) — reels you actually watched because they weren't blocked:
+     during a pause, or a reel someone sent you in a DM. Together with the minutes spent. It counts a new reel
    when the Reels pager reports a new page index (scroll event; only the view ID and the index
    are read). Time stops when you leave Reels, turn the screen off or leave Instagram. No usage
    access permission is needed.

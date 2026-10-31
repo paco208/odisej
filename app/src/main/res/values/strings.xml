@@ -4,11 +4,10 @@
     <string name="accessibility_description">Odisej watches only Instagram. To recognize the Reels screen it reads view IDs and class names — never text, messages or captions. It has no internet permission, so nothing can leave your phone. It stores nothing about your screen.</string>
 
     <!-- Glavni zaslon -->
-    <string name="today">today</string>
+    <string name="today">stopped today</string>
     <string name="total">total: %1$d</string>
     <string name="week_description">Last 7 days: %1$s</string>
-    <!-- "watched" je pridevnik po številu, angleščina ga ne sklanja. -->
-    <string name="usage_line" tools:ignore="PluralsCandidate">%1$d watched · %2$s in Reels</string>
+    <string name="usage_line">watched %1$d · %2$s in Reels</string>
     <string name="duration_under_minute">&lt;1 min</string>
     <string name="duration_minutes">%1$d min</string>
     <string name="duration_hours">%1$d h %2$d min</string>

@@ -1,285 +1,293 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Koren dobi sistemske insete (MainActivity): zgoraj statusna vrstica + izrez, spodaj
+     navigacijska vrstica. Vsebina se drsi; vrstica o zasebnosti je PRIPETA pod njo, zato je
+     vedno cela nad navigacijo, ne glede na drsenje ali višino zaslona. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clipToPadding="true"
-    android:fillViewport="true"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingHorizontal="28dp"
-        android:paddingTop="56dp"
-        android:paddingBottom="32dp">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fadingEdgeLength="32dp"
+        android:requiresFadingEdge="vertical">
 
-        <!-- Junak: števec danes, med odštevanjem pa krog s sekundami (crossfade). -->
-        <FrameLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="260dp">
+            android:orientation="vertical"
+            android:paddingHorizontal="28dp"
+            android:paddingTop="56dp"
+            android:paddingBottom="24dp">
 
-            <LinearLayout
-                android:id="@+id/hero_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|start"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/count_today"
-                    style="@style/Odisej.Text.Display"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="3" />
-
-                <TextView
-                    style="@style/Odisej.Text.Secondary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="@string/today" />
-
-                <!-- "pogledano 3 · 12 min v Reelsih"; skrita, ko je oboje 0. -->
-                <TextView
-                    android:id="@+id/usage_line"
-                    style="@style/Odisej.Text.Secondary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:visibility="gone"
-                    tools:text="pogledano 3 · 12 min v Reelsih"
-                    tools:visibility="visible" />
-
-                <si.odisej.ui.WeekBarsView
-                    android:id="@+id/week_bars"
-                    android:layout_width="196dp"
-                    android:layout_height="72dp"
-                    android:layout_marginTop="24dp" />
-
-                <TextView
-                    android:id="@+id/count_total"
-                    style="@style/Odisej.Text.Secondary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    tools:text="@string/total" />
-            </LinearLayout>
-
+            <!-- Junak: števec danes, med odštevanjem pa krog s sekundami (crossfade). -->
             <FrameLayout
-                android:id="@+id/hero_countdown"
-                android:layout_width="220dp"
-                android:layout_height="220dp"
-                android:layout_gravity="center"
-                android:alpha="0"
-                android:visibility="invisible">
-
-                <si.odisej.ui.CountdownRingView
-                    android:id="@+id/countdown_ring"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="260dp">
 
                 <LinearLayout
+                    android:id="@+id/hero_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center_horizontal"
+                    android:layout_gravity="center_vertical|start"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/countdown_seconds"
+                        android:id="@+id/count_today"
                         style="@style/Odisej.Text.Display"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="72sp"
-                        tools:text="42" />
+                        tools:text="3" />
 
                     <TextView
-                        android:id="@+id/countdown_label"
                         style="@style/Odisej.Text.Secondary"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        tools:text="sekund" />
+                        android:layout_marginTop="4dp"
+                        android:text="@string/today" />
+
+                    <!-- "pogledano 3 · 12 min v Reelsih"; skrita, ko je oboje 0. -->
+                    <TextView
+                        android:id="@+id/usage_line"
+                        style="@style/Odisej.Text.Secondary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:visibility="gone"
+                        tools:text="pogledano 3 · 12 min v Reelsih"
+                        tools:visibility="visible" />
+
+                    <si.odisej.ui.WeekBarsView
+                        android:id="@+id/week_bars"
+                        android:layout_width="196dp"
+                        android:layout_height="72dp"
+                        android:layout_marginTop="24dp" />
+
+                    <TextView
+                        android:id="@+id/count_total"
+                        style="@style/Odisej.Text.Secondary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        tools:text="@string/total" />
                 </LinearLayout>
+
+                <FrameLayout
+                    android:id="@+id/hero_countdown"
+                    android:layout_width="220dp"
+                    android:layout_height="220dp"
+                    android:layout_gravity="center"
+                    android:alpha="0"
+                    android:visibility="invisible">
+
+                    <si.odisej.ui.CountdownRingView
+                        android:id="@+id/countdown_ring"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/countdown_seconds"
+                            style="@style/Odisej.Text.Display"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="72sp"
+                            tools:text="42" />
+
+                        <TextView
+                            android:id="@+id/countdown_label"
+                            style="@style/Odisej.Text.Secondary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="sekund" />
+                    </LinearLayout>
+                </FrameLayout>
             </FrameLayout>
-        </FrameLayout>
 
-        <!-- Status: pika + ena vrstica. -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <View
-                android:id="@+id/status_dot"
-                android:layout_width="8dp"
-                android:layout_height="8dp"
-                android:background="@drawable/status_dot" />
-
-            <TextView
-                android:id="@+id/status_text"
-                style="@style/Odisej.Text.Title"
-                android:layout_width="wrap_content"
+            <!-- Status: pika + ena vrstica. -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                tools:text="@string/status_active" />
-        </LinearLayout>
+                android:layout_marginTop="24dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:id="@+id/service_off_group"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="vertical"
-            android:visibility="gone"
-            tools:visibility="visible">
+                <View
+                    android:id="@+id/status_dot"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:background="@drawable/status_dot" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_open_accessibility"
-                style="@style/Odisej.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_open_accessibility" />
+                <TextView
+                    android:id="@+id/status_text"
+                    style="@style/Odisej.Text.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    tools:text="@string/status_active" />
+            </LinearLayout>
 
-            <TextView
-                style="@style/Odisej.Text.Small"
+            <LinearLayout
+                android:id="@+id/service_off_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/restricted_hint" />
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
 
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_open_accessibility"
+                    style="@style/Odisej.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_open_accessibility" />
+
+                <TextView
+                    style="@style/Odisej.Text.Small"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/restricted_hint" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_open_app_info"
+                    style="@style/Odisej.Button.Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-12dp"
+                    android:text="@string/btn_open_app_info" />
+            </LinearLayout>
+
+            <!-- Ločilne črte so znotraj robov vsebine, poravnane z besedilom. -->
+            <View
+                style="@style/Odisej.Divider"
+                android:layout_marginTop="24dp" />
+
+            <!-- Nastavitve: vrstica = naslov + opis + stikalo; tap kjerkoli v vrstici preklopi. -->
+            <LinearLayout
+                android:id="@+id/row_mode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="?attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="12dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/Odisej.Text.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mode_title" />
+
+                    <TextView
+                        style="@style/Odisej.Text.Secondary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/mode_desc" />
+                </LinearLayout>
+
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/switch_mode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:contentDescription="@string/mode_title" />
+            </LinearLayout>
+
+            <View
+                style="@style/Odisej.Divider"
+                android:layout_marginTop="8dp" />
+
+            <LinearLayout
+                android:id="@+id/row_dm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="?attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="12dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/Odisej.Text.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dm_title" />
+
+                    <TextView
+                        style="@style/Odisej.Text.Secondary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/dm_desc" />
+                </LinearLayout>
+
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/switch_dm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:contentDescription="@string/dm_title" />
+            </LinearLayout>
+
+            <View
+                style="@style/Odisej.Divider"
+                android:layout_marginTop="8dp" />
+
+            <!-- Premor: ista pilula kot primarni gumb na overlayu. -->
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_open_app_info"
-                style="@style/Odisej.Button.Text"
+                android:id="@+id/btn_pause"
+                style="@style/Odisej.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="-12dp"
-                android:text="@string/btn_open_app_info" />
+                android:layout_marginTop="24dp"
+                tools:text="@string/btn_pause" />
+
+            <TextView
+                android:id="@+id/pause_desc"
+                style="@style/Odisej.Text.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/pause_desc" />
+
         </LinearLayout>
+    </ScrollView>
 
-        <!-- Ločilne črte so znotraj robov vsebine, poravnane z besedilom. -->
-        <View
-            style="@style/Odisej.Divider"
-            android:layout_marginTop="24dp" />
-
-        <!-- Nastavitve: vrstica = naslov + opis + stikalo; tap kjerkoli v vrstici preklopi. -->
-        <LinearLayout
-            android:id="@+id/row_mode"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="?attr/selectableItemBackground"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingVertical="12dp">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    style="@style/Odisej.Text.Title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/mode_title" />
-
-                <TextView
-                    style="@style/Odisej.Text.Secondary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:text="@string/mode_desc" />
-            </LinearLayout>
-
-            <com.google.android.material.materialswitch.MaterialSwitch
-                android:id="@+id/switch_mode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:contentDescription="@string/mode_title" />
-        </LinearLayout>
-
-        <View
-            style="@style/Odisej.Divider"
-            android:layout_marginTop="8dp" />
-
-        <LinearLayout
-            android:id="@+id/row_dm"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="?attr/selectableItemBackground"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingVertical="12dp">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    style="@style/Odisej.Text.Title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/dm_title" />
-
-                <TextView
-                    style="@style/Odisej.Text.Secondary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:text="@string/dm_desc" />
-            </LinearLayout>
-
-            <com.google.android.material.materialswitch.MaterialSwitch
-                android:id="@+id/switch_dm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:contentDescription="@string/dm_title" />
-        </LinearLayout>
-
-        <View
-            style="@style/Odisej.Divider"
-            android:layout_marginTop="8dp" />
-
-        <!-- Premor: ista pilula kot primarni gumb na overlayu. -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_pause"
-            style="@style/Odisej.Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            tools:text="@string/btn_pause" />
-
-        <TextView
-            android:id="@+id/pause_desc"
-            style="@style/Odisej.Text.Secondary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/pause_desc" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:minHeight="48dp" />
-
-        <TextView
-            style="@style/Odisej.Text.Small"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
-            android:text="@string/privacy_line" />
-    </LinearLayout>
-</ScrollView>
+    <TextView
+        style="@style/Odisej.Text.Small"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="28dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="16dp"
+        android:text="@string/privacy_line" />
+</LinearLayout>

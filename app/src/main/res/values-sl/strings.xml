@@ -1,10 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="accessibility_description">Odisej spremlja samo Instagram. Da prepozna zaslon z Reelsi, bere ID-je pogledov in imena razredov — nikoli besedil, sporočil ali opisov. Nima dovoljenja za internet, zato nič ne more zapustiti telefona. O zaslonu ne shrani ničesar.</string>
 
-    <string name="today">danes</string>
+    <string name="today">ustavljenih danes</string>
     <string name="total">skupaj: %1$d</string>
     <string name="week_description">Zadnjih 7 dni: %1$s</string>
-    <string name="usage_line">pogledano %1$d · %2$s v Reelsih</string>
+    <string name="usage_line">pogledanih %1$d · %2$s v Reelsih</string>
     <string name="duration_under_minute">&lt;1 min</string>
     <string name="duration_minutes">%1$d min</string>
     <string name="duration_hours">%1$d h %2$d min</string>

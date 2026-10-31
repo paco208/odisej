@@ -72,8 +72,9 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            // Sistemske vrstice + izrez kamere; ScrollView reže na padding (clipToPadding),
-            // zato vsebina nikoli ni pod navigacijsko vrstico (kretnje ali trije gumbi).
+            // Koren (ne ScrollView): zgoraj statusna vrstica + izrez, spodaj navigacijska vrstica
+            // (kretnje ali trije gumbi). Drsna vsebina in pripeta vrstica o zasebnosti sta tako
+            // vedno med njima — vrstica je cela tudi, ko vsebina ni pomaknjena do konca.
             Insets bars = insets.getInsets(WindowInsetsCompat.Type.systemBars()
                     | WindowInsetsCompat.Type.displayCutout());
             v.setPadding(bars.left, bars.top, bars.right, bars.bottom);
