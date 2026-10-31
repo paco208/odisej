@@ -25,7 +25,7 @@ Odisej is built so you don't have to trust it:
 | **Cannot send data off the device** | No `INTERNET` permission. It is explicitly removed with `tools:node="remove"`, and the build fails if any library adds it back (`./gradlew checkNoInternet`, part of `check` and CI). |
 | **Only watches Instagram** | `android:packageNames="com.instagram.android"` in the service config, plus a package check in code. |
 | **Doesn't read your messages** | Detection uses only view IDs, class names, visibility and the "selected" state of tabs. `getText()` and `getContentDescription()` are never called. |
-| **Stores nothing about your screen** | On disk: your settings, the end time of a pause, and a block counter (today / total, plus the day of the last block so "today" can reset). No history, no screen content. Backups and device-to-device transfer are disabled. |
+| **Stores nothing about your screen** | On disk: your settings, the end time of a pause, the **number of blocks per day for the last 7 days** (dates only, no times; older days are deleted on every write) and the all-time total. No screen history, no screen content. Backups and device-to-device transfer are disabled. |
 | **No hidden debug logging** | The tree dumper used during development lives in the `debug` source set only. The release APK doesn't contain it. |
 | **The APK matches the source** | R8 shrinks the release build but does not obfuscate names, so a decompiled APK shows the same class names as this repo. |
 

@@ -65,8 +65,9 @@ Ta pravila so **nepogajljiva**. Če naloga zahteva kršitev, se ustavi in vpraš
   `getClassName()` in po potrebi `getContentDescription()` **navigacijskih** elementov
   (npr. zavihek). Nikoli `getText()`. Opisi vsebine (napisi pod reeli, sporočila) se ne
   logirajo in ne shranjujejo.
-- **Z4 — Nič ne shranjujemo o zaslonu.** Edini podatek na disku je lokalni števec
-  blokad (v3) in nastavitve. Brez časov, brez zgodovine zaslonov.
+- **Z4 — Nič ne shranjujemo o zaslonu.** Na disku so samo: nastavitve, konec premora,
+  **število blokad na dan za zadnjih 7 dni** (dan = datum, brez ure; starejši dnevi se ob vsakem
+  zapisu pobrišejo) in skupno število blokad. Brez ur, brez zgodovine zaslonov, brez vsebine.
 - **Z5 — Brez logiranja v release.** Diagnostični izpis drevesa (glej 6.4) obstaja
   samo v `debug` različici (`BuildConfig.DEBUG`) in izpiše **samo** ID-je in imena
   razredov, nikoli besedila.
@@ -307,7 +308,10 @@ zlonamerne programske opreme in v nasprotju z zgodbo projekta.
   zaslon 30. Test: `OverlayCountTest`.
 - **D32** V overlayu eksplicitno `MaterialButton`: servis nima AppCompat inflaterja, zato `<Button>`
   postane gumb platforme (siv, velike črke) in ne upošteva `materialButtonStyle`.
-- *(D33+)*
+- **D33** 7-dnevni stolpci: en niz `"dan:število,…"` v SharedPreferences, obrezan ob vsakem zapisu
+  na dneve ≥ danes − 6. "Prihodnjih" dni (ura premaknjena nazaj) ne brišemo, da se štetje ne
+  izgubi — izginejo, ko se postarajo. Prenos iz stare oblike (dan zadnje blokade + število).
+- *(D34+)*
 
 ## 12. Odprta vprašanja
 - Q1: ~~Kateri ID-ji so zanesljivi?~~ → D15 (za Instagram 453.0.0.57.79).

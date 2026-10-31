@@ -107,3 +107,6 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
     `true` + izrez kamere. Overlay ima svojo obravnavo insetov (okno sega pod vrstice).
   - Pilule, poudarno stikalo, ločilne črte, "Zapri Instagram", pulz na vrhu vdiha (haptika
     spoštuje sistemsko nastavitev vibracij, ker ne uporabljamo `FLAG_IGNORE_GLOBAL_SETTING`).
+- 2026-10-31 — 7-dnevni stolpci. Hrani se samo število na dan za zadnjih 7 dni (Z4 posodobljen).
+  Test je ujel past: obrezovanje "na okno [danes−6, danes]" bi ob premiku ure nazaj pobrisalo
+  današnje štetje, zato brišemo samo starejše dni. Stari števec se prenese.

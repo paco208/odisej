@@ -28,6 +28,7 @@ import si.odisej.settings.BlockStats;
 import si.odisej.settings.PauseCountdown;
 import si.odisej.settings.Prefs;
 import si.odisej.ui.CountdownRingView;
+import si.odisej.ui.WeekBarsView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private Prefs prefs;
     private TextView countToday;
     private TextView countTotal;
+    private WeekBarsView weekBars;
     private View heroCount;
     private View heroCountdown;
     private CountdownRingView countdownRing;
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
         countToday = findViewById(R.id.count_today);
         countTotal = findViewById(R.id.count_total);
+        weekBars = findViewById(R.id.week_bars);
         heroCount = findViewById(R.id.hero_count);
         heroCountdown = findViewById(R.id.hero_countdown);
         countdownRing = findViewById(R.id.countdown_ring);
@@ -108,8 +111,10 @@ public class MainActivity extends AppCompatActivity {
         // Uporabnik se iz sistemskih nastavitev vrne sem, zato stanje osvežimo ob vsaki vrnitvi.
         serviceEnabled = ServiceStatus.isEnabled(this);
         BlockStats s = prefs.getStats();
-        countToday.setText(String.valueOf(s.todayOn(LocalDate.now().toEpochDay())));
+        LocalDate today = LocalDate.now();
+        countToday.setText(String.valueOf(s.todayOn(today.toEpochDay())));
         countTotal.setText(getString(R.string.total, s.total));
+        weekBars.setData(s.lastSevenDays(today.toEpochDay()), today);
         render();
         if (prefs.isPaused(System.currentTimeMillis())) {
             handler.post(tick);

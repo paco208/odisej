@@ -19,7 +19,8 @@
         <!-- Junak: števec danes, med odštevanjem pa krog s sekundami (crossfade). -->
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="260dp">
+            android:layout_height="wrap_content"
+            android:minHeight="260dp">
 
             <LinearLayout
                 android:id="@+id/hero_count"
@@ -42,12 +43,18 @@
                     android:layout_marginTop="4dp"
                     android:text="@string/today" />
 
+                <si.odisej.ui.WeekBarsView
+                    android:id="@+id/week_bars"
+                    android:layout_width="196dp"
+                    android:layout_height="72dp"
+                    android:layout_marginTop="24dp" />
+
                 <TextView
                     android:id="@+id/count_total"
                     style="@style/Odisej.Text.Secondary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="16dp"
                     tools:text="@string/total" />
             </LinearLayout>
 

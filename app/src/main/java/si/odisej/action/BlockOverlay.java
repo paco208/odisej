@@ -149,6 +149,7 @@ public final class BlockOverlay {
      * Okno sega pod sistemske vrstice (edge-to-edge), vsebina pa ne sme: odmik = vrstice + izrez,
      * prištet osnovnemu robu iz layouta. Deluje za kretnje in za tri gumbe.
      */
+    @SuppressWarnings("deprecation") // getSystemWindowInset*: samo veja za API < 30
     private static void applyInsets(View root) {
         final int baseLeft = root.getPaddingLeft();
         final int baseTop = root.getPaddingTop();

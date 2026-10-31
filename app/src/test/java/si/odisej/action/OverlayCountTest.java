@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import si.odisej.settings.BlockStats;
+import si.odisej.settings.DailyCounts;
 
 /**
  * Število na overlayu ("tvoj N. reel danes") mora biti enako številu na glavnem zaslonu po tej
@@ -16,7 +17,7 @@ public class OverlayCountTest {
 
     private static final long DAY = 20_000;
 
-    private BlockStats stats = new BlockStats(-1, 0, 0);
+    private BlockStats stats = BlockStats.empty();
     private final Cooldown cooldown = new Cooldown(1500);
     private boolean showing;
     private int shownN = -1;
@@ -46,7 +47,7 @@ public class OverlayCountTest {
 
     @Test
     public void overlayNumberIncludesThisBlock() {
-        stats = new BlockStats(DAY, 28, 100);
+        stats = new BlockStats(DailyCounts.of(DAY, 28), 100);
         classify(true, 0);
         assertEquals(29, shownN);
         assertEquals(mainScreenCount(), shownN);
@@ -54,7 +55,7 @@ public class OverlayCountTest {
 
     @Test
     public void leavingDuringBackTransitionDoesNotCountTwice() {
-        stats = new BlockStats(DAY, 28, 100);
+        stats = new BlockStats(DailyCounts.of(DAY, 28), 100);
         classify(true, 0);          // overlay: 29
         classify(true, 300);        // še vedno Reels → isti overlay
         userTapsButton(3500);       // "Na feed" → skrij + BACK
@@ -66,7 +67,7 @@ public class OverlayCountTest {
 
     @Test
     public void realReturnAfterCooldownIsCounted() {
-        stats = new BlockStats(DAY, 28, 100);
+        stats = new BlockStats(DailyCounts.of(DAY, 28), 100);
         classify(true, 0);
         userTapsButton(3500);
         classify(false, 4000);

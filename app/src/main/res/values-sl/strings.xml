@@ -3,6 +3,7 @@
 
     <string name="today">danes</string>
     <string name="total">skupaj: %1$d</string>
+    <string name="week_description">Zadnjih 7 dni: %1$s</string>
     <string name="status_active">Aktivno</string>
     <string name="status_paused">Premor do %1$s</string>
     <string name="status_off">Servis je izklopljen</string>
