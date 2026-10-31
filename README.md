@@ -123,3 +123,10 @@ the tests. `TreeFilesPrivacyTest` fails if a tree line contains anything but the
 
 Google Play restricts Accessibility API use to accessibility tools, so Odisej is
 distributed only via GitHub.
+
+## License
+
+Copyright (c) 2026 Jakob Ferjančič. All rights reserved.
+
+The source is published for transparency (so the privacy claims can be verified). You may
+download and install the released APK for personal use.
