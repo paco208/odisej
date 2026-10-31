@@ -36,7 +36,8 @@
     <string name="overlay_exhale">breathe out</string>
     <string name="overlay_still">Pause for a moment</string>
     <!-- Vrstilni števnik (#N), ne množina. -->
-    <string name="overlay_sentence" tools:ignore="PluralsCandidate">That was reel #%1$d today.</string>
+    <string name="overlay_sentence" tools:ignore="PluralsCandidate">That would have been reel #%1$d today.</string>
     <string name="overlay_btn_messages">Go to messages</string>
     <string name="overlay_btn_home">Go to feed</string>
+    <string name="overlay_btn_close">Close Instagram</string>
 </resources>

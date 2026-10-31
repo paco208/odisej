@@ -4,7 +4,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clipToPadding="false"
+    android:clipToPadding="true"
     android:fillViewport="true"
     tools:context=".MainActivity">
 
@@ -121,8 +121,9 @@
             android:visibility="gone"
             tools:visibility="visible">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_open_accessibility"
+                style="@style/Odisej.Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/btn_open_accessibility" />
@@ -134,7 +135,7 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/restricted_hint" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_open_app_info"
                 style="@style/Odisej.Button.Text"
                 android:layout_width="wrap_content"
@@ -143,12 +144,17 @@
                 android:text="@string/btn_open_app_info" />
         </LinearLayout>
 
+        <!-- Ločilne črte so znotraj robov vsebine, poravnane z besedilom. -->
+        <View
+            style="@style/Odisej.Divider"
+            android:layout_marginTop="24dp" />
+
         <!-- Nastavitve: vrstica = naslov + opis + stikalo; tap kjerkoli v vrstici preklopi. -->
         <LinearLayout
             android:id="@+id/row_mode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="8dp"
             android:background="?attr/selectableItemBackground"
             android:gravity="center_vertical"
             android:orientation="horizontal"
@@ -181,6 +187,10 @@
                 android:layout_marginStart="16dp"
                 android:contentDescription="@string/mode_title" />
         </LinearLayout>
+
+        <View
+            style="@style/Odisej.Divider"
+            android:layout_marginTop="8dp" />
 
         <LinearLayout
             android:id="@+id/row_dm"
@@ -220,14 +230,17 @@
                 android:contentDescription="@string/dm_title" />
         </LinearLayout>
 
-        <!-- Premor -->
-        <Button
+        <View
+            style="@style/Odisej.Divider"
+            android:layout_marginTop="8dp" />
+
+        <!-- Premor: ista pilula kot primarni gumb na overlayu. -->
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_pause"
-            style="@style/Odisej.Button.Text"
+            style="@style/Odisej.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="-12dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="24dp"
             tools:text="@string/btn_pause" />
 
         <TextView
@@ -235,6 +248,7 @@
             style="@style/Odisej.Text.Secondary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:text="@string/pause_desc" />
 
         <Space

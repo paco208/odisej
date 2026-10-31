@@ -98,3 +98,12 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
   koncu animatorja, ker se brez animacij animator konča takoj — pavza mora ostati. Krog
   odštevanja riše po uri (Choreographer), ker je kazalnik napredka, ne okras. Slovenske dvojinske
   oblike sekund prek `<plurals>`. Na napravi še ni preverjeno.
+- 2026-10-31 — UI popravki po prvem ogledu na telefonu:
+  - N na overlayu (29) ≠ glavni zaslon (30): ni bil vrstni red posnetkov, ampak dvojno štetje — po
+    tapu "Na feed" je bil viewer med animacijo prehoda še viden in overlay se je za hip pokazal
+    znova. Ohlajanje 1,5 s po odhodu (D31) + `OverlayCountTest`, ki posname to zaporedje.
+  - Sivi gumbi z velikimi črkami: v servisu `<Button>` ne postane `MaterialButton` (D32).
+  - Spodnja vrstica pod navigacijo: `clipToPadding="false"` je risal vsebino pod vrstico; zdaj
+    `true` + izrez kamere. Overlay ima svojo obravnavo insetov (okno sega pod vrstice).
+  - Pilule, poudarno stikalo, ločilne črte, "Zapri Instagram", pulz na vrhu vdiha (haptika
+    spoštuje sistemsko nastavitev vibracij, ker ne uporabljamo `FLAG_IGNORE_GLOBAL_SETTING`).

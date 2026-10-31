@@ -15,6 +15,7 @@ import si.odisej.action.BackAction;
 import si.odisej.action.BlockAction;
 import si.odisej.action.BlockOverlay;
 import si.odisej.action.BlockPolicy;
+import si.odisej.action.Cooldown;
 import si.odisej.action.Debouncer;
 import si.odisej.detect.AccessibilityUiNode;
 import si.odisej.detect.DetectionRules;
@@ -36,6 +37,8 @@ public class ReelsAccessibilityService extends AccessibilityService {
     private final TreeDumper dumper = new TreeDumper();
     private final ReelsDetector detector = new ReelsDetector();
     private final Debouncer debouncer = new Debouncer(DEBOUNCE_MS);
+    /** Po odhodu z overlaya (gumb) ga toliko časa ne pokažemo in ne štejemo znova. */
+    private final Cooldown overlayCooldown = new Cooldown(DEBOUNCE_MS);
     private final Handler handler = new Handler(Looper.getMainLooper());
     private final Runnable classifyRunnable = this::classifyNow;
 
@@ -49,7 +52,8 @@ public class ReelsAccessibilityService extends AccessibilityService {
     protected void onServiceConnected() {
         super.onServiceConnected();
         prefs = new Prefs(this);
-        overlay = new BlockOverlay(this);
+        overlay = new BlockOverlay(this,
+                () -> overlayCooldown.start(SystemClock.uptimeMillis()));
         dumper.attach(this);
     }
 
@@ -110,7 +114,8 @@ public class ReelsAccessibilityService extends AccessibilityService {
         BlockAction action = BlockPolicy.decide(state, prefs.getMode(), prefs.isDmReelsAllowed());
         if (action == BlockAction.OVERLAY) {
             // Overlay ostane, dokler smo v Reelsih, zato brez debounce; šteje se le nov prikaz.
-            if (!overlay.keepIfShowing()) {
+            if (!overlay.keepIfShowing()
+                    && !overlayCooldown.isActive(SystemClock.uptimeMillis())) {
                 overlay.show(recordBlock());
                 if (BuildConfig.DEBUG) {
                     Log.d(TAG, "overlay prikazan");

@@ -16,6 +16,7 @@ import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.WindowInsets;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.PathInterpolator;
@@ -53,13 +54,16 @@ public final class BlockOverlay {
     private final Runnable foregroundCheck = this::checkForeground;
     private final Runnable reveal = this::reveal;
     private final AudioFocusRequest focusRequest;
+    /** Uporabnik je sam zapustil overlay (gumb) — servis začne ohlajanje. */
+    private final Runnable onUserLeft;
 
     private View view;
     private ValueAnimator breath;
     private boolean hiding;
 
-    public BlockOverlay(AccessibilityService service) {
+    public BlockOverlay(AccessibilityService service, Runnable onUserLeft) {
         this.service = service;
+        this.onUserLeft = onUserLeft;
         windowManager = (WindowManager) service.getSystemService(Context.WINDOW_SERVICE);
         audioManager = (AudioManager) service.getSystemService(Context.AUDIO_SERVICE);
         focusRequest = new AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN_TRANSIENT)
@@ -100,9 +104,11 @@ public final class BlockOverlay {
                 v -> leaveTo(DetectionRules.DIRECT_TAB_ID));
         view.findViewById(R.id.overlay_btn_home).setOnClickListener(
                 v -> leaveTo(DetectionRules.HOME_TAB_ID));
+        view.findViewById(R.id.overlay_btn_close).setOnClickListener(v -> closeInstagram());
         ((TextView) view.findViewById(R.id.overlay_sentence)).setText(
                 service.getString(R.string.overlay_sentence, reelsToday));
 
+        applyInsets(view);
         windowManager.addView(view, layoutParams());
         // Predvajalniki se ob izgubi zvočnega fokusa ustavijo — reel za overlayem utihne.
         audioManager.requestAudioFocus(focusRequest);
@@ -110,8 +116,9 @@ public final class BlockOverlay {
 
         view.setAlpha(0f);
         view.animate().alpha(1f).setDuration(FADE_IN_MS).start();
-        view.performHapticFeedback(HapticFeedbackConstants.CLOCK_TICK,
-                HapticFeedbackConstants.FLAG_IGNORE_VIEW_SETTING);
+        // Haptika spoštuje sistemsko nastavitev vibracij (brez FLAG_IGNORE_GLOBAL_SETTING) in ne
+        // potrebuje dovoljenja VIBRATE.
+        view.performHapticFeedback(HapticFeedbackConstants.CLOCK_TICK);
         startBreath();
         // Gumbi pridejo po uri, ne ob koncu animatorja: brez animacij se animator konča takoj,
         // pavza 3 s pa mora ostati.
@@ -138,6 +145,38 @@ public final class BlockOverlay {
         return lp;
     }
 
+    /**
+     * Okno sega pod sistemske vrstice (edge-to-edge), vsebina pa ne sme: odmik = vrstice + izrez,
+     * prištet osnovnemu robu iz layouta. Deluje za kretnje in za tri gumbe.
+     */
+    private static void applyInsets(View root) {
+        final int baseLeft = root.getPaddingLeft();
+        final int baseTop = root.getPaddingTop();
+        final int baseRight = root.getPaddingRight();
+        final int baseBottom = root.getPaddingBottom();
+        root.setOnApplyWindowInsetsListener((v, insets) -> {
+            int left;
+            int top;
+            int right;
+            int bottom;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                android.graphics.Insets i = insets.getInsets(
+                        WindowInsets.Type.systemBars() | WindowInsets.Type.displayCutout());
+                left = i.left;
+                top = i.top;
+                right = i.right;
+                bottom = i.bottom;
+            } else {
+                left = insets.getSystemWindowInsetLeft();
+                top = insets.getSystemWindowInsetTop();
+                right = insets.getSystemWindowInsetRight();
+                bottom = insets.getSystemWindowInsetBottom();
+            }
+            v.setPadding(baseLeft + left, baseTop + top, baseRight + right, baseBottom + bottom);
+            return insets;
+        });
+    }
+
     private void startBreath() {
         BreathingCircleView circle = view.findViewById(R.id.overlay_circle);
         TextView labelA = view.findViewById(R.id.overlay_label_a);
@@ -161,6 +200,8 @@ public final class BlockOverlay {
             circle.setExpansion(BreathCurve.expansion(f));
             if (!exhaling[0] && BreathCurve.isExhaling(f)) {
                 exhaling[0] = true;
+                // Vrh vdiha: nežen pulz (tudi ta spoštuje sistemsko nastavitev vibracij).
+                circle.performHapticFeedback(HapticFeedbackConstants.CONTEXT_CLICK);
                 labelA.animate().alpha(0f).setDuration(LABEL_CROSSFADE_MS).start();
                 labelB.animate().alpha(1f).setDuration(LABEL_CROSSFADE_MS).start();
             }
@@ -247,8 +288,16 @@ public final class BlockOverlay {
         handler.postDelayed(foregroundCheck, FOREGROUND_CHECK_MS);
     }
 
+    /** "Zapri Instagram": na začetni zaslon telefona; overlay izgine (Instagram ni več spredaj). */
+    private void closeInstagram() {
+        onUserLeft.run();
+        hide();
+        service.performGlobalAction(AccessibilityService.GLOBAL_ACTION_HOME);
+    }
+
     /** Skrije overlay in pelje na zavihek; če ga ni (viewer čez cel zaslon), najprej nazaj. */
     private void leaveTo(String tabId) {
+        onUserLeft.run();
         hide();
         if (BackAction.clickById(service.getRootInActiveWindow(), tabId)) {
             return;

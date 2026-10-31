@@ -33,7 +33,8 @@
     <string name="overlay_inhale">vdih</string>
     <string name="overlay_exhale">izdih</string>
     <string name="overlay_still">Za trenutek se ustavi</string>
-    <string name="overlay_sentence">To je bil reel številka %1$d danes.</string>
+    <string name="overlay_sentence">To bi bil tvoj %1$d. reel danes.</string>
     <string name="overlay_btn_messages">Na sporočila</string>
     <string name="overlay_btn_home">Na feed</string>
+    <string name="overlay_btn_close">Zapri Instagram</string>
 </resources>

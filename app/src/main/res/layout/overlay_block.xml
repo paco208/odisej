@@ -61,19 +61,30 @@
             android:textColor="@color/od_text_secondary"
             tools:text="That was reel #3 today." />
 
-        <Button
+        <!-- Eksplicitno MaterialButton: v servisu ni AppCompat inflaterja, <Button> bi postal
+             navaden sivi gumb platforme z velikimi črkami. -->
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/overlay_btn_messages"
+            style="@style/Odisej.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:text="@string/overlay_btn_messages" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/overlay_btn_home"
             style="@style/Odisej.Button.Text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:text="@string/overlay_btn_home" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/overlay_btn_close"
+            style="@style/Odisej.Button.Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/overlay_btn_close"
+            android:textColor="@color/od_text_secondary" />
     </LinearLayout>
 </LinearLayout>

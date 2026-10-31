@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Samo temna tema. Kontrasti proti #000000 (WCAG): text 18:1, text_secondary 8.3:1,
-     accent 12:1, dot_idle 3.9:1 (samo neza besedilni element, AA zahteva 3:1). -->
+     accent 12:1, dot_idle 3.9:1, switch_off_thumb 5.9:1 (samo neza besedilni element, AA zahteva 3:1). -->
 <resources>
     <color name="od_black">#FF000000</color>
     <color name="od_text">#FFEDEDEA</color>
     <color name="od_text_secondary">#FFA3A3A3</color>
     <color name="od_hairline">#FF262626</color>
     <color name="od_dot_idle">#FF6E6E6E</color>
-    <!-- Edini poudarek: krog dihanja, aktivni status, ikona. -->
+    <!-- Obroba pilule (gumbi): nevtralna siva. -->
+    <color name="od_pill_stroke">#FF3A3A3A</color>
+    <!-- Ločilne črte: komaj vidne na črnem. -->
+    <color name="od_divider">#FF1F1F1F</color>
+    <!-- Izklopljeno stikalo: temno siv tir, siv palec (5.9:1). -->
+    <color name="od_switch_off_track">#FF2A2A2A</color>
+    <color name="od_switch_off_thumb">#FF8A8A8A</color>
+    <!-- Poudarek: krog dihanja, aktivni status, vklopljeno stikalo, današnji stolpec, ikona. -->
     <color name="od_accent">#FF9CCFC7</color>
 </resources>
