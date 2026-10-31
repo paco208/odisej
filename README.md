@@ -1,8 +1,13 @@
-# Reelstop
+# Odisej
 
 Block Instagram Reels on Android — keep DMs, feed, stories and posting.
 
 > Status: work in progress (v1 MVP).
+
+*Odisej* is Slovenian for Odysseus. He had himself tied to the mast so he could hear
+the Sirens without steering toward them — psychologists call this a *Ulysses contract*.
+Odisej does the same for Instagram: you keep the app for messages, but the Reels feed
+can't pull you in.
 
 ## Why another blocker?
 
@@ -11,7 +16,7 @@ Most Reels/Shorts blockers use Android's Accessibility Service, which can read
 Most of them are closed source and have network access, so you have to trust
 their privacy policy.
 
-Reelstop is built so you don't have to trust it:
+Odisej is built so you don't have to trust it:
 
 | Guarantee | How you can verify it |
 |---|---|
@@ -23,7 +28,7 @@ Reelstop is built so you don't have to trust it:
 ## How it works
 
 1. Instagram emits accessibility events when its screen changes.
-2. Reelstop looks for view IDs that only exist in the Reels viewer.
+2. Odisej looks for view IDs that only exist in the Reels viewer.
 3. If found, it presses Back and shows a toast. (v2: a blocking overlay.)
 
 All detection rules live in one file (`DetectionRules.java`), because Instagram
@@ -35,8 +40,8 @@ the IDs were found.
 1. Download the APK from Releases and install it.
 2. **Android 13+:** sideloaded apps can't enable accessibility services by default
    ("restricted settings"). Try enabling the service once, dismiss the dialog, then go
-   to *Settings → Apps → Reelstop → ⋮ → Allow restricted settings*.
-3. *Settings → Accessibility → Reelstop → On.*
+   to *Settings → Apps → Odisej → ⋮ → Allow restricted settings*.
+3. *Settings → Accessibility → Odisej → On.*
 
 ## Limitations
 
@@ -53,5 +58,5 @@ the IDs were found.
 
 ## Not on Play Store
 
-Google Play restricts Accessibility API use to accessibility tools, so Reelstop is
+Google Play restricts Accessibility API use to accessibility tools, so Odisej is
 distributed only via GitHub.

@@ -1,4 +1,4 @@
-# CLAUDE.md — Reelstop
+# CLAUDE.md — Odisej
 
 Android aplikacija (Java), ki z `AccessibilityService` zazna Instagram Reels in
 uporabnika vrne nazaj. Zasebnost po zasnovi: brez interneta, samo Instagram, brez
@@ -36,20 +36,20 @@ branja besedil. Celotna zasnova: **CONTEXT.md** (vir resnice).
 ./gradlew checkNoInternet          # (F0) pade, če je INTERNET v združenem manifestu
 
 adb devices
-adb logcat -s ReelstopDump ReelstopService     # debug izpis drevesa / servisa
+adb logcat -s OdisejDump OdisejService           # debug izpis drevesa / servisa
 scripts/dump-ui.sh <ime-zaslona>               # uiautomator dump → dumps/
 adb shell settings get secure enabled_accessibility_services   # je servis vklopljen?
 ```
 
 ## Struktura
 ```
-app/src/main/java/si/reelstop/
+app/src/main/java/si/odisej/
   MainActivity.java
   service/ReelsAccessibilityService.java
   detect/{UiNode, AccessibilityUiNode, DetectionRules, ReelsDetector}.java
   action/BackAction.java
 app/src/main/res/xml/accessibility_service_config.xml
-app/src/test/java/si/reelstop/detect/   # testi detektorja na ponarejenih drevesih
+app/src/test/java/si/odisej/detect/     # testi detektorja na ponarejenih drevesih
 docs/      napredek.md, zaznava.md
 scripts/   dump-ui.sh
 dumps/     zasebni dumpi (gitignore)

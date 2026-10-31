@@ -30,7 +30,7 @@ Skripta shrani `dumps/<ime>.xml` (cel dump, **zaseben**) in `dumps/<ime>.ids.txt
 Če dobiš `ERROR: could not get idle state`: tapni video, da se ustavi, in poskusi
 znova. Če še vedno ne gre, uporabi debug dumper iz servisa (CONTEXT.md §6.4):
 ```bash
-adb logcat -c && adb logcat -s ReelstopDump > dumps/reels-tab.log
+adb logcat -c && adb logcat -s OdisejDump > dumps/reels-tab.log
 ```
 
 ## 2. Primerjava

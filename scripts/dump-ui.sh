@@ -17,7 +17,7 @@ NAME="$1"
 EXTRA="${2:-}"
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 OUT_DIR="$ROOT/dumps"
-REMOTE="/sdcard/reelstop_dump.xml"
+REMOTE="/sdcard/odisej_dump.xml"
 mkdir -p "$OUT_DIR"
 
 if ! adb get-state >/dev/null 2>&1; then
@@ -30,7 +30,7 @@ RESULT="$(adb shell uiautomator dump $EXTRA "$REMOTE" 2>&1 || true)"
 if grep -q "ERROR" <<<"$RESULT"; then
   echo "$RESULT" >&2
   echo "Namig: ustavi video (tap) in poskusi znova, ali uporabi --compressed," >&2
-  echo "ali debug dumper v servisu: adb logcat -s ReelstopDump" >&2
+  echo "ali debug dumper v servisu: adb logcat -s OdisejDump" >&2
   exit 2
 fi
 

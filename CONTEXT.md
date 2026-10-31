@@ -1,6 +1,6 @@
-# Reelstop — projektni kontekst
+# Odisej — projektni kontekst
 
-> Delovno ime: **Reelstop**. Paket: `si.reelstop`. Jezik: Java. Build: Gradle (Kotlin DSL).
+> Ime: **Odisej**. Paket: `si.odisej`. Jezik: Java. Build: Gradle (Kotlin DSL).
 > Ta dokument je vir resnice za zasnovo. Ko se odločitev spremeni, jo popravi tukaj
 > in jo dopiši v poglavje 11 (Odločitve).
 
@@ -24,7 +24,7 @@ samo GitHub + APK.
 - Obstoječe aplikacije (AppBlock, one sec, ScrollGuard …) to znajo, a prek Accessibility
   Service vidijo **ves zaslon vseh aplikacij** (tudi DM-je) in so večinoma zaprtokodne,
   z dovoljenjem za internet. Zaupati moraš njihovi politiki zasebnosti.
-- Reelstop ne zahteva zaupanja: koda je javna, dovoljenja interneta ni, servis posluša
+- Odisej ne zahteva zaupanja: koda je javna, dovoljenja interneta ni, servis posluša
   samo Instagram.
 
 ## 3. Cilji in ne-cilji
@@ -78,7 +78,7 @@ Ta pravila so **nepogajljiva**. Če naloga zahteva kršitev, se ustavi in vpraš
 ## 5. Arhitektura
 
 ```
-si.reelstop
+si.odisej
 ├── MainActivity                 stanje servisa + navodila za vklop + gumb v nastavitve
 ├── service/
 │   └── ReelsAccessibilityService   prejme dogodke, pokliče detektor, sproži ukrep
@@ -150,9 +150,9 @@ Na zaslonih z videom pogosto vrne `ERROR: could not get idle state`, ker čaka, 
 zaslon umiri. Rešitve po vrsti:
 1. Ustavi video (tap) in poskusi znova; poskusi `--compressed`.
 2. **Debug dumper v servisu**: v debug različici servis na dogodek izpiše drevo
-   (samo ID-je in razrede, zamik po globini) v Logcat s tagom `ReelstopDump`.
+   (samo ID-je in razrede, zamik po globini) v Logcat s tagom `OdisejDump`.
    To je celo bolj natančno, ker vidiš točno to, kar vidi servis (z istimi zastavicami).
-   `adb logcat -s ReelstopDump > dumps/<ime>.txt`
+   `adb logcat -s OdisejDump > dumps/<ime>.txt`
 3. Layout Inspector v Android Studiu ne deluje za tuje release aplikacije (ni
    debuggable) — ne izgubljaj časa z njim.
 
@@ -218,7 +218,7 @@ zlonamerne programske opreme in v nasprotju z zgodbo projekta.
 - Test: fizični telefon (USB debugging) ali emulator s **Google Play** sliko + Instagram.
 - **Omejene nastavitve (Android 13+)**: za APK, nameščen iz brskalnika ali upravitelja
   datotek, sistem blokira vklop Accessibility. Postopek: poskusi vklopiti servis →
-  zapri opozorilo → Nastavitve → Aplikacije → Reelstop → ⋮ → *Allow restricted
+  zapri opozorilo → Nastavitve → Aplikacije → Odisej → ⋮ → *Allow restricted
   settings / Dovoli omejene nastavitve* → znova vklopi. Android 15 je seznam omejitev
   razširil, ročna izjema na strani aplikacije pa ostaja. Pri namestitvi iz Android
   Studia (adb) se omejitev običajno **ne** pojavi — *preveri* in zapiši v README.
@@ -239,7 +239,7 @@ zlonamerne programske opreme in v nasprotju z zgodbo projekta.
 ## 11. Odločitve
 
 - **D1** Java (konsistentno z Lumnom). Build skripte v Kotlin DSL (samo gradnja).
-- **D2** Paket `si.reelstop`, minSdk 26, target = privzeti zadnji v Android Studiu.
+- **D2** Paket `si.odisej`, minSdk 26, target = privzeti zadnji v Android Studiu.
 - **D3** Brez INTERNET, eksplicitno odstranjen prek `tools:node="remove"` + avtomatsko preverjanje.
 - **D4** Servis omejen na `com.instagram.android` (XML + preverjanje v kodi).
 - **D5** Zaznava samo prek ID-jev/razredov; `getText()` prepovedan.
@@ -248,7 +248,11 @@ zlonamerne programske opreme in v nasprotju z zgodbo projekta.
 - **D8** Števec v DataStore/SharedPreferences, ne Room.
 - **D9** Ni preprečevanja izklopa v sistemu (8.3).
 - **D10** Dumpi v `dumps/` (gitignore), testna drevesa v repozitoriju samo očiščena (brez besedil).
-- *(D11+: dejanski ID-ji in signali po F1)*
+- **D11** Ime Odisej (prej delovno 'Reelstop'). Odisej se je dal privezati na jambor,
+  da je slišal sirene, a ni mogel do njih (Ulysses contract — vnaprejšnja zaveza
+  proti lastni šibkosti). Reelsi = sirene, servis = jambor, strogi način = vrvi.
+  Paket `si.odisej`, log tagi `OdisejDump`, `OdisejService`.
+- *(D12+: dejanski ID-ji in signali po F1)*
 
 ## 12. Odprta vprašanja
 - Q1: Kateri ID-ji so zanesljivi? (F1)
