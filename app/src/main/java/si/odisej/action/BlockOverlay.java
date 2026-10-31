@@ -15,6 +15,7 @@ import android.view.ContextThemeWrapper;
 import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.WindowInsets;
 import android.view.accessibility.AccessibilityNodeInfo;
@@ -42,6 +43,8 @@ public final class BlockOverlay {
     private static final long REVEAL_MS = 350;
     /** Brez animacij krog miruje na tej razširjenosti. */
     private static final float STILL_EXPANSION = 0.5f;
+    /** Središče kroga kot delež višine okna. */
+    private static final float CIRCLE_CENTER_FRACTION = 0.40f;
     /** Kako pogosto preverimo, ali je Instagram še spredaj (samo ime paketa). */
     private static final long FOREGROUND_CHECK_MS = 1000;
     /** Po BACK počakamo, da se prejšnji zaslon prikaže, nato kliknemo zavihek. */
@@ -114,6 +117,7 @@ public final class BlockOverlay {
                 service.getString(R.string.overlay_sentence, reelsToday));
 
         applyInsets(view);
+        positionCircle(view);
         windowManager.addView(view, layoutParams());
         // Predvajalniki se ob izgubi zvočnega fokusa ustavijo — reel za overlayem utihne.
         audioManager.requestAudioFocus(focusRequest);
@@ -151,35 +155,46 @@ public final class BlockOverlay {
     }
 
     /**
-     * Okno sega pod sistemske vrstice (edge-to-edge), vsebina pa ne sme: odmik = vrstice + izrez,
-     * prištet osnovnemu robu iz layouta. Deluje za kretnje in za tri gumbe.
+     * Okno sega pod sistemske vrstice (edge-to-edge). Krog je postavljen glede na celo okno
+     * (40 % višine), akcije pa glede na navigacijsko vrstico: spodnji odmik = osnova iz layouta
+     * + inset (kretnje ali trije gumbi). Levo/desno: izrez in vrstice v ležečem položaju.
      */
     @SuppressWarnings("deprecation") // getSystemWindowInset*: samo veja za API < 30
     private static void applyInsets(View root) {
-        final int baseLeft = root.getPaddingLeft();
-        final int baseTop = root.getPaddingTop();
-        final int baseRight = root.getPaddingRight();
-        final int baseBottom = root.getPaddingBottom();
+        View actions = root.findViewById(R.id.overlay_actions);
+        ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) actions.getLayoutParams();
+        final int baseBottom = lp.bottomMargin;
         root.setOnApplyWindowInsetsListener((v, insets) -> {
             int left;
-            int top;
             int right;
             int bottom;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 android.graphics.Insets i = insets.getInsets(
                         WindowInsets.Type.systemBars() | WindowInsets.Type.displayCutout());
                 left = i.left;
-                top = i.top;
                 right = i.right;
                 bottom = i.bottom;
             } else {
                 left = insets.getSystemWindowInsetLeft();
-                top = insets.getSystemWindowInsetTop();
                 right = insets.getSystemWindowInsetRight();
                 bottom = insets.getSystemWindowInsetBottom();
             }
-            v.setPadding(baseLeft + left, baseTop + top, baseRight + right, baseBottom + bottom);
+            v.setPadding(left, 0, right, 0);
+            ViewGroup.MarginLayoutParams p =
+                    (ViewGroup.MarginLayoutParams) actions.getLayoutParams();
+            p.bottomMargin = baseBottom + bottom;
+            actions.setLayoutParams(p);
             return insets;
+        });
+    }
+
+    /** Središče kroga na {@link #CIRCLE_CENTER_FRACTION} višine okna, ob vsakem layoutu. */
+    private static void positionCircle(View root) {
+        View column = root.findViewById(R.id.overlay_column);
+        View circle = root.findViewById(R.id.overlay_circle);
+        root.addOnLayoutChangeListener((v, l, t, r, b, ol, ot, or, ob) -> {
+            float centerInColumn = circle.getTop() + circle.getHeight() / 2f;
+            column.setTranslationY(CIRCLE_CENTER_FRACTION * (b - t) - centerInColumn);
         });
     }
 
@@ -219,14 +234,16 @@ public final class BlockOverlay {
         if (view == null) {
             return;
         }
-        // Napis dihanja se umakne, pojavita se stavek in gumba.
+        // Napis dihanja se prelije v stavek (isti prostor pod krogom), nato pridejo akcije.
         view.findViewById(R.id.overlay_label_a).animate().alpha(0f)
                 .setDuration(LABEL_CROSSFADE_MS).start();
         view.findViewById(R.id.overlay_label_b).animate().alpha(0f)
                 .setDuration(LABEL_CROSSFADE_MS).start();
-        View group = view.findViewById(R.id.overlay_reveal);
-        group.setVisibility(View.VISIBLE);
-        group.animate().alpha(1f).setStartDelay(REVEAL_DELAY_MS).setDuration(REVEAL_MS)
+        view.findViewById(R.id.overlay_sentence).animate().alpha(1f)
+                .setDuration(LABEL_CROSSFADE_MS).start();
+        View actions = view.findViewById(R.id.overlay_actions);
+        actions.setVisibility(View.VISIBLE);
+        actions.animate().alpha(1f).setStartDelay(REVEAL_DELAY_MS).setDuration(REVEAL_MS)
                 .setInterpolator(new PathInterpolator(0.4f, 0f, 0.2f, 1f)) // fast-out-slow-in
                 .start();
     }

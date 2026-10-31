@@ -317,7 +317,13 @@ zlonamerne programske opreme in v nasprotju z zgodbo projekta.
 - **D35** Ohlajanje ima prednost pred oživljanjem izginjajočega overlaya (`OverlayStep`). Prej je
   servis najprej oživil overlay med 150 ms fade-outom in šele nato preveril ohlajanje — po
   "Zapri Instagram" se je overlay vrnil (dvojni tap). Velja za vse tri izhode.
-- *(D36+)*
+- **D36** Overlay na 8dp mreži: središče kroga na 40 % višine okna (koda, `translationY` ob vsakem
+  layoutu — z utežmi bi bilo le približno), stavek 32dp pod okvirjem kroga (224dp = rob
+  razširjenega kroga), akcije pritrjene na dno. Razmiki pri akcijah so vidni (do črtnega okvirja
+  16sp besedila, ki je 14,3dp od roba 48dp gumba): 2dp → 16 vidno, 34dp + inset → 48 vidno.
+  Primarna akcija je kompaktna pilula (širina = vsebina, 48dp, padding 32dp), ostali dve sta
+  ena siva vrstica "Na feed · Zapri Instagram" z 48dp dotikalnimi območji.
+- *(D37+)*
 
 ## 12. Odprta vprašanja
 - Q1: ~~Kateri ID-ji so zanesljivi?~~ → D15 (za Instagram 453.0.0.57.79).

@@ -131,7 +131,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_open_accessibility"
                 style="@style/Odisej.Button"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/btn_open_accessibility" />
 

@@ -118,3 +118,8 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
   poklical `keepIfShowing()`, ki je izginjajoči overlay (fade-out 150 ms) oživil, preden je prišlo
   ohlajanje na vrsto. Odločitev je zdaj čista funkcija `OverlayStep.decide`, ki jo uporabljata
   servis in test — test ne posnema servisa na pamet. Mutacija (stari vrstni red) podre 2 testa.
+- 2026-10-31 — Overlay na novo postavljen (D36). Izračun za Jakobov zaslon (1220×2712 @450 =
+  434×964dp, trije gumbi): krog središče 386dp od vrha (okvir 274–498), stavek od 530dp, pilula
+  784–832dp, siva vrstica s spodnjim robom besedila 48dp nad navigacijo. Na 1080×2340 @420
+  (411×891dp) ostane med stavkom in pilulo 166dp. *Na napravi še ni preverjeno.*
+  Kompromis: mirujoči krog (Ø90dp) je ~99dp nad stavkom, ker je prostor rezerviran za razširjen krog.
