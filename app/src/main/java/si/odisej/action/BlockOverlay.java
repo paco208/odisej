@@ -75,6 +75,11 @@ public final class BlockOverlay {
                 .build();
     }
 
+    /** Overlay je v oknu (prikazan ali ravno izginja). */
+    public boolean isPresent() {
+        return view != null;
+    }
+
     /**
      * Če je overlay prikazan (ali ravno izginja), ga obdrži in vrne true. Servis tako ne šteje
      * iste blokade dvakrat, ko se uporabnik med izhodno animacijo vrne v Reelse.

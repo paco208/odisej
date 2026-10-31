@@ -17,6 +17,7 @@ import si.odisej.action.BlockOverlay;
 import si.odisej.action.BlockPolicy;
 import si.odisej.action.Cooldown;
 import si.odisej.action.Debouncer;
+import si.odisej.action.OverlayStep;
 import si.odisej.detect.AccessibilityUiNode;
 import si.odisej.detect.DetectionRules;
 import si.odisej.detect.ReelsDetector;
@@ -112,18 +113,28 @@ public class ReelsAccessibilityService extends AccessibilityService {
             return;
         }
         BlockAction action = BlockPolicy.decide(state, prefs.getMode(), prefs.isDmReelsAllowed());
-        if (action == BlockAction.OVERLAY) {
-            // Overlay ostane, dokler smo v Reelsih, zato brez debounce; šteje se le nov prikaz.
-            if (!overlay.keepIfShowing()
-                    && !overlayCooldown.isActive(SystemClock.uptimeMillis())) {
+        OverlayStep step = OverlayStep.decide(action == BlockAction.OVERLAY, overlay.isPresent(),
+                overlayCooldown.isActive(SystemClock.uptimeMillis()));
+        switch (step) {
+            case KEEP:
+                overlay.keepIfShowing();
+                return;
+            case SHOW:
                 overlay.show(recordBlock());
                 if (BuildConfig.DEBUG) {
                     Log.d(TAG, "overlay prikazan");
                 }
-            }
-            return;
+                return;
+            case HIDE:
+                overlay.hide();
+                break;
+            case NONE:
+            default:
+                if (action == BlockAction.OVERLAY) {
+                    return; // ohlajanje
+                }
+                break;
         }
-        overlay.hide();
         if (action == BlockAction.NONE || !debouncer.tryAcquire(SystemClock.uptimeMillis())) {
             return;
         }

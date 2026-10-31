@@ -114,3 +114,7 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
   današnje štetje, zato brišemo samo starejše dni. Stari števec se prenese.
 - 2026-10-31 — QS ploščica: samo stanje + odpre aplikacijo. Premor iz ploščice bi obšel strogi
   način, zato ga namenoma ni. `exported=true`, ker SystemUI ni sistemski uid (prim. D12).
+- 2026-10-31 — "Zapri Instagram" na dva tapa. Ohlajanje se je sicer začelo, a servis je najprej
+  poklical `keepIfShowing()`, ki je izginjajoči overlay (fade-out 150 ms) oživil, preden je prišlo
+  ohlajanje na vrsto. Odločitev je zdaj čista funkcija `OverlayStep.decide`, ki jo uporabljata
+  servis in test — test ne posnema servisa na pamet. Mutacija (stari vrstni red) podre 2 testa.

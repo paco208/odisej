@@ -314,7 +314,10 @@ zlonamerne programske opreme in v nasprotju z zgodbo projekta.
 - **D34** Quick Settings ploščica: samo prikaz stanja, tap odpre aplikacijo; premora ne sproži
   (strogi način ostane v aplikaciji). `exported="true"` je nujen — veže se SystemUI, ki ni
   sistemski uid; varuje jo `BIND_QUICK_SETTINGS_TILE`.
-- *(D35+)*
+- **D35** Ohlajanje ima prednost pred oživljanjem izginjajočega overlaya (`OverlayStep`). Prej je
+  servis najprej oživil overlay med 150 ms fade-outom in šele nato preveril ohlajanje — po
+  "Zapri Instagram" se je overlay vrnil (dvojni tap). Velja za vse tri izhode.
+- *(D36+)*
 
 ## 12. Odprta vprašanja
 - Q1: ~~Kateri ID-ji so zanesljivi?~~ → D15 (za Instagram 453.0.0.57.79).
