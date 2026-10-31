@@ -34,7 +34,7 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
 - [x] Release podpisovanje iz ~/.gradle/gradle.properties
 - [x] R8 (statično preverjeno v dex/manifestu)
 - [ ] Servis po minifikaciji preverjen na napravi (release build)
-- [ ] GitHub Actions
+- [x] GitHub Actions (napisano; teče šele po pushu — ni preverjeno)
 - [ ] README
 
 ---
@@ -75,3 +75,6 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
   kodo, a brez zakrivanja imen, ker je preverljivost zgodba projekta (D27). Preverjeno z
   `dexdump`/`aapt2`: servis, MainActivity in konfiguracija servisa ostanejo, nizi dumperja ne.
   `apksigner verify`: podpis v2 OK; brez lastnosti nastane `app-release-unsigned.apk`.
+- 2026-10-31 — CI: isti ukazi kot lokalno. JDK 25, ker ga zahteva `gradle-daemon-jvm.properties`.
+  Release se v CI ne gradi, ker ključa tam ni (in ga ne sme biti). Poročila se naložijo vedno,
+  tudi ob napaki, da vidiš, kateri test/lint je padel.

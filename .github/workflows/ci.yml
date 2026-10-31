@@ -1,0 +1,37 @@
+# Gradnja, testi, lint in preverjanje, da v združenem manifestu ni mrežnih dovoljenj (Z1).
+# Ključa za podpis tu ni, zato CI release ne podpisuje (in ga tudi ne gradi).
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      # gradle/gradle-daemon-jvm.properties zahteva JDK 25 za Gradle daemon.
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 25
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Build, test, lint, no-internet check
+        run: ./gradlew assembleDebug testDebugUnitTest lintDebug checkNoInternet --stacktrace
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reports
+          path: |
+            app/build/reports/
+            app/build/test-results/
