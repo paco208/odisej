@@ -3,12 +3,12 @@
 Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
 
 ## F0 — Postavitev
-- [ ] Android Studio projekt (`si.odisej`, Java, Kotlin DSL, minSdk 26)
+- [x] Android Studio projekt (`si.odisej`, Java, Kotlin DSL, minSdk 26)
 - [ ] Prvi commit + GitHub repozitorij
-- [ ] INTERNET odstranjen (`tools:node="remove"`) + `checkNoInternet`
-- [ ] Prazen `ReelsAccessibilityService` + XML konfiguracija + manifest
-- [ ] `MainActivity`: stanje servisa + gumb v nastavitve dostopnosti
-- [ ] Debug dumper (`OdisejDump`, samo ID-ji in razredi)
+- [x] INTERNET odstranjen (`tools:node="remove"`) + `checkNoInternet`
+- [x] Prazen `ReelsAccessibilityService` + XML konfiguracija + manifest
+- [x] `MainActivity`: stanje servisa + gumb v nastavitve dostopnosti
+- [x] Debug dumper (`OdisejDump`, samo ID-ji in razredi)
 - [ ] Servis vklopljen na napravi, dogodki iz Instagrama vidni v Logcatu
 
 ## F1 — Zaznava
@@ -25,7 +25,15 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
 ---
 
 ## Dnevnik
-<!-- 2026-11-01 — F0: ... -->
 - 2026-10-31 — F0: projekt preimenovan Reelstop → Odisej (dokumentacija, paket `si.odisej`,
   log tagi `OdisejDump`/`OdisejService`, odločitev D11). Preverjeno: `grep -ri reelstop`
   najde le D11. Android projekta še ni, zato gradnja ni bila mogoča.
+- 2026-10-31 — F0: zasebnostni manifest, `checkNoInternet`, servis, debug dumper, MainActivity.
+  - `checkNoInternet` bere *združeni* manifest prek variant API (`SingleArtifact.MERGED_MANIFEST`),
+    ker knjižnice dovoljenja dodajo šele ob merge; v izvornem manifestu jih ne bi videl.
+    Preverjeno: brez `tools:node="remove"` naloga pade. Povezana je s `check`.
+  - Dumper je v `src/debug/`, v `src/release/` je prazen razred z istim imenom: koda za izpis
+    v release APK fizično ne obstaja (močneje kot `if (BuildConfig.DEBUG)`, ki zaupa R8).
+  - `allowBackup=false` ne ustavi prenosa med napravami na Android 12+, zato še
+    `data_extraction_rules.xml`, ki izključi vse. Odstranjen androidx `ProfileInstallReceiver`
+    (izvožen, ne rabimo ga). Servis `exported=false` — *na napravi še ni preverjeno* (D12).

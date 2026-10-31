@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- CONTEXT.md §5.1. packageNames = Z2: sistem servisu pošilja dogodke samo iz Instagrama. -->
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="UnusedAttribute"
+    android:accessibilityEventTypes="typeWindowStateChanged|typeWindowContentChanged"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:accessibilityFlags="flagReportViewIds|flagIncludeNotImportantViews"
+    android:canRetrieveWindowContent="true"
+    android:packageNames="com.instagram.android"
+    android:notificationTimeout="100"
+    android:isAccessibilityTool="false"
+    android:settingsActivity="si.odisej.MainActivity"
+    android:description="@string/accessibility_description" />

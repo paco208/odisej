@@ -252,7 +252,14 @@ zlonamerne programske opreme in v nasprotju z zgodbo projekta.
   da je slišal sirene, a ni mogel do njih (Ulysses contract — vnaprejšnja zaveza
   proti lastni šibkosti). Reelsi = sirene, servis = jambor, strogi način = vrvi.
   Paket `si.odisej`, log tagi `OdisejDump`, `OdisejService`.
-- *(D12+: dejanski ID-ji in signali po F1)*
+- **D12** Servis `exported="false"` + `permission=BIND_ACCESSIBILITY_SERVICE`. Sistemski proces
+  (uid system) se lahko veže tudi na neizvoženo komponento, druge aplikacije pa ne. Če se na
+  napravi izkaže, da ga sistem ne najde, preklopi na `exported="true"` (dovoljenje še vedno
+  omeji vezavo na sistem).
+- **D13** Debug dumper v ločenem source setu (`src/debug` / prazen `src/release`), ne za
+  `BuildConfig.DEBUG` — release APK kode za izpis drevesa sploh ne vsebuje (Z5).
+- **D14** Brez `ProfileInstallReceiver` (androidx), vse izključeno v `data_extraction_rules` (Z6).
+- *(D15+: dejanski ID-ji in signali po F1)*
 
 ## 12. Odprta vprašanja
 - Q1: Kateri ID-ji so zanesljivi? (F1)

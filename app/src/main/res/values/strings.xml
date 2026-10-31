@@ -1,3 +1,19 @@
 <resources>
-    <string name="app_name">Odisej</string>
+    <string name="app_name" translatable="false">Odisej</string>
+
+    <string name="accessibility_description">Odisej watches only Instagram. To recognize the Reels screen it reads view IDs and class names — never text, messages or captions. It has no internet permission, so nothing can leave your phone. It stores nothing about your screen.</string>
+
+    <string name="tagline">Blocks Instagram Reels. DMs, feed and stories keep working.</string>
+    <string name="status_on">Protection is ON</string>
+    <string name="status_off">Protection is OFF</string>
+    <string name="status_on_detail">Odisej is watching Instagram for the Reels screen.</string>
+    <string name="status_off_detail">Turn on Odisej in Accessibility settings.</string>
+    <string name="btn_open_accessibility">Open Accessibility settings</string>
+
+    <string name="restricted_title">Can\'t turn it on?</string>
+    <string name="restricted_body">On Android 13 and newer, apps installed outside the Play Store can\'t turn on accessibility services right away (\"restricted settings\").\n\n1. Try to turn on Odisej once and close the warning.\n2. Open App info → ⋮ (top right) → Allow restricted settings.\n3. Turn on Odisej again.</string>
+    <string name="btn_open_app_info">Open App info</string>
+
+    <string name="privacy_title">Privacy</string>
+    <string name="privacy_body">• No internet permission — nothing can leave your phone.\n• Watches only Instagram.\n• Reads only view IDs and class names, never text or messages.\n• Stores nothing about your screen.</string>
 </resources>

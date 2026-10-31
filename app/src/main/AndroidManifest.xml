@@ -2,15 +2,24 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Z1: Odisej ne sme imeti dostopa do mreže. tools:node="remove" odstrani dovoljenje,
+         tudi če ga doda knjižnica prek manifest merge; checkNoInternet to preveri. -->
+    <uses-permission android:name="android.permission.INTERNET" tools:node="remove" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" tools:node="remove" />
+
+    <!-- Z6: allowBackup=false izklopi oblačno varnostno kopijo; dataExtractionRules
+         na Android 12+ izklopi še prenos med napravami (allowBackup ga tam ne pokrije). -->
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
+        android:fullBackupContent="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Odisej">
+
+        <!-- Launcher aktivnost mora biti exported. -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -21,6 +30,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Nanj se veže samo sistem (BIND_ACCESSIBILITY_SERVICE ima samo sistem).
+             exported=false: sistemski proces se lahko veže tudi na neizvožene komponente,
+             druge aplikacije pa ne (D12). -->
+        <service
+            android:name=".service.ReelsAccessibilityService"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config" />
+        </service>
+
+        <!-- Z6: androidx.profileinstaller doda izvožen receiver (zaščiten z DUMP). Uporablja se
+             za baseline profile pri benchmarkih/Play; mi ga ne rabimo, zato ga odstranimo. -->
+        <receiver
+            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+            tools:ignore="MissingClass"
+            tools:node="remove" />
     </application>
 
 </manifest>

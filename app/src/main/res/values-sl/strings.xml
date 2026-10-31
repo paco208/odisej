@@ -1,0 +1,17 @@
+<resources>
+    <string name="accessibility_description">Odisej spremlja samo Instagram. Da prepozna zaslon z Reelsi, bere ID-je pogledov in imena razredov — nikoli besedil, sporočil ali opisov. Nima dovoljenja za internet, zato nič ne more zapustiti telefona. O zaslonu ne shrani ničesar.</string>
+
+    <string name="tagline">Blokira Instagram Reelse. DM-ji, feed in storyji delujejo naprej.</string>
+    <string name="status_on">Zaščita je VKLOPLJENA</string>
+    <string name="status_off">Zaščita je IZKLOPLJENA</string>
+    <string name="status_on_detail">Odisej v Instagramu prepoznava zaslon z Reelsi.</string>
+    <string name="status_off_detail">Vklopi Odisej v nastavitvah dostopnosti.</string>
+    <string name="btn_open_accessibility">Odpri nastavitve dostopnosti</string>
+
+    <string name="restricted_title">Ne gre vklopiti?</string>
+    <string name="restricted_body">Na Androidu 13 in novejših aplikacije, nameščene mimo Trgovine Play, ne morejo takoj vklopiti storitev dostopnosti (»omejene nastavitve«).\n\n1. Enkrat poskusi vklopiti Odisej in zapri opozorilo.\n2. Odpri Podatki o aplikaciji → ⋮ (zgoraj desno) → Dovoli omejene nastavitve.\n3. Znova vklopi Odisej.</string>
+    <string name="btn_open_app_info">Odpri podatke o aplikaciji</string>
+
+    <string name="privacy_title">Zasebnost</string>
+    <string name="privacy_body">• Brez dovoljenja za internet — nič ne more zapustiti telefona.\n• Spremlja samo Instagram.\n• Bere samo ID-je pogledov in imena razredov, nikoli besedil ali sporočil.\n• O zaslonu ne shrani ničesar.</string>
+</resources>
