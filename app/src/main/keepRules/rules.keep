@@ -1,12 +1,10 @@
-# Add project specific R8 rules here.
-# AGP will combine all keep rule files in src/main/keepRules to pass to R8
+# R8 pravila za Odisej. AGP vse datoteke v src/main/keepRules poda R8.
 #
-# For more details, see
-#   https://d.android.com/r/tools/r8/keep-rules
+# Komponente iz manifesta (MainActivity, ReelsAccessibilityService) in razrede iz XML
+# (layout, accessibility_service_config) AAPT2 ohrani samodejno, zato posebnih -keep ne rabimo.
+# Preverjeno 2026-10-31: razred servisa je v release dex z nespremenjenim imenom.
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
+# Ne zakrivaj imen: kdor dekompilira release APK, naj vidi ReelsDetector, DetectionRules ...
+# in jih lahko primerja z izvorno kodo (CONTEXT.md C4, zasebnost, ki jo lahko preveriš).
+# Krčenje in optimizacija ostaneta vklopljena.
+-dontobfuscate

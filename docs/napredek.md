@@ -31,8 +31,9 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
 ## F4 — v3
 - [x] Števec blokad (danes / skupaj)
 - [x] Strogi način (60 s odštevanja za premor)
-- [ ] Release podpisovanje iz ~/.gradle/gradle.properties
-- [ ] R8 + preverjen servis po minifikaciji
+- [x] Release podpisovanje iz ~/.gradle/gradle.properties
+- [x] R8 (statično preverjeno v dex/manifestu)
+- [ ] Servis po minifikaciji preverjen na napravi (release build)
 - [ ] GitHub Actions
 - [ ] README
 
@@ -70,3 +71,7 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
 - 2026-10-31 — F4: števec + strogi premor. SharedPreferences namesto DataStore (D24). Odštevanje
   se prekine ob `onPause`: trenje mora trajati, dokler impulz traja; nadaljevanje je takojšnje,
   ker trenje velja samo v smeri šibkosti.
+- 2026-10-31 — F4: podpis + R8. Skelet je optimiziral samo androidx (`packageScope`); zdaj vso
+  kodo, a brez zakrivanja imen, ker je preverljivost zgodba projekta (D27). Preverjeno z
+  `dexdump`/`aapt2`: servis, MainActivity in konfiguracija servisa ostanejo, nizi dumperja ne.
+  `apksigner verify`: podpis v2 OK; brez lastnosti nastane `app-release-unsigned.apk`.

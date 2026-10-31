@@ -287,7 +287,12 @@ zlonamerne programske opreme in v nasprotju z zgodbo projekta.
 - **D25** Strogi način: premor (15 min) zahteva 60 s odštevanja na zaslonu aplikacije; ob odhodu
   z zaslona se odštevanje prekine. Nadaljevanje blokiranja je takojšnje. Konec premora je v
   stenski uri (preživi ponovni zagon procesa).
-- *(D26+)*
+- **D26** Release podpis iz `~/.gradle/gradle.properties` (`ODISEJ_STORE_FILE`, `_STORE_PASSWORD`,
+  `_KEY_ALIAS`, `_KEY_PASSWORD`); če kaj manjka, nepodpisan APK (CI). Shema v2 (minSdk 26).
+- **D27** R8 za vso kodo (ne samo androidx), `-dontobfuscate`: imena ostanejo berljiva, da lahko
+  kdorkoli dekompilira APK in ga primerja z izvorno kodo. APK 2,8 MB → 1,4 MB. Keep pravil ne
+  rabimo — komponente iz manifesta in XML ohrani AAPT2 (preverjeno v dex).
+- *(D28+)*
 
 ## 12. Odprta vprašanja
 - Q1: ~~Kateri ID-ji so zanesljivi?~~ → D15 (za Instagram 453.0.0.57.79).

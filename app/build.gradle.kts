@@ -25,11 +25,33 @@ android {
         buildConfig = true
     }
 
+    // Ključ in gesla NISO v repozitoriju: berejo se iz ~/.gradle/gradle.properties.
+    // Če katera manjka (npr. v CI), se release zgradi nepodpisan.
+    val storeFilePath = providers.gradleProperty("ODISEJ_STORE_FILE").orNull
+    val storePass = providers.gradleProperty("ODISEJ_STORE_PASSWORD").orNull
+    val keyAliasName = providers.gradleProperty("ODISEJ_KEY_ALIAS").orNull
+    val keyPass = providers.gradleProperty("ODISEJ_KEY_PASSWORD").orNull
+    val canSign = listOf(storeFilePath, storePass, keyAliasName, keyPass).all { !it.isNullOrBlank() }
+
+    signingConfigs {
+        if (canSign) {
+            create("release") {
+                storeFile = file(storeFilePath!!)
+                storePassword = storePass
+                keyAlias = keyAliasName
+                keyPassword = keyPass
+            }
+        }
+    }
+
     buildTypes {
         release {
+            if (canSign) {
+                signingConfig = signingConfigs.getByName("release")
+            }
+            // R8 krči in optimizira vso kodo (tudi našo); imen ne zakriva (keepRules/rules.keep).
             optimization {
                 enable = true
-                packageScope = setOf("androidx.**", "kotlin.**", "kotlinx.**")
             }
         }
     }
