@@ -5,7 +5,7 @@ No internet permission, privacy by design.
 
 > **v1.0.0** · Android 8.0+ · tested on Android 16 with Instagram 453.0.0.57.79
 
-<!-- SCREENSHOTS -->
+<!-- TODO: screenshots (main screen, moment of pause while breathing, with actions) -->
 
 *Odisej* is Slovenian for Odysseus. He had himself tied to the mast so he could hear the Sirens
 without steering toward them — psychologists call this a *Ulysses contract*. Odisej does the same

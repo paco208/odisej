@@ -4,7 +4,7 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
 
 ## F0 — Postavitev
 - [x] Android Studio projekt (`si.odisej`, Java, Kotlin DSL, minSdk 26)
-- [ ] Prvi commit + GitHub repozitorij
+- [x] Prvi commit + GitHub repozitorij (javni repo ob v1.0.0)
 - [x] INTERNET odstranjen (`tools:node="remove"`) + `checkNoInternet`
 - [x] Prazen `ReelsAccessibilityService` + XML konfiguracija + manifest
 - [x] `MainActivity`: stanje servisa + gumb v nastavitve dostopnosti
@@ -44,7 +44,7 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
 - [x] Glavni zaslon (števec, status, stikali, krožno odštevanje)
 - [x] Popravki po prvem ogledu (insets, N, pilule, stikala, ločila)
 - [x] Zapri Instagram, 7-dnevni stolpci, QS ploščica, pulz na vrhu vdiha
-- [ ] Ročni test na napravi
+- [x] Ročni test na napravi
 
 ---
 
@@ -148,3 +148,15 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
   najprej izmeri, potem popravljaj. Rešitev: vrstica je pripeta pod drsno vsebino, inseti so na
   korenu; padding samo na drsni vsebini bi pomagal le pri drsenju do konca.
   Po popravku na napravi še ni izmerjeno (telefon je bil v uporabi).
+- 2026-10-31 — **v1.0.0 (zaključek).** Vse faze F0–F4 in UI prenove ročno preverjene na napravi
+  (moto g86, Android 16, Instagram 453.0.0.57.79); po Jakobovem testu delujejo tudi števci
+  (pogledani reeli prek indeksa strani pagerja, D37). 91 enotskih testov, lint brez napak,
+  `checkNoInternet`, podpisan release (shema v2, SHA-256 certifikata b2d10ab7…1337).
+  Pred objavo preverjeno: v gitu (vse veje, vsa zgodovina) ni dumpov, ključev, `local.properties`
+  ne vrednosti gesel. Novo zlato pravilo 7 (adb ukazi, ki berejo zaslon/druge aplikacije, samo z
+  izrecnim dovoljenjem in ko je spredaj Odisej) — po lekciji, da sem med meritvijo insetov naletel
+  na telefon v uporabi. Posnetki zaslona v README pridejo kasneje.
+  Kaj sem se naučil (za Jakoba): (1) najprej izmeri, potem popravljaj — insete sem prvič
+  "popravil" po napačni diagnozi; (2) čista Java + testi ujamejo logične napake (dvojno štetje,
+  vrstni red ohlajanja, brisanje "prihodnjih" dni) brez telefona; (3) mutacijski preizkus pove,
+  ali test sploh kaj preverja.
