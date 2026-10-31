@@ -332,7 +332,13 @@ zlonamerne programske opreme in v nasprotju z zgodbo projekta.
   Čas: `uptimeMillis` (med globokim spanjem miruje), korak omejen na 5 s, konec ob izhodu,
   ugasnjenem zaslonu (`ACTION_SCREEN_OFF`) ali odhodu iz Instagrama (samo ime paketa, kot D21).
   Brez UsageStatsManager in brez novih dovoljenj.
-- *(D38+)*
+- **D38** Overlay akcije: brez pilul in obrob — tri vrstice 56dp × 240dp (Na sporočila off-white
+  medium; Na feed, Zapri Instagram sivo), ločili 1dp #1F1F1F širine 240dp. Navadni `TextView`
+  z lastnim ripplom, ne `MaterialButton` (obrobe iz `materialButtonStyle` niso mogoče).
+  Kompozicija je en blok (krog → 32 → stavek → 48 → akcije). Po dihanju v enem 300 ms
+  animatorju: okvir kroga 224 → 96dp, prostor za besedilo → višina stavka, blok → središče na
+  45 % višine (`OverlayLayout.settledTop`); spodnjih 48dp + navigacija ima prednost. Nadomešča D36.
+- *(D39+)*
 
 ## 12. Odprta vprašanja
 - Q1: ~~Kateri ID-ji so zanesljivi?~~ → D15 (za Instagram 453.0.0.57.79).

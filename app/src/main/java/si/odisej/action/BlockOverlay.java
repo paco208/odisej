@@ -28,6 +28,7 @@ import si.odisej.R;
 import si.odisej.detect.DetectionRules;
 import si.odisej.ui.BreathCurve;
 import si.odisej.ui.BreathingCircleView;
+import si.odisej.ui.OverlayLayout;
 
 /**
  * v2 ukrep, "trenutek premora": črn zaslon čez Instagram prek TYPE_ACCESSIBILITY_OVERLAY
@@ -43,8 +44,15 @@ public final class BlockOverlay {
     private static final long REVEAL_MS = 350;
     /** Brez animacij krog miruje na tej razširjenosti. */
     private static final float STILL_EXPANSION = 0.5f;
-    /** Središče kroga kot delež višine okna. */
+    /** Med dihanjem: središče kroga kot delež višine okna. */
     private static final float CIRCLE_CENTER_FRACTION = 0.40f;
+    /** Po dihanju se okvir kroga skrči na to višino (mirujoči krog ima premer ~90dp). */
+    private static final int SETTLED_CIRCLE_DP = 96;
+    /** Najmanjši razmik bloka do navigacijske vrstice in pod statusno vrstico. */
+    private static final int BOTTOM_GAP_DP = 48;
+    private static final int TOP_GAP_DP = 16;
+    /** Poravnava bloka po dihanju. */
+    private static final long SETTLE_MS = 300;
     /** Kako pogosto preverimo, ali je Instagram še spredaj (samo ime paketa). */
     private static final long FOREGROUND_CHECK_MS = 1000;
     /** Po BACK počakamo, da se prejšnji zaslon prikaže, nato kliknemo zavihek. */
@@ -62,7 +70,12 @@ public final class BlockOverlay {
 
     private View view;
     private ValueAnimator breath;
+    private ValueAnimator settle;
     private boolean hiding;
+    /** Dihanje je končano in blok je (ali se ravno) poravnan na končni položaj. */
+    private boolean settled;
+    private int insetTop;
+    private int insetBottom;
 
     public BlockOverlay(AccessibilityService service, Runnable onUserLeft) {
         this.service = service;
@@ -116,8 +129,9 @@ public final class BlockOverlay {
         ((TextView) view.findViewById(R.id.overlay_sentence)).setText(
                 service.getString(R.string.overlay_sentence, reelsToday));
 
+        settled = false;
         applyInsets(view);
-        positionCircle(view);
+        positionBlock(view);
         windowManager.addView(view, layoutParams());
         // Predvajalniki se ob izgubi zvočnega fokusa ustavijo — reel za overlayem utihne.
         audioManager.requestAudioFocus(focusRequest);
@@ -155,47 +169,58 @@ public final class BlockOverlay {
     }
 
     /**
-     * Okno sega pod sistemske vrstice (edge-to-edge). Krog je postavljen glede na celo okno
-     * (40 % višine), akcije pa glede na navigacijsko vrstico: spodnji odmik = osnova iz layouta
-     * + inset (kretnje ali trije gumbi). Levo/desno: izrez in vrstice v ležečem položaju.
+     * Okno sega pod sistemske vrstice (edge-to-edge). Blok je postavljen glede na celo okno,
+     * spodnji razmik pa glede na navigacijsko vrstico (kretnje ali trije gumbi).
+     * Levo/desno: izrez in vrstice v ležečem položaju.
      */
     @SuppressWarnings("deprecation") // getSystemWindowInset*: samo veja za API < 30
-    private static void applyInsets(View root) {
-        View actions = root.findViewById(R.id.overlay_actions);
-        ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) actions.getLayoutParams();
-        final int baseBottom = lp.bottomMargin;
+    private void applyInsets(View root) {
         root.setOnApplyWindowInsetsListener((v, insets) -> {
             int left;
             int right;
-            int bottom;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 android.graphics.Insets i = insets.getInsets(
                         WindowInsets.Type.systemBars() | WindowInsets.Type.displayCutout());
                 left = i.left;
                 right = i.right;
-                bottom = i.bottom;
+                insetTop = i.top;
+                insetBottom = i.bottom;
             } else {
                 left = insets.getSystemWindowInsetLeft();
                 right = insets.getSystemWindowInsetRight();
-                bottom = insets.getSystemWindowInsetBottom();
+                insetTop = insets.getSystemWindowInsetTop();
+                insetBottom = insets.getSystemWindowInsetBottom();
             }
             v.setPadding(left, 0, right, 0);
-            ViewGroup.MarginLayoutParams p =
-                    (ViewGroup.MarginLayoutParams) actions.getLayoutParams();
-            p.bottomMargin = baseBottom + bottom;
-            actions.setLayoutParams(p);
+            v.requestLayout();
             return insets;
         });
     }
 
-    /** Središče kroga na {@link #CIRCLE_CENTER_FRACTION} višine okna, ob vsakem layoutu. */
-    private static void positionCircle(View root) {
+    /**
+     * Ob vsakem layoutu: med dihanjem je središče kroga na 40 % višine; po dihanju (ko animacija
+     * poravnave ne teče) je blok na končnem položaju iz {@link OverlayLayout#settledTop}.
+     */
+    private void positionBlock(View root) {
         View column = root.findViewById(R.id.overlay_column);
         View circle = root.findViewById(R.id.overlay_circle);
         root.addOnLayoutChangeListener((v, l, t, r, b, ol, ot, or, ob) -> {
-            float centerInColumn = circle.getTop() + circle.getHeight() / 2f;
-            column.setTranslationY(CIRCLE_CENTER_FRACTION * (b - t) - centerInColumn);
+            if (!settled) {
+                float centerInColumn = circle.getTop() + circle.getHeight() / 2f;
+                column.setTranslationY(CIRCLE_CENTER_FRACTION * (b - t) - centerInColumn);
+            } else if (settle == null || !settle.isRunning()) {
+                column.setTranslationY(settledTop(b - t, column.getHeight()));
+            }
         });
+    }
+
+    private float settledTop(int windowHeight, int blockHeight) {
+        return OverlayLayout.settledTop(windowHeight, blockHeight, insetTop, insetBottom,
+                dp(BOTTOM_GAP_DP), dp(TOP_GAP_DP));
+    }
+
+    private float dp(int value) {
+        return value * service.getResources().getDisplayMetrics().density;
     }
 
     private void startBreath() {
@@ -234,13 +259,45 @@ public final class BlockOverlay {
         if (view == null) {
             return;
         }
-        // Napis dihanja se prelije v stavek (isti prostor pod krogom), nato pridejo akcije.
+        BreathingCircleView circle = view.findViewById(R.id.overlay_circle);
+        View slot = view.findViewById(R.id.overlay_text_slot);
+        View sentence = view.findViewById(R.id.overlay_sentence);
+        View column = view.findViewById(R.id.overlay_column);
+
+        // Napis dihanja se prelije v stavek (isti prostor pod krogom).
         view.findViewById(R.id.overlay_label_a).animate().alpha(0f)
                 .setDuration(LABEL_CROSSFADE_MS).start();
         view.findViewById(R.id.overlay_label_b).animate().alpha(0f)
                 .setDuration(LABEL_CROSSFADE_MS).start();
-        view.findViewById(R.id.overlay_sentence).animate().alpha(1f)
-                .setDuration(LABEL_CROSSFADE_MS).start();
+        sentence.animate().alpha(1f).setDuration(LABEL_CROSSFADE_MS).start();
+
+        // Krog miruje (tudi brez animacij, kjer je bil na STILL_EXPANSION), da gre v manjši okvir.
+        circle.setExpansion(0f);
+
+        // En animator: okvir kroga 224 → 96dp, prostor za besedilo → višina stavka, blok → 45 %.
+        final int circleFrom = circle.getHeight();
+        final int circleTo = Math.round(dp(SETTLED_CIRCLE_DP));
+        final int slotFrom = slot.getHeight();
+        final int slotTo = sentence.getHeight();
+        final int finalBlock = column.getHeight() - (circleFrom - circleTo) - (slotFrom - slotTo);
+        final float fromY = column.getTranslationY();
+        final float toY = settledTop(view.getHeight(), finalBlock);
+        settled = true;
+        settle = ValueAnimator.ofFloat(0f, 1f);
+        settle.setDuration(SETTLE_MS);
+        settle.setInterpolator(new PathInterpolator(0.4f, 0f, 0.2f, 1f)); // fast-out-slow-in
+        settle.addUpdateListener(a -> {
+            float f = (float) a.getAnimatedValue();
+            ViewGroup.LayoutParams cp = circle.getLayoutParams();
+            cp.height = Math.round(circleFrom + (circleTo - circleFrom) * f);
+            circle.setLayoutParams(cp);
+            ViewGroup.LayoutParams sp = slot.getLayoutParams();
+            sp.height = Math.round(slotFrom + (slotTo - slotFrom) * f);
+            slot.setLayoutParams(sp);
+            column.setTranslationY(fromY + (toY - fromY) * f);
+        });
+        settle.start();
+
         View actions = view.findViewById(R.id.overlay_actions);
         actions.setVisibility(View.VISIBLE);
         actions.animate().alpha(1f).setStartDelay(REVEAL_DELAY_MS).setDuration(REVEAL_MS)
@@ -277,6 +334,10 @@ public final class BlockOverlay {
         if (breath != null) {
             breath.cancel();
             breath = null;
+        }
+        if (settle != null) {
+            settle.cancel();
+            settle = null;
         }
         windowManager.removeViewImmediate(view);
         view = null;

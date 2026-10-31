@@ -33,7 +33,8 @@ public class BreathingCircleView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        float half = Math.min(getWidth(), getHeight()) / 2f;
+        // Polmer iz ŠIRINE: po dihanju se okvir po višini skrči (224 → 96dp), krog pa ostane enak.
+        float half = getWidth() / 2f;
         float r = half * (MIN_RADIUS + (MAX_RADIUS - MIN_RADIUS) * expansion);
         canvas.drawCircle(getWidth() / 2f, getHeight() / 2f, r, paint);
     }

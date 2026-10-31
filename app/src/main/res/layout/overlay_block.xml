@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- "Trenutek premora". En stolpec na 8dp mreži, vse horizontalno centrirano:
-     - krog: središče na 40 % višine okna (BlockOverlay nastavi translationY ob vsakem layoutu),
-     - napis vdih/izdih in nato stavek: 32dp pod okvirjem kroga (rob razširjenega kroga),
-     - akcije: pritrjene na dno, vidni rob besedila 48dp nad navigacijsko vrstico.
-     Razmiki pri akcijah so VIDNI (od roba besedila), dotikalna območja so 48dp:
-     16sp besedilo je v 48dp gumbu ~14dp od roba, zato 2dp (= 16 vidno) in 34dp (= 48 vidno).
+<!-- "Trenutek premora". En vertikalni blok, horizontalno centriran, na 8dp mreži:
+     krog → 32dp → stavek → 48dp → tri akcije (vrstice 56dp, ločila 240dp).
+     Med dihanjem je središče kroga na 40 % višine; po dihanju se okvir kroga skrči
+     (224 → 96dp), prostor za besedilo na višino stavka, in blok se v 300 ms poravna na
+     45 % višine (BlockOverlay, OverlayLayout). Spodaj vedno vsaj 48dp do navigacije.
+     Koren je nujen: dobi inseti in ozadje, stolpec se v njem premika s translationY.
      Neprosojno ozadje je namen: reel za overlayem se ne sme videti. -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -14,7 +14,7 @@
     android:background="@color/od_black"
     android:clickable="true"
     android:focusable="false"
-    tools:ignore="Overdraw">
+    tools:ignore="Overdraw,UselessParent">
 
     <LinearLayout
         android:id="@+id/overlay_column"
@@ -30,8 +30,10 @@
             android:layout_width="224dp"
             android:layout_height="224dp" />
 
-        <!-- En prostor za tri besedila: vdih → izdih → stavek (crossfade). -->
+        <!-- En prostor za tri besedila: vdih → izdih → stavek (crossfade). Napisa sta zgoraj
+             poravnana, da ju krčenje prostora po dihanju odreže od spodaj, medtem ko izginjata. -->
         <FrameLayout
+            android:id="@+id/overlay_text_slot"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp">
@@ -41,6 +43,7 @@
                 style="@style/Odisej.Text.Headline"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="top"
                 android:gravity="center"
                 tools:text="@string/overlay_inhale" />
 
@@ -49,6 +52,7 @@
                 style="@style/Odisej.Text.Headline"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="top"
                 android:alpha="0"
                 android:gravity="center"
                 tools:text="@string/overlay_exhale" />
@@ -58,60 +62,43 @@
                 style="@style/Odisej.Text.Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="top"
                 android:alpha="0"
                 android:gravity="center"
                 tools:text="To bi bil tvoj 3. reel danes." />
         </FrameLayout>
-    </LinearLayout>
 
-    <!-- Akcije: INVISIBLE do konca dihanja (ne tapneš refleksno). Spodnji odmik = 34dp + inset
-         navigacije (BlockOverlay). -->
-    <LinearLayout
-        android:id="@+id/overlay_actions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginBottom="34dp"
-        android:alpha="0"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:visibility="invisible">
-
-        <!-- Eksplicitno MaterialButton: v servisu ni AppCompat inflaterja (D32). -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/overlay_btn_messages"
-            style="@style/Odisej.Button"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:text="@string/overlay_btn_messages" />
-
+        <!-- Akcije: INVISIBLE do konca dihanja (ne tapneš refleksno), prostor je rezerviran.
+             Navadni TextView-i (ne MaterialButton): brez obrob ali ozadij iz teme. -->
         <LinearLayout
+            android:id="@+id/overlay_actions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/overlay_btn_home"
-                style="@style/Odisej.Button.Quiet"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="@string/overlay_btn_home" />
+            android:layout_marginTop="48dp"
+            android:alpha="0"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="invisible">
 
             <TextView
-                style="@style/Odisej.Text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:importantForAccessibility="no"
-                android:text="@string/dot_separator"
-                android:textColor="@color/od_text_secondary" />
+                android:id="@+id/overlay_btn_messages"
+                style="@style/Odisej.Text.Action"
+                android:fontFamily="@font/odisej_medium"
+                android:text="@string/overlay_btn_messages"
+                android:textColor="@color/od_text" />
 
-            <com.google.android.material.button.MaterialButton
+            <View style="@style/Odisej.Divider.Short" />
+
+            <TextView
+                android:id="@+id/overlay_btn_home"
+                style="@style/Odisej.Text.Action"
+                android:text="@string/overlay_btn_home" />
+
+            <View style="@style/Odisej.Divider.Short" />
+
+            <TextView
                 android:id="@+id/overlay_btn_close"
-                style="@style/Odisej.Button.Quiet"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
+                style="@style/Odisej.Text.Action"
                 android:text="@string/overlay_btn_close" />
         </LinearLayout>
     </LinearLayout>

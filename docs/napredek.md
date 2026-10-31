@@ -129,3 +129,9 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
   dela. Če se ročni test ne ujema, števec v UI označim kot oceno (~). Shramba: ista `DailyCounts`
   (že testirana, isto 7-dnevno brisanje), dva nova niza. Vrstica se skrije, ko je oboje 0 —
   prazen prostor je tu bolj pomenljiv kot "danes še nič pogledano". Na napravi še ni preverjeno.
+- 2026-10-31 — Overlay akcije tretjič (D38): vrstice namesto pilul, en blok namesto akcij na dnu
+  (prej ~210dp praznine). Po dihanju se ne premakne samo blok, ampak se skrčita tudi okvir kroga
+  (224 → 96dp) in prostor za besedilo — sicer bi med mirujočim krogom (Ø90) in stavkom ostalo
+  ~100dp praznine. Položaj računa čista funkcija `OverlayLayout.settledTop` (testi tudi za majhen
+  zaslon, kjer ima 48dp do navigacije prednost). Moj prvi testni primer za to ni nič preverjal
+  (pri 45 % centriranje ni prekoračilo meje) — popravljen z izračunanim primerom.

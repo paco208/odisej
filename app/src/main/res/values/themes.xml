@@ -95,24 +95,17 @@
         <item name="rippleColor">@color/od_divider</item>
     </style>
 
-    <!-- Tiha akcija na overlayu: sivo besedilo, brez obrob in ozadja; vidno je samo besedilo,
-         dotikalno območje pa 48dp (minHeight/minWidth + horizontalni padding). -->
-    <style name="Odisej.Button.Quiet" parent="Widget.Material3.Button.TextButton">
-        <item name="android:fontFamily">@font/odisej_regular</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textAllCaps">false</item>
+    <!-- Akcija na overlayu: vrstica 56dp × 240dp, besedilo centrirano, cela vrstica je
+         dotikalno območje; zelo subtilen ripple, brez obrob in ozadja. -->
+    <style name="Odisej.Text.Action">
+        <item name="android:layout_width">240dp</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:gravity">center</item>
         <item name="android:textColor">@color/od_text_secondary</item>
-        <item name="android:minHeight">48dp</item>
-        <item name="android:minWidth">48dp</item>
-        <item name="android:paddingStart">12dp</item>
-        <item name="android:paddingEnd">12dp</item>
-        <item name="android:paddingTop">0dp</item>
-        <item name="android:paddingBottom">0dp</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
-        <item name="rippleColor">@color/od_divider</item>
-        <item name="elevation">0dp</item>
-        <item name="android:stateListAnimator">@null</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:background">@drawable/row_ripple</item>
+        <item name="android:maxLines">1</item>
     </style>
 
     <style name="Odisej.Switch" parent="Widget.Material3.CompoundButton.MaterialSwitch">
@@ -125,5 +118,10 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
         <item name="android:background">@color/od_divider</item>
+    </style>
+
+    <!-- Ločilo med akcijami na overlayu: 240dp, centrirano. -->
+    <style name="Odisej.Divider.Short">
+        <item name="android:layout_width">240dp</item>
     </style>
 </resources>
