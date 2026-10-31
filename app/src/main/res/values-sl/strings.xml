@@ -7,6 +7,7 @@
     <string name="status_active">Aktivno</string>
     <string name="status_paused">Premor do %1$s</string>
     <string name="status_off">Servis je izklopljen</string>
+    <string name="tile_off">Izklopljen</string>
     <string name="btn_open_accessibility">Odpri nastavitve dostopnosti</string>
     <string name="restricted_hint">Stikalo je sivo? Android 13+ blokira aplikacije, nameščene mimo Trgovine Play. Poskusi enkrat, zapri opozorilo, nato Podatki o aplikaciji → ⋮ → Dovoli omejene nastavitve.</string>
     <string name="btn_open_app_info">Podatki o aplikaciji</string>

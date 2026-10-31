@@ -27,6 +27,7 @@ import si.odisej.service.ServiceStatus;
 import si.odisej.settings.BlockStats;
 import si.odisej.settings.PauseCountdown;
 import si.odisej.settings.Prefs;
+import si.odisej.settings.ProtectionStatus;
 import si.odisej.ui.CountdownRingView;
 import si.odisej.ui.WeekBarsView;
 
@@ -168,17 +169,20 @@ public class MainActivity extends AppCompatActivity {
         long now = System.currentTimeMillis();
         boolean paused = prefs.isPaused(now);
 
-        int dotColor;
-        if (!serviceEnabled) {
-            statusText.setText(R.string.status_off);
-            dotColor = R.color.od_dot_idle;
-        } else if (paused) {
-            String until = DateFormat.getTimeFormat(this).format(prefs.getPausedUntil());
-            statusText.setText(getString(R.string.status_paused, until));
-            dotColor = R.color.od_dot_idle;
-        } else {
-            statusText.setText(R.string.status_active);
-            dotColor = R.color.od_accent;
+        int dotColor = R.color.od_dot_idle;
+        switch (ProtectionStatus.of(serviceEnabled, paused)) {
+            case OFF:
+                statusText.setText(R.string.status_off);
+                break;
+            case PAUSED:
+                String until = DateFormat.getTimeFormat(this).format(prefs.getPausedUntil());
+                statusText.setText(getString(R.string.status_paused, until));
+                break;
+            case ACTIVE:
+            default:
+                statusText.setText(R.string.status_active);
+                dotColor = R.color.od_accent;
+                break;
         }
         statusDot.setBackgroundTintList(
                 ColorStateList.valueOf(ContextCompat.getColor(this, dotColor)));

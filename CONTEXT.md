@@ -311,7 +311,10 @@ zlonamerne programske opreme in v nasprotju z zgodbo projekta.
 - **D33** 7-dnevni stolpci: en niz `"dan:število,…"` v SharedPreferences, obrezan ob vsakem zapisu
   na dneve ≥ danes − 6. "Prihodnjih" dni (ura premaknjena nazaj) ne brišemo, da se štetje ne
   izgubi — izginejo, ko se postarajo. Prenos iz stare oblike (dan zadnje blokade + število).
-- *(D34+)*
+- **D34** Quick Settings ploščica: samo prikaz stanja, tap odpre aplikacijo; premora ne sproži
+  (strogi način ostane v aplikaciji). `exported="true"` je nujen — veže se SystemUI, ki ni
+  sistemski uid; varuje jo `BIND_QUICK_SETTINGS_TILE`.
+- *(D35+)*
 
 ## 12. Odprta vprašanja
 - Q1: ~~Kateri ID-ji so zanesljivi?~~ → D15 (za Instagram 453.0.0.57.79).

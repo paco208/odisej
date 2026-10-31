@@ -42,6 +42,8 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
 - [x] Temna tema, pisava, slogi, ikona
 - [x] Overlay z dihanjem in zakasnjenimi gumbi
 - [x] Glavni zaslon (števec, status, stikali, krožno odštevanje)
+- [x] Popravki po prvem ogledu (insets, N, pilule, stikala, ločila)
+- [x] Zapri Instagram, 7-dnevni stolpci, QS ploščica, pulz na vrhu vdiha
 - [ ] Ročni test na napravi
 
 ---
@@ -110,3 +112,5 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
 - 2026-10-31 — 7-dnevni stolpci. Hrani se samo število na dan za zadnjih 7 dni (Z4 posodobljen).
   Test je ujel past: obrezovanje "na okno [danes−6, danes]" bi ob premiku ure nazaj pobrisalo
   današnje štetje, zato brišemo samo starejše dni. Stari števec se prenese.
+- 2026-10-31 — QS ploščica: samo stanje + odpre aplikacijo. Premor iz ploščice bi obšel strogi
+  način, zato ga namenoma ni. `exported=true`, ker SystemUI ni sistemski uid (prim. D12).

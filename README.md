@@ -62,6 +62,12 @@ settings**, instantly. Odisej doesn't try to prevent that — doing so would req
 Settings app (breaking the "only Instagram" guarantee), and hiding from or locking the user out
 are malware patterns. Odisej adds friction for your weak moments; it isn't a cage.
 
+## Quick Settings tile
+
+Add the **Odisej** tile to Quick Settings to see the state at a glance (active / paused until
+14:32 / off). Tapping it opens the app; it can't pause blocking — that still takes the 60-second
+wait in the app.
+
 ## Install
 
 1. Download the APK from Releases and install it.
