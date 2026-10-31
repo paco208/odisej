@@ -1,38 +1,39 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="accessibility_description">Odisej spremlja samo Instagram. Da prepozna zaslon z Reelsi, bere ID-je pogledov in imena razredov — nikoli besedil, sporočil ali opisov. Nima dovoljenja za internet, zato nič ne more zapustiti telefona. O zaslonu ne shrani ničesar.</string>
 
-    <string name="tagline">Blokira Instagram Reelse. DM-ji, feed in storyji delujejo naprej.</string>
-    <string name="status_on">Zaščita je VKLOPLJENA</string>
-    <string name="status_off">Zaščita je IZKLOPLJENA</string>
-    <string name="status_on_detail">Odisej v Instagramu prepoznava zaslon z Reelsi.</string>
-    <string name="status_off_detail">Vklopi Odisej v nastavitvah dostopnosti.</string>
+    <string name="today">danes</string>
+    <string name="total">skupaj: %1$d</string>
+    <string name="status_active">Aktivno</string>
+    <string name="status_paused">Premor do %1$s</string>
+    <string name="status_off">Servis je izklopljen</string>
     <string name="btn_open_accessibility">Odpri nastavitve dostopnosti</string>
+    <string name="restricted_hint">Stikalo je sivo? Android 13+ blokira aplikacije, nameščene mimo Trgovine Play. Poskusi enkrat, zapri opozorilo, nato Podatki o aplikaciji → ⋮ → Dovoli omejene nastavitve.</string>
+    <string name="btn_open_app_info">Podatki o aplikaciji</string>
 
-    <string name="restricted_title">Ne gre vklopiti?</string>
-    <string name="restricted_body">Na Androidu 13 in novejših aplikacije, nameščene mimo Trgovine Play, ne morejo takoj vklopiti storitev dostopnosti (»omejene nastavitve«).\n\n1. Enkrat poskusi vklopiti Odisej in zapri opozorilo.\n2. Odpri Podatki o aplikaciji → ⋮ (zgoraj desno) → Dovoli omejene nastavitve.\n3. Znova vklopi Odisej.</string>
-    <string name="btn_open_app_info">Odpri podatke o aplikaciji</string>
+    <string name="mode_title">Trenutek premora</string>
+    <string name="mode_desc">Tri sekunde dihaš, preden se odločiš. Izklopljeno: takoj nazaj.</string>
+    <string name="dm_title">Dovoli reele iz DM</string>
+    <string name="dm_desc">Reel, ki ti ga je nekdo poslal, se predvaja. Naslednji je blokiran.</string>
 
-    <string name="privacy_title">Zasebnost</string>
-    <string name="privacy_body">• Brez dovoljenja za internet — nič ne more zapustiti telefona.\n• Spremlja samo Instagram.\n• Bere samo ID-je pogledov in imena razredov, nikoli besedil ali sporočil.\n• O zaslonu ne shrani ničesar.</string>
+    <string name="btn_pause">Premor za 15 minut</string>
+    <string name="btn_pause_cancel">Prekliči</string>
+    <string name="btn_resume">Takoj nadaljuj</string>
+    <string name="pause_desc">Za premor moraš 60 sekund počakati na tem zaslonu. Če odideš, se začne znova.</string>
+    <!-- Odštevanje gre samo od 60 do 0, zato 101, 102 … nikoli ne nastopijo. -->
+    <plurals name="countdown_label" tools:ignore="ImpliedQuantity">
+        <item quantity="one">sekunda</item>
+        <item quantity="two">sekundi</item>
+        <item quantity="few">sekunde</item>
+        <item quantity="other">sekund</item>
+    </plurals>
+    <string name="privacy_line">Brez interneta · samo Instagram · nikoli ne bere besedil</string>
 
     <string name="toast_blocked">Reelsi so blokirani — Odisej</string>
 
-    <string name="overlay_title">Reelsi so blokirani</string>
-    <string name="overlay_body">Privezal si se na jambor. Sirene lahko pojejo — ni ti treba pluti k njim.</string>
+    <string name="overlay_inhale">vdih</string>
+    <string name="overlay_exhale">izdih</string>
+    <string name="overlay_still">Za trenutek se ustavi</string>
+    <string name="overlay_sentence">To je bil reel številka %1$d danes.</string>
     <string name="overlay_btn_messages">Na sporočila</string>
     <string name="overlay_btn_home">Na feed</string>
-
-    <string name="settings_title">Nastavitve</string>
-    <string name="mode_label">Ko se odprejo Reelsi</string>
-    <string name="mode_overlay">Pokaži zaslon z blokado</string>
-    <string name="mode_back">Takoj pojdi nazaj</string>
-    <string name="allow_dm_reels">Dovoli reele, poslane v DM (naslednji je blokiran)</string>
-
-    <string name="stats">Blokirano danes: %1$d · skupaj: %2$d</string>
-    <string name="pause_title">Premor</string>
-    <string name="pause_explain">Za premor moraš 60 sekund počakati na tem zaslonu. Če odideš, se čakanje začne znova. Nato je blokiranje ustavljeno za 15 minut.</string>
-    <string name="pause_active">Blokiranje je ustavljeno do %1$s.</string>
-    <string name="btn_pause">Premor za 15 minut</string>
-    <string name="btn_pause_waiting">Počakaj %1$d s … (tapni za preklic)</string>
-    <string name="btn_resume">Takoj nadaljuj z blokiranjem</string>
 </resources>

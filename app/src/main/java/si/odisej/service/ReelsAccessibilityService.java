@@ -57,7 +57,7 @@ public class ReelsAccessibilityService extends AccessibilityService {
     public void onDestroy() {
         handler.removeCallbacks(classifyRunnable);
         if (overlay != null) {
-            overlay.hide();
+            overlay.hideNow();
         }
         dumper.detach(this);
         super.onDestroy();
@@ -109,9 +109,9 @@ public class ReelsAccessibilityService extends AccessibilityService {
         }
         BlockAction action = BlockPolicy.decide(state, prefs.getMode(), prefs.isDmReelsAllowed());
         if (action == BlockAction.OVERLAY) {
-            // Overlay je idempotenten (ostane, dokler smo v Reelsih), zato brez debounce.
-            if (overlay.show()) {
-                recordBlock();
+            // Overlay ostane, dokler smo v Reelsih, zato brez debounce; šteje se le nov prikaz.
+            if (!overlay.keepIfShowing()) {
+                overlay.show(recordBlock());
                 if (BuildConfig.DEBUG) {
                     Log.d(TAG, "overlay prikazan");
                 }
@@ -131,8 +131,11 @@ public class ReelsAccessibilityService extends AccessibilityService {
         }
     }
 
-    private void recordBlock() {
-        prefs.recordBlock(LocalDate.now().toEpochDay());
+    /** @return število blokad danes, vključno s to */
+    private int recordBlock() {
+        long today = LocalDate.now().toEpochDay();
+        prefs.recordBlock(today);
+        return prefs.getStats().todayOn(today);
     }
 
     /**

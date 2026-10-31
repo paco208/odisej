@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Samo temna tema. Kontrasti proti #000000 (WCAG): text 18:1, text_secondary 8.3:1,
+     accent 12:1, dot_idle 3.9:1 (samo neza besedilni element, AA zahteva 3:1). -->
+<resources>
+    <color name="od_black">#FF000000</color>
+    <color name="od_text">#FFEDEDEA</color>
+    <color name="od_text_secondary">#FFA3A3A3</color>
+    <color name="od_hairline">#FF262626</color>
+    <color name="od_dot_idle">#FF6E6E6E</color>
+    <!-- Edini poudarek: krog dihanja, aktivni status, ikona. -->
+    <color name="od_accent">#FF9CCFC7</color>
+</resources>

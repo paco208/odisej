@@ -1,9 +1,88 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.Odisej" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<resources>
+    <!-- Samo temna tema, čisto črno ozadje (OLED). Material 3 kot osnova, močno prilagojena. -->
+    <style name="Theme.Odisej" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="android:windowBackground">@color/od_black</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:fontFamily">@font/odisej</item>
+        <item name="fontFamily">@font/odisej</item>
+
+        <item name="colorPrimary">@color/od_text</item>
+        <item name="colorOnPrimary">@color/od_black</item>
+        <item name="colorSurface">@color/od_black</item>
+        <item name="colorOnSurface">@color/od_text</item>
+        <item name="colorOnSurfaceVariant">@color/od_text_secondary</item>
+        <item name="colorSurfaceContainerHighest">@color/od_hairline</item>
+        <item name="colorOutline">@color/od_dot_idle</item>
+        <item name="android:colorBackground">@color/od_black</item>
+
+        <item name="materialButtonStyle">@style/Odisej.Button</item>
+        <item name="materialSwitchStyle">@style/Odisej.Switch</item>
     </style>
 
-    <style name="Theme.Odisej" parent="Base.Theme.Odisej" />
+    <!-- Besedilo: ena družina, debelino izberemo z datoteko pisave (deluje na vseh API >= 26). -->
+    <style name="Odisej.Text" parent="">
+        <item name="android:fontFamily">@font/odisej_regular</item>
+        <item name="android:textColor">@color/od_text</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingMultiplier">1.15</item>
+    </style>
+
+    <style name="Odisej.Text.Display">
+        <item name="android:fontFamily">@font/odisej_light</item>
+        <item name="android:textSize">112sp</item>
+        <item name="android:lineSpacingMultiplier">1.0</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:letterSpacing">-0.03</item>
+        <!-- Tabelarne številke: širina se med odštevanjem ne spreminja. -->
+        <item name="android:fontFeatureSettings">tnum</item>
+    </style>
+
+    <style name="Odisej.Text.Headline">
+        <item name="android:fontFamily">@font/odisej_light</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+    </style>
+
+    <style name="Odisej.Text.Title">
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <style name="Odisej.Text.Secondary">
+        <item name="android:textColor">@color/od_text_secondary</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Odisej.Text.Small">
+        <item name="android:textColor">@color/od_text_secondary</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- Primarni gumb: off-white kapsula, brez sence. -->
+    <style name="Odisej.Button" parent="Widget.Material3.Button">
+        <item name="android:fontFamily">@font/odisej_medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:minHeight">56dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="backgroundTint">@color/od_text</item>
+        <item name="android:textColor">@color/od_black</item>
+        <item name="elevation">0dp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <!-- Sekundarni gumb: samo besedilo. -->
+    <style name="Odisej.Button.Text" parent="Widget.Material3.Button.TextButton">
+        <item name="android:fontFamily">@font/odisej_medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:minHeight">56dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textColor">@color/od_text</item>
+    </style>
+
+    <style name="Odisej.Switch" parent="Widget.Material3.CompoundButton.MaterialSwitch" />
 </resources>

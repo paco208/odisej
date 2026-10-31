@@ -1,40 +1,42 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name" translatable="false">Odisej</string>
 
     <string name="accessibility_description">Odisej watches only Instagram. To recognize the Reels screen it reads view IDs and class names — never text, messages or captions. It has no internet permission, so nothing can leave your phone. It stores nothing about your screen.</string>
 
-    <string name="tagline">Blocks Instagram Reels. DMs, feed and stories keep working.</string>
-    <string name="status_on">Protection is ON</string>
-    <string name="status_off">Protection is OFF</string>
-    <string name="status_on_detail">Odisej is watching Instagram for the Reels screen.</string>
-    <string name="status_off_detail">Turn on Odisej in Accessibility settings.</string>
-    <string name="btn_open_accessibility">Open Accessibility settings</string>
+    <!-- Glavni zaslon -->
+    <string name="today">today</string>
+    <string name="total">total: %1$d</string>
+    <string name="status_active">Active</string>
+    <string name="status_paused">Paused until %1$s</string>
+    <string name="status_off">Service is off</string>
+    <string name="btn_open_accessibility">Open accessibility settings</string>
+    <string name="restricted_hint">Switch greyed out? Android 13+ blocks apps installed outside the Play Store. Try once, close the warning, then App info → ⋮ → Allow restricted settings.</string>
+    <string name="btn_open_app_info">App info</string>
 
-    <string name="restricted_title">Can\'t turn it on?</string>
-    <string name="restricted_body">On Android 13 and newer, apps installed outside the Play Store can\'t turn on accessibility services right away (\"restricted settings\").\n\n1. Try to turn on Odisej once and close the warning.\n2. Open App info → ⋮ (top right) → Allow restricted settings.\n3. Turn on Odisej again.</string>
-    <string name="btn_open_app_info">Open App info</string>
+    <string name="mode_title">Moment of pause</string>
+    <string name="mode_desc">Breathe for three seconds before deciding. Off: go back immediately.</string>
+    <string name="dm_title">Allow reels from DMs</string>
+    <string name="dm_desc">The reel someone sent you plays. The next one is blocked.</string>
 
-    <string name="privacy_title">Privacy</string>
-    <string name="privacy_body">• No internet permission — nothing can leave your phone.\n• Watches only Instagram.\n• Reads only view IDs and class names, never text or messages.\n• Stores nothing about your screen.</string>
+    <string name="btn_pause">Pause for 15 minutes</string>
+    <string name="btn_pause_cancel">Cancel</string>
+    <string name="btn_resume">Resume now</string>
+    <string name="pause_desc">Pausing takes a 60-second wait on this screen. Leave, and it starts over.</string>
+    <plurals name="countdown_label">
+        <item quantity="one">second</item>
+        <item quantity="other">seconds</item>
+    </plurals>
+    <string name="privacy_line">No internet · Instagram only · never reads text</string>
 
+    <!-- Back način -->
     <string name="toast_blocked">Reels are blocked — Odisej</string>
 
-    <string name="overlay_title">Reels are blocked</string>
-    <string name="overlay_body">You tied yourself to the mast. The Sirens can sing — you don\'t have to steer toward them.</string>
+    <!-- Overlay -->
+    <string name="overlay_inhale">breathe in</string>
+    <string name="overlay_exhale">breathe out</string>
+    <string name="overlay_still">Pause for a moment</string>
+    <!-- Vrstilni števnik (#N), ne množina. -->
+    <string name="overlay_sentence" tools:ignore="PluralsCandidate">That was reel #%1$d today.</string>
     <string name="overlay_btn_messages">Go to messages</string>
     <string name="overlay_btn_home">Go to feed</string>
-
-    <string name="settings_title">Settings</string>
-    <string name="mode_label">When Reels open</string>
-    <string name="mode_overlay">Show a blocking screen</string>
-    <string name="mode_back">Go back immediately</string>
-    <string name="allow_dm_reels">Allow reels sent to me in DMs (the next one is blocked)</string>
-
-    <string name="stats">Blocked today: %1$d · total: %2$d</string>
-    <string name="pause_title">Pause</string>
-    <string name="pause_explain">Pausing takes a 60-second wait on this screen. If you leave, the wait starts over. Then blocking pauses for 15 minutes.</string>
-    <string name="pause_active">Blocking is paused until %1$s.</string>
-    <string name="btn_pause">Pause for 15 minutes</string>
-    <string name="btn_pause_waiting">Wait %1$d s… (tap to cancel)</string>
-    <string name="btn_resume">Resume blocking now</string>
 </resources>

@@ -292,7 +292,17 @@ zlonamerne programske opreme in v nasprotju z zgodbo projekta.
 - **D27** R8 za vso kodo (ne samo androidx), `-dontobfuscate`: imena ostanejo berljiva, da lahko
   kdorkoli dekompilira APK in ga primerja z izvorno kodo. APK 2,8 MB → 1,4 MB. Keep pravil ne
   rabimo — komponente iz manifesta in XML ohrani AAPT2 (preverjeno v dex).
-- *(D28+)*
+- **D28** UI "trenutek premora": samo temna tema, ozadje #000000 (OLED), besedilo #EDEDEA,
+  sekundarno #A3A3A3 (8,3:1), en poudarek #9CCFC7 (bleda zelenomodra) samo za krog dihanja,
+  aktivni status in ikono. Brez kartic, senc in ikon.
+- **D29** Pisava Adwaita Sans (fork Intera, OFL) — Inter ni bil nameščen, Adwaita Sans je, brez
+  prenosa. Tri statične instance, okrnjene na latinico (164 KB skupaj), ker so variabilne osi
+  prek XML na API 26–27 nezanesljive. Priložena, ne downloadable (Z1). Vir: `third_party/`.
+- **D30** Overlay: 3 s dihanja (krivulja (1−cos 2πt)/2), gumbi šele po 3 s. Časovnico vodi
+  `Handler`, ne konec animatorja — brez animacij (`ANIMATOR_DURATION_SCALE=0`) se animator konča
+  takoj, pavza pa mora ostati. Haptika prek `performHapticFeedback` (brez dovoljenja VIBRATE).
+  Fade-out se prekine, če se uporabnik vrne v Reelse (ista blokada se ne šteje dvakrat).
+- *(D31+)*
 
 ## 12. Odprta vprašanja
 - Q1: ~~Kateri ID-ji so zanesljivi?~~ → D15 (za Instagram 453.0.0.57.79).

@@ -37,6 +37,13 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
 - [x] GitHub Actions (napisano; teče šele po pushu — ni preverjeno)
 - [x] README (posnetki zaslona: TODO, naredi Jakob)
 
+
+## UI prenova (trenutek premora)
+- [x] Temna tema, pisava, slogi, ikona
+- [x] Overlay z dihanjem in zakasnjenimi gumbi
+- [x] Glavni zaslon (števec, status, stikali, krožno odštevanje)
+- [ ] Ročni test na napravi
+
 ---
 
 ## Dnevnik
@@ -84,3 +91,10 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
   build z R8**): vseh 12 primerov uspešnih — overlay (oba gumba, umik ob Home), DM izjema in njen
   izklop, način "nazaj" brez zanke, števec, strogi premor s ponastavitvijo ob odhodu. Audio focus
   deluje: zvok reela za overlayem se ustavi. S tem je potrjeno tudi, da R8 servisa ne pokvari.
+- 2026-10-31 — Licenca: vse pravice pridržane, razdelek v README, brez datoteke LICENSE.
+- 2026-10-31 — UI prenova. Inter ni bil nameščen; Adwaita Sans je njegov fork (OFL), zato brez
+  prenosa. Statične instance namesto variabilne pisave, ker je izbira osi prek XML na API 26–27
+  nezanesljiva; okrnitev na latinico (164 KB). Gumbi na overlayu pridejo po uri (`Handler`), ne ob
+  koncu animatorja, ker se brez animacij animator konča takoj — pavza mora ostati. Krog
+  odštevanja riše po uri (Choreographer), ker je kazalnik napredka, ne okras. Slovenske dvojinske
+  oblike sekund prek `<plurals>`. Na napravi še ni preverjeno.

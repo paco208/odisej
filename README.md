@@ -9,7 +9,7 @@ the Sirens without steering toward them — psychologists call this a *Ulysses c
 Odisej does the same for Instagram: you keep the app for messages, but the Reels feed
 can't pull you in.
 
-<!-- TODO: screenshots (main screen, blocking overlay). No personal data on them! -->
+<!-- TODO: screenshots (main screen, moment of pause). No personal data on them! -->
 
 ## Why another blocker?
 
@@ -38,8 +38,11 @@ Odisej is built so you don't have to trust it:
      what matters),
    - a selected `clips_tab` → the Reels tab,
    - a reply bar next to the reel → a reel someone sent you in a DM.
-3. It then either shows a full-screen **blocking overlay** with buttons to go to your messages
-   or feed (default), or immediately **goes back** (Reels tab → Home tab, viewer → Back).
+3. It then either shows a **moment of pause** (default) — a black screen with one breath
+   (in 1.5 s, out 1.5 s), after which a single sentence and the buttons *Go to messages* /
+   *Go to feed* appear — or immediately **goes back** (Reels tab → Home tab, viewer → Back).
+   The buttons are hidden during the breath on purpose, so you can't tap them by reflex. With
+   system animations turned off, the circle stays still but the 3-second pause remains.
 4. **Reels sent to you in DMs** can be watched (optional, on by default). Swiping to the next,
    suggested reel is blocked.
 
@@ -118,6 +121,13 @@ With a debug build installed and the service on, run `scripts/collect-dumps.sh`.
 through the screens and saves text-free trees (IDs, classes, bounds, flags) to `dumps/`. Compare
 them, update `DetectionRules.java`, copy the new trees to `app/src/test/resources/trees/` and run
 the tests. `TreeFilesPrivacyTest` fails if a tree line contains anything but the allowed format.
+
+## Third-party
+
+The app bundles the **Adwaita Sans** font (a fork of Inter), licensed under the
+[SIL Open Font License 1.1](third_party/adwaita-sans/OFL.txt). It is subset and shipped inside
+the APK — no downloadable fonts, no network. Details in
+[`third_party/adwaita-sans/`](third_party/adwaita-sans/README.md).
 
 ## Not on Play Store
 

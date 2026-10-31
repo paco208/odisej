@@ -1,21 +1,22 @@
 package si.odisej;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
-import android.text.format.DateFormat;
 import android.provider.Settings;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -26,21 +27,31 @@ import si.odisej.service.ServiceStatus;
 import si.odisej.settings.BlockStats;
 import si.odisej.settings.PauseCountdown;
 import si.odisej.settings.Prefs;
+import si.odisej.ui.CountdownRingView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView statusTitle;
-    private TextView statusDetail;
-    private View restrictedTitle;
-    private View restrictedBody;
-    private View openAppInfo;
-    private Prefs prefs;
-    private TextView stats;
-    private TextView pauseStatus;
-    private Button pauseButton;
+    private static final long HERO_CROSSFADE_MS = 250;
+    private static final long TICK_MS = 200;
+
     private final PauseCountdown countdown = new PauseCountdown();
     private final Handler handler = new Handler(Looper.getMainLooper());
     private final Runnable tick = this::onTick;
+
+    private Prefs prefs;
+    private TextView countToday;
+    private TextView countTotal;
+    private View heroCount;
+    private View heroCountdown;
+    private CountdownRingView countdownRing;
+    private TextView countdownSeconds;
+    private TextView countdownLabel;
+    private View statusDot;
+    private TextView statusText;
+    private View serviceOffGroup;
+    private Button pauseButton;
+    private View pauseDesc;
+    private boolean serviceEnabled;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,32 +63,65 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        prefs = new Prefs(this);
 
-        statusTitle = findViewById(R.id.status_title);
-        statusDetail = findViewById(R.id.status_detail);
-        restrictedTitle = findViewById(R.id.restricted_title);
-        restrictedBody = findViewById(R.id.restricted_body);
-        openAppInfo = findViewById(R.id.btn_open_app_info);
+        countToday = findViewById(R.id.count_today);
+        countTotal = findViewById(R.id.count_total);
+        heroCount = findViewById(R.id.hero_count);
+        heroCountdown = findViewById(R.id.hero_countdown);
+        countdownRing = findViewById(R.id.countdown_ring);
+        countdownSeconds = findViewById(R.id.countdown_seconds);
+        countdownLabel = findViewById(R.id.countdown_label);
+        statusDot = findViewById(R.id.status_dot);
+        statusText = findViewById(R.id.status_text);
+        serviceOffGroup = findViewById(R.id.service_off_group);
+        pauseButton = findViewById(R.id.btn_pause);
+        pauseDesc = findViewById(R.id.pause_desc);
 
         findViewById(R.id.btn_open_accessibility).setOnClickListener(v ->
                 startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)));
-        openAppInfo.setOnClickListener(v ->
+        findViewById(R.id.btn_open_app_info).setOnClickListener(v ->
                 startActivity(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
                         Uri.fromParts("package", getPackageName(), null))));
 
-        prefs = new Prefs(this);
-        RadioGroup modeGroup = findViewById(R.id.mode_group);
-        modeGroup.check(prefs.getMode() == Prefs.Mode.BACK ? R.id.mode_back : R.id.mode_overlay);
-        modeGroup.setOnCheckedChangeListener((group, checkedId) ->
-                prefs.setMode(checkedId == R.id.mode_back ? Prefs.Mode.BACK : Prefs.Mode.OVERLAY));
-        CompoundButton allowDm = findViewById(R.id.switch_allow_dm);
-        allowDm.setChecked(prefs.isDmReelsAllowed());
-        allowDm.setOnCheckedChangeListener((button, checked) -> prefs.setDmReelsAllowed(checked));
+        // Stikalo "Trenutek premora": vklopljeno = overlay, izklopljeno = takoj nazaj.
+        CompoundButton modeSwitch = findViewById(R.id.switch_mode);
+        modeSwitch.setChecked(prefs.getMode() == Prefs.Mode.OVERLAY);
+        modeSwitch.setOnCheckedChangeListener((b, checked) ->
+                prefs.setMode(checked ? Prefs.Mode.OVERLAY : Prefs.Mode.BACK));
+        findViewById(R.id.row_mode).setOnClickListener(v -> modeSwitch.toggle());
 
-        stats = findViewById(R.id.stats);
-        pauseStatus = findViewById(R.id.pause_status);
-        pauseButton = findViewById(R.id.btn_pause);
+        CompoundButton dmSwitch = findViewById(R.id.switch_dm);
+        dmSwitch.setChecked(prefs.isDmReelsAllowed());
+        dmSwitch.setOnCheckedChangeListener((b, checked) -> prefs.setDmReelsAllowed(checked));
+        findViewById(R.id.row_dm).setOnClickListener(v -> dmSwitch.toggle());
+
         pauseButton.setOnClickListener(v -> onPauseButton());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Uporabnik se iz sistemskih nastavitev vrne sem, zato stanje osvežimo ob vsaki vrnitvi.
+        serviceEnabled = ServiceStatus.isEnabled(this);
+        BlockStats s = prefs.getStats();
+        countToday.setText(String.valueOf(s.todayOn(LocalDate.now().toEpochDay())));
+        countTotal.setText(getString(R.string.total, s.total));
+        render();
+        if (prefs.isPaused(System.currentTimeMillis())) {
+            handler.post(tick);
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // Odštevanje velja le, dokler gledaš ta zaslon: če odideš, se začne znova.
+        if (countdown.isRunning()) {
+            countdown.cancel();
+            showCountdown(false, false);
+        }
+        handler.removeCallbacks(tick);
     }
 
     /**
@@ -89,66 +133,78 @@ public class MainActivity extends AppCompatActivity {
             prefs.setPausedUntil(0);
         } else if (countdown.isRunning()) {
             countdown.cancel();
+            showCountdown(false, true);
         } else {
-            countdown.start(SystemClock.elapsedRealtime());
+            long now = SystemClock.elapsedRealtime();
+            countdown.start(now);
+            countdownRing.start(now, PauseCountdown.COUNTDOWN_MS);
+            showCountdown(true, true);
             handler.post(tick);
         }
-        renderPause();
+        render();
     }
 
     private void onTick() {
         if (countdown.isFinished(SystemClock.elapsedRealtime())) {
             countdown.cancel();
             prefs.setPausedUntil(System.currentTimeMillis() + PauseCountdown.PAUSE_MS);
+            showCountdown(false, true);
         }
-        renderPause();
+        render();
         if (countdown.isRunning() || prefs.isPaused(System.currentTimeMillis())) {
-            handler.postDelayed(tick, 500);
+            handler.postDelayed(tick, TICK_MS);
         }
     }
 
-    private void renderPause() {
+    private void render() {
         long now = System.currentTimeMillis();
-        if (prefs.isPaused(now)) {
+        boolean paused = prefs.isPaused(now);
+
+        int dotColor;
+        if (!serviceEnabled) {
+            statusText.setText(R.string.status_off);
+            dotColor = R.color.od_dot_idle;
+        } else if (paused) {
             String until = DateFormat.getTimeFormat(this).format(prefs.getPausedUntil());
-            pauseStatus.setText(getString(R.string.pause_active, until));
-            pauseButton.setText(R.string.btn_resume);
-        } else if (countdown.isRunning()) {
-            pauseStatus.setText(R.string.pause_explain);
-            pauseButton.setText(getString(R.string.btn_pause_waiting,
-                    countdown.remainingSeconds(SystemClock.elapsedRealtime())));
+            statusText.setText(getString(R.string.status_paused, until));
+            dotColor = R.color.od_dot_idle;
         } else {
-            pauseStatus.setText(R.string.pause_explain);
+            statusText.setText(R.string.status_active);
+            dotColor = R.color.od_accent;
+        }
+        statusDot.setBackgroundTintList(
+                ColorStateList.valueOf(ContextCompat.getColor(this, dotColor)));
+        serviceOffGroup.setVisibility(serviceEnabled ? View.GONE : View.VISIBLE);
+
+        if (paused) {
+            pauseButton.setText(R.string.btn_resume);
+            pauseDesc.setVisibility(View.GONE);
+        } else if (countdown.isRunning()) {
+            int seconds = countdown.remainingSeconds(SystemClock.elapsedRealtime());
+            countdownSeconds.setText(String.valueOf(seconds));
+            countdownLabel.setText(
+                    getResources().getQuantityString(R.plurals.countdown_label, seconds));
+            pauseButton.setText(R.string.btn_pause_cancel);
+            pauseDesc.setVisibility(View.VISIBLE);
+        } else {
             pauseButton.setText(R.string.btn_pause);
+            pauseDesc.setVisibility(View.VISIBLE);
         }
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        // Odštevanje velja le, dokler gledaš ta zaslon: če odideš, se začne znova.
-        countdown.cancel();
-        handler.removeCallbacks(tick);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        // Uporabnik se iz sistemskih nastavitev vrne sem, zato stanje osvežimo ob vsakem vrnitvi.
-        boolean enabled = ServiceStatus.isEnabled(this);
-        statusTitle.setText(enabled ? R.string.status_on : R.string.status_off);
-        statusDetail.setText(enabled ? R.string.status_on_detail : R.string.status_off_detail);
-        // Navodila za omejene nastavitve so pomembna le, dokler servis ni vklopljen.
-        int restrictedVisibility = enabled ? View.GONE : View.VISIBLE;
-        restrictedTitle.setVisibility(restrictedVisibility);
-        restrictedBody.setVisibility(restrictedVisibility);
-        openAppInfo.setVisibility(restrictedVisibility);
-
-        BlockStats s = prefs.getStats();
-        stats.setText(getString(R.string.stats, s.todayOn(LocalDate.now().toEpochDay()), s.total));
-        renderPause();
-        if (prefs.isPaused(System.currentTimeMillis())) {
-            handler.post(tick);
+    /** Junak se prelije med števcem in krogom odštevanja. */
+    private void showCountdown(boolean show, boolean animate) {
+        View in = show ? heroCountdown : heroCount;
+        View out = show ? heroCount : heroCountdown;
+        if (!show) {
+            countdownRing.stop();
         }
+        long d = animate ? HERO_CROSSFADE_MS : 0;
+        out.animate().cancel();
+        in.animate().cancel();
+        out.animate().alpha(0f).setDuration(d)
+                .withEndAction(() -> out.setVisibility(View.INVISIBLE)).start();
+        in.setVisibility(View.VISIBLE);
+        in.animate().alpha(1f).setDuration(d).start();
     }
 }

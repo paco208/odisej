@@ -1,44 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Neprosojno ozadje je namen: reel za overlayem se ne sme videti. -->
+<!-- "Trenutek premora": čisto črn zaslon, krog dihanja, nato stavek in gumba.
+     Neprosojno ozadje je namen: reel za overlayem se ne sme videti. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorSurface"
+    android:background="@color/od_black"
     android:clickable="true"
     android:focusable="false"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="32dp"
+    android:paddingHorizontal="32dp"
     tools:ignore="Overdraw">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/overlay_title"
-        android:textAppearance="?attr/textAppearanceHeadlineMedium" />
+    <si.odisej.ui.BreathingCircleView
+        android:id="@+id/overlay_circle"
+        android:layout_width="220dp"
+        android:layout_height="220dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <!-- Dva napisa drug na drugem za crossfade vdih → izdih. -->
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:gravity="center"
-        android:text="@string/overlay_body"
-        android:textAppearance="?attr/textAppearanceBodyLarge" />
+        android:layout_marginTop="28dp">
 
-    <Button
-        android:id="@+id/overlay_btn_messages"
+        <TextView
+            android:id="@+id/overlay_label_a"
+            style="@style/Odisej.Text.Headline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            tools:text="@string/overlay_inhale" />
+
+        <TextView
+            android:id="@+id/overlay_label_b"
+            style="@style/Odisej.Text.Headline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alpha="0"
+            android:gravity="center"
+            tools:text="@string/overlay_exhale" />
+    </FrameLayout>
+
+    <!-- INVISIBLE (ne GONE): prostor je rezerviran, krog med razkritjem ne skoči. -->
+    <LinearLayout
+        android:id="@+id/overlay_reveal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="@string/overlay_btn_messages" />
+        android:alpha="0"
+        android:orientation="vertical"
+        android:visibility="invisible">
 
-    <Button
-        android:id="@+id/overlay_btn_home"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/overlay_btn_home" />
+        <TextView
+            android:id="@+id/overlay_sentence"
+            style="@style/Odisej.Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/od_text_secondary"
+            tools:text="That was reel #3 today." />
+
+        <Button
+            android:id="@+id/overlay_btn_messages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/overlay_btn_messages" />
+
+        <Button
+            android:id="@+id/overlay_btn_home"
+            style="@style/Odisej.Button.Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/overlay_btn_home" />
+    </LinearLayout>
 </LinearLayout>
