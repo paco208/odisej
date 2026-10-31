@@ -1,6 +1,7 @@
 package si.odisej;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.net.Uri;
 import android.os.Bundle;
@@ -29,6 +30,7 @@ import si.odisej.settings.PauseCountdown;
 import si.odisej.settings.Prefs;
 import si.odisej.settings.ProtectionStatus;
 import si.odisej.ui.CountdownRingView;
+import si.odisej.ui.DurationText;
 import si.odisej.ui.WeekBarsView;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,11 +41,19 @@ public class MainActivity extends AppCompatActivity {
     private final PauseCountdown countdown = new PauseCountdown();
     private final Handler handler = new Handler(Looper.getMainLooper());
     private final Runnable tick = this::onTick;
+    /** Servis piše števce v istem procesu; zaslon se osveži v živo, ko je odprt. */
+    private final SharedPreferences.OnSharedPreferenceChangeListener statsListener =
+            (sp, key) -> {
+                if (Prefs.isStatsKey(key)) {
+                    renderStats();
+                }
+            };
 
     private Prefs prefs;
     private TextView countToday;
     private TextView countTotal;
     private WeekBarsView weekBars;
+    private TextView usageLine;
     private View heroCount;
     private View heroCountdown;
     private CountdownRingView countdownRing;
@@ -74,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         countToday = findViewById(R.id.count_today);
         countTotal = findViewById(R.id.count_total);
         weekBars = findViewById(R.id.week_bars);
+        usageLine = findViewById(R.id.usage_line);
         heroCount = findViewById(R.id.hero_count);
         heroCountdown = findViewById(R.id.hero_countdown);
         countdownRing = findViewById(R.id.countdown_ring);
@@ -111,11 +122,8 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         // Uporabnik se iz sistemskih nastavitev vrne sem, zato stanje osvežimo ob vsaki vrnitvi.
         serviceEnabled = ServiceStatus.isEnabled(this);
-        BlockStats s = prefs.getStats();
-        LocalDate today = LocalDate.now();
-        countToday.setText(String.valueOf(s.todayOn(today.toEpochDay())));
-        countTotal.setText(getString(R.string.total, s.total));
-        weekBars.setData(s.lastSevenDays(today.toEpochDay()), today);
+        renderStats();
+        prefs.registerListener(statsListener);
         render();
         if (prefs.isPaused(System.currentTimeMillis())) {
             handler.post(tick);
@@ -131,6 +139,27 @@ public class MainActivity extends AppCompatActivity {
             showCountdown(false, false);
         }
         handler.removeCallbacks(tick);
+        prefs.unregisterListener(statsListener);
+    }
+
+    private void renderStats() {
+        BlockStats s = prefs.getStats();
+        LocalDate today = LocalDate.now();
+        long day = today.toEpochDay();
+        countToday.setText(String.valueOf(s.todayOn(day)));
+        countTotal.setText(getString(R.string.total, s.total));
+        weekBars.setData(s.lastSevenDays(day), today);
+
+        int viewed = prefs.getViewed().countOn(day);
+        int seconds = prefs.getReelsSeconds().countOn(day);
+        if (viewed == 0 && seconds == 0) {
+            usageLine.setVisibility(View.GONE);
+        } else {
+            String time = DurationText.format(seconds, getString(R.string.duration_under_minute),
+                    getString(R.string.duration_minutes), getString(R.string.duration_hours));
+            usageLine.setText(getString(R.string.usage_line, viewed, time));
+            usageLine.setVisibility(View.VISIBLE);
+        }
     }
 
     /**

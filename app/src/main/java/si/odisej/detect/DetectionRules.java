@@ -19,9 +19,12 @@ public final class DetectionRules {
 
     private static final String ID = INSTAGRAM_PACKAGE + ":id/";
 
+    /** Pager Reels viewerja: njegov TYPE_VIEW_SCROLLED (indeks strani) šteje pogledane reele. */
+    public static final String REELS_PAGER_ID = ID + "clips_viewer_view_pager";
+
     /** Viden katerikoli od teh = Reels viewer ali zavihek. Prvi je glavni, drugi rezervni. */
     public static final Set<String> REELS_IDS = setOf(
-            ID + "clips_viewer_view_pager",
+            REELS_PAGER_ID,
             ID + "clips_expanded_touch_view");
 
     /** Zavihek Reels; če je izbran (selected), smo na zavihku Reels. */

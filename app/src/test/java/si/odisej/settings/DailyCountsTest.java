@@ -65,4 +65,11 @@ public class DailyCountsTest {
         assertEquals(30, DailyCounts.of(D, 30).countOn(D));
         assertEquals("", DailyCounts.of(-1, 0).serialize());
     }
+
+    @Test
+    public void addSumsAmountsAndPrunes() {
+        DailyCounts c = DailyCounts.empty().add(D - 7, 40).add(D, 30).add(D, 15);
+        assertEquals(45, c.countOn(D));
+        assertEquals(0, c.countOn(D - 7));
+    }
 }

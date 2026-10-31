@@ -66,8 +66,10 @@ Ta pravila so **nepogajljiva**. Če naloga zahteva kršitev, se ustavi in vpraš
   (npr. zavihek). Nikoli `getText()`. Opisi vsebine (napisi pod reeli, sporočila) se ne
   logirajo in ne shranjujejo.
 - **Z4 — Nič ne shranjujemo o zaslonu.** Na disku so samo: nastavitve, konec premora,
-  **število blokad na dan za zadnjih 7 dni** (dan = datum, brez ure; starejši dnevi se ob vsakem
-  zapisu pobrišejo) in skupno število blokad. Brez ur, brez zgodovine zaslonov, brez vsebine.
+  **dnevne vsote za zadnjih 7 dni** — število blokad, število pogledanih (neblokiranih) reelov in
+  sekunde v neblokiranih Reelsih (dan = datum, brez ure; starejši dnevi se ob vsakem zapisu
+  pobrišejo) — in skupno število blokad. Brez časovnih žigov posameznih reelov ali sej, brez
+  zgodovine zaslonov, brez vsebine.
 - **Z5 — Brez logiranja v release.** Diagnostični izpis drevesa (glej 6.4) obstaja
   samo v `debug` različici (`BuildConfig.DEBUG`) in izpiše **samo** ID-je in imena
   razredov, nikoli besedila.
@@ -323,7 +325,14 @@ zlonamerne programske opreme in v nasprotju z zgodbo projekta.
   16sp besedila, ki je 14,3dp od roba 48dp gumba): 2dp → 16 vidno, 34dp + inset → 48 vidno.
   Primarna akcija je kompaktna pilula (širina = vsebina, 48dp, padding 32dp), ostali dve sta
   ena siva vrstica "Na feed · Zapri Instagram" z 48dp dotikalnimi območji.
-- *(D37+)*
+- **D37** Pogledani reeli = sprememba `toIndex` v `TYPE_VIEW_SCROLLED` na `clips_viewer_view_pager`
+  (androidx ViewPager ga spremeni enkrat na poteg) + prvi reel ob začetku seje; rezerva brez
+  indeksa: "poteg se je umiril" (ocena). Dumpi so posnetki stanja in dogodkov ne pokažejo, zato
+  natančnost potrdi ročni test. Seja gledanja = Reels zaslon, ki ga ne blokiramo (premor, DM).
+  Čas: `uptimeMillis` (med globokim spanjem miruje), korak omejen na 5 s, konec ob izhodu,
+  ugasnjenem zaslonu (`ACTION_SCREEN_OFF`) ali odhodu iz Instagrama (samo ime paketa, kot D21).
+  Brez UsageStatsManager in brez novih dovoljenj.
+- *(D38+)*
 
 ## 12. Odprta vprašanja
 - Q1: ~~Kateri ID-ji so zanesljivi?~~ → D15 (za Instagram 453.0.0.57.79).

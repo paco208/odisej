@@ -4,6 +4,10 @@
     <string name="today">danes</string>
     <string name="total">skupaj: %1$d</string>
     <string name="week_description">Zadnjih 7 dni: %1$s</string>
+    <string name="usage_line">pogledano %1$d · %2$s v Reelsih</string>
+    <string name="duration_under_minute">&lt;1 min</string>
+    <string name="duration_minutes">%1$d min</string>
+    <string name="duration_hours">%1$d h %2$d min</string>
     <string name="status_active">Aktivno</string>
     <string name="status_paused">Premor do %1$s</string>
     <string name="status_off">Servis je izklopljen</string>

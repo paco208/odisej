@@ -4,8 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
- * Edino, kar Odisej shrani na disk (Z4): nastavitve, konec premora, število blokad na dan za
- * zadnjih 7 dni in skupaj. Nič o zaslonu, nobenih ur. SharedPreferences namesto DataStore (D24).
+ * Edino, kar Odisej shrani na disk (Z4): nastavitve, konec premora, dnevne vsote za zadnjih
+ * 7 dni (blokade, pogledani reeli, sekunde v Reelsih) in skupno število blokad. Nič o zaslonu,
+ * nobenih ur ali časovnih žigov. SharedPreferences namesto DataStore (D24).
  */
 public final class Prefs {
 
@@ -17,6 +18,8 @@ public final class Prefs {
     private static final String KEY_PAUSED_UNTIL = "paused_until";
     private static final String KEY_DAILY = "daily_counts";
     private static final String KEY_STATS_TOTAL = "stats_total";
+    private static final String KEY_DAILY_VIEWED = "daily_viewed";
+    private static final String KEY_DAILY_SECONDS = "daily_seconds";
     /** Stara oblika (do 7-dnevnih stolpcev): samo dan zadnje blokade in število tega dne. */
     private static final String LEGACY_STATS_DAY = "stats_day";
     private static final String LEGACY_STATS_TODAY = "stats_today";
@@ -69,6 +72,39 @@ public final class Prefs {
                     sp.getInt(LEGACY_STATS_TODAY, 0));
         }
         return new BlockStats(days, sp.getInt(KEY_STATS_TOTAL, 0));
+    }
+
+    /** Ključi, ob katerih spremembi naj se glavni zaslon osveži. */
+    public static boolean isStatsKey(String key) {
+        return KEY_DAILY.equals(key) || KEY_STATS_TOTAL.equals(key)
+                || KEY_DAILY_VIEWED.equals(key) || KEY_DAILY_SECONDS.equals(key);
+    }
+
+    public void registerListener(SharedPreferences.OnSharedPreferenceChangeListener l) {
+        sp.registerOnSharedPreferenceChangeListener(l);
+    }
+
+    public void unregisterListener(SharedPreferences.OnSharedPreferenceChangeListener l) {
+        sp.unregisterOnSharedPreferenceChangeListener(l);
+    }
+
+    public DailyCounts getViewed() {
+        return DailyCounts.parse(sp.getString(KEY_DAILY_VIEWED, ""));
+    }
+
+    public DailyCounts getReelsSeconds() {
+        return DailyCounts.parse(sp.getString(KEY_DAILY_SECONDS, ""));
+    }
+
+    /** Pogledani (neblokirani) reeli: samo dnevna vsota. */
+    public void addViewed(long epochDay, int count) {
+        sp.edit().putString(KEY_DAILY_VIEWED, getViewed().add(epochDay, count).serialize()).apply();
+    }
+
+    /** Sekunde v neblokiranih Reelsih: samo dnevna vsota. */
+    public void addReelsSeconds(long epochDay, int seconds) {
+        sp.edit().putString(KEY_DAILY_SECONDS,
+                getReelsSeconds().add(epochDay, seconds).serialize()).apply();
     }
 
     public void recordBlock(long epochDay) {

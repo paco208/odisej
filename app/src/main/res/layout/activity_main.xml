@@ -43,6 +43,17 @@
                     android:layout_marginTop="4dp"
                     android:text="@string/today" />
 
+                <!-- "pogledano 3 · 12 min v Reelsih"; skrita, ko je oboje 0. -->
+                <TextView
+                    android:id="@+id/usage_line"
+                    style="@style/Odisej.Text.Secondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:visibility="gone"
+                    tools:text="pogledano 3 · 12 min v Reelsih"
+                    tools:visibility="visible" />
+
                 <si.odisej.ui.WeekBarsView
                     android:id="@+id/week_bars"
                     android:layout_width="196dp"

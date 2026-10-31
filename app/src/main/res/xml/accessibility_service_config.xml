@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- CONTEXT.md §5.1. packageNames = Z2: sistem servisu pošilja dogodke samo iz Instagrama. -->
+<!-- CONTEXT.md §5.1. packageNames = Z2: sistem servisu pošilja dogodke samo iz Instagrama.
+     typeViewScrolled: samo za štetje pogledanih reelov (ID pagerja + indeks strani). -->
 <accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="UnusedAttribute"
-    android:accessibilityEventTypes="typeWindowStateChanged|typeWindowContentChanged"
+    android:accessibilityEventTypes="typeWindowStateChanged|typeWindowContentChanged|typeViewScrolled"
     android:accessibilityFeedbackType="feedbackGeneric"
     android:accessibilityFlags="flagReportViewIds|flagIncludeNotImportantViews"
     android:canRetrieveWindowContent="true"

@@ -123,3 +123,9 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
   784–832dp, siva vrstica s spodnjim robom besedila 48dp nad navigacijo. Na 1080×2340 @420
   (411×891dp) ostane med stavkom in pilulo 166dp. *Na napravi še ni preverjeno.*
   Kompromis: mirujoči krog (Ø90dp) je ~99dp nad stavkom, ker je prostor rezerviran za razširjen krog.
+- 2026-10-31 — Pogledani reeli in čas v Reelsih (D37). Signal za nov reel iz dumpov ni preverljiv
+  (dumpi so stanje, ne dogodki), zato: indeks strani iz `TYPE_VIEW_SCROLLED` na pagerju + rezerva
+  "poteg umirjen". Debug log `OdisejService` izpiše `toIndex`, da na napravi vidimo, katera pot
+  dela. Če se ročni test ne ujema, števec v UI označim kot oceno (~). Shramba: ista `DailyCounts`
+  (že testirana, isto 7-dnevno brisanje), dva nova niza. Vrstica se skrije, ko je oboje 0 —
+  prazen prostor je tu bolj pomenljiv kot "danes še nič pogledano". Na napravi še ni preverjeno.

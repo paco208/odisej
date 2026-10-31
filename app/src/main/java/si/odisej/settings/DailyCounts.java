@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Število blokad po dnevih, SAMO za zadnjih 7 dni (Z4). Starejši dnevi se ob vsakem zapisu
+ * Dnevne vsote (blokade, pogledani reeli ali sekunde), SAMO za zadnjih 7 dni (Z4). Starejši dnevi se ob vsakem zapisu
  * pobrišejo. Dan = LocalDate.toEpochDay(); ura dneva se ne hrani. Nespremenljiv, čista Java.
  */
 public final class DailyCounts {
@@ -35,9 +35,14 @@ public final class DailyCounts {
         return new DailyCounts(copy);
     }
 
-    /** Ena blokada več na dan {@code today}; hkrati pobriše dneve izven zadnjih 7. */
+    /** Ena več na dan {@code today}; hkrati pobriše dneve, starejše od zadnjih 7. */
     public DailyCounts record(long today) {
-        return with(today, countOn(today) + 1).pruned(today);
+        return add(today, 1);
+    }
+
+    /** Prišteje {@code amount} na dan {@code today}; hkrati pobriše stare dneve. */
+    public DailyCounts add(long today, int amount) {
+        return with(today, countOn(today) + amount).pruned(today);
     }
 
     /**
