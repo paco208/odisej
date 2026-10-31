@@ -19,21 +19,21 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
 ## F2 — MVP (v1)
 - [x] Throttle + klasifikacija v servisu
 - [x] `BackAction` z debounce + toast
-- [ ] Ročni test vseh zaslonov iz CONTEXT.md §6.2
-- [ ] Podpisan release APK
+- [x] Ročni test vseh zaslonov iz CONTEXT.md §6.2
+- [x] Podpisan release APK
 
 ## F3 — v2
 - [x] Overlay (`TYPE_ACCESSIBILITY_OVERLAY`) z gumboma Sporočila / Feed
 - [x] Izjema za reel iz DM (strukturni signal)
 - [x] Nastavitev: overlay / nazaj
-- [ ] Ročni test overlaya na napravi
+- [x] Ročni test overlaya na napravi
 
 ## F4 — v3
 - [x] Števec blokad (danes / skupaj)
 - [x] Strogi način (60 s odštevanja za premor)
 - [x] Release podpisovanje iz ~/.gradle/gradle.properties
 - [x] R8 (statično preverjeno v dex/manifestu)
-- [ ] Servis po minifikaciji preverjen na napravi (release build)
+- [x] Servis po minifikaciji preverjen na napravi (release build)
 - [x] GitHub Actions (napisano; teče šele po pushu — ni preverjeno)
 - [x] README (posnetki zaslona: TODO, naredi Jakob)
 
@@ -80,3 +80,7 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
   tudi ob napaki, da vidiš, kateri test/lint je padel.
 - 2026-10-31 — README: kako deluje, zasebnost, strogi način s pošteno opombo o sistemskem
   izklopu, namestitev, omejitve, gradnja, postopek ob posodobitvi Instagrama.
+- 2026-10-31 — Ročni test na napravi (moto g86, Android 16, Instagram 453.0.0.57.79, **release
+  build z R8**): vseh 12 primerov uspešnih — overlay (oba gumba, umik ob Home), DM izjema in njen
+  izklop, način "nazaj" brez zanke, števec, strogi premor s ponastavitvijo ob odhodu. Audio focus
+  deluje: zvok reela za overlayem se ustavi. S tem je potrjeno tudi, da R8 servisa ne pokvari.

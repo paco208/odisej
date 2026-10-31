@@ -277,7 +277,7 @@ zlonamerne programske opreme in v nasprotju z zgodbo projekta.
 - **D21** Overlay: `TYPE_ACCESSIBILITY_OVERLAY`, `FLAG_NOT_FOCUSABLE` (sistemski "nazaj" gre
   Instagramu). Ker servis vidi le dogodke Instagrama (Z2), med prikazom overlaya vsako sekundo
   preveri **samo ime paketa** aktivnega okna; če ni Instagram (Home, zaklep), se overlay skrije.
-  Prehodni audio focus, da reel za overlayem utihne.
+  Prehodni audio focus, da reel za overlayem utihne (preverjeno: Instagram 453 se ustavi).
 - **D22** DM izjema izvedljiva strukturno (brez zgodovine zaslonov): reel z vrstico za odgovor =
   REELS_FROM_DM → dovoljen; poteg na naslednjega → REELS_VIEWER → blokiran. Privzeto vklopljena.
 - **D23** Privzeti način = overlay (pove, kaj se dogaja, in ne posega v sklad "nazaj").

@@ -5,7 +5,7 @@ uporabnika vrne nazaj. Zasebnost po zasnovi: brez interneta, samo Instagram, bre
 branja besedil. Celotna zasnova: **CONTEXT.md** (vir resnice).
 
 ## Trenutna faza
-**F0–F4 implementirano, čaka ročni test na napravi.** Stanje sproti v `docs/napredek.md`.
+**v3 dokončan (F0–F4), ročno preverjen na napravi.** Naslednje: posnetki zaslona v README, push, Release. Stanje sproti v `docs/napredek.md`.
 
 ## Zlata pravila (CONTEXT.md §4) — ne krši brez izrecnega dovoljenja
 1. Nikoli ne dodaj `INTERNET`, `ACCESS_NETWORK_STATE` ali mrežne/analitične knjižnice.

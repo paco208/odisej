@@ -2,7 +2,7 @@
 
 Block Instagram Reels on Android — keep DMs, feed, stories and posting.
 
-> Status: v3 feature-complete. Detection tested against Instagram 453.0.0.57.79 on Android 16.
+> Status: v3 feature-complete and tested on a device (Instagram 453.0.0.57.79, Android 16).
 
 *Odisej* is Slovenian for Odysseus. He had himself tied to the mast so he could hear
 the Sirens without steering toward them — psychologists call this a *Ulysses contract*.
@@ -83,7 +83,7 @@ are malware patterns. Odisej adds friction for your weak moments; it isn't a cag
 - While the overlay is visible, Odisej checks once a second **which app** is in front (package
   name only), so the overlay disappears if you leave Instagram.
 - Odisej asks Android for audio focus while the overlay is shown so the reel behind it goes
-  quiet; whether Instagram honours that depends on Instagram.
+  quiet (Instagram 453 pauses; future versions might not).
 - You can always turn the service off in system settings (see *Strict mode*).
 
 ## Build
