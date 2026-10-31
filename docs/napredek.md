@@ -16,17 +16,25 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
 - [x] Izbrani signali zapisani v CONTEXT.md §11
 - [x] `UiNode`, `DetectionRules`, `ReelsDetector` + testi
 
+## F2 — MVP (v1)
+- [x] Throttle + klasifikacija v servisu
+- [x] `BackAction` z debounce + toast
+- [ ] Ročni test vseh zaslonov iz CONTEXT.md §6.2
+- [ ] Podpisan release APK
+
 ## F3 — v2
 - [x] Overlay (`TYPE_ACCESSIBILITY_OVERLAY`) z gumboma Sporočila / Feed
 - [x] Izjema za reel iz DM (strukturni signal)
 - [x] Nastavitev: overlay / nazaj
 - [ ] Ročni test overlaya na napravi
 
-## F2 — MVP (v1)
-- [x] Throttle + klasifikacija v servisu
-- [x] `BackAction` z debounce + toast
-- [ ] Ročni test vseh zaslonov iz CONTEXT.md §6.2
-- [ ] Podpisan release APK
+## F4 — v3
+- [x] Števec blokad (danes / skupaj)
+- [x] Strogi način (60 s odštevanja za premor)
+- [ ] Release podpisovanje iz ~/.gradle/gradle.properties
+- [ ] R8 + preverjen servis po minifikaciji
+- [ ] GitHub Actions
+- [ ] README
 
 ---
 
@@ -59,3 +67,6 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
 - 2026-10-31 — F3: overlay + DM izjema + nastavitev načina. Past: servis zaradi Z2 ne izve, da
   je uporabnik zapustil Instagram, zato bi overlay ostal čez zaganjalnik → med prikazom preverjamo
   samo ime paketa aktivnega okna (D21). DM izjema brez zgodovine zaslonov, ker jo loči že drevo.
+- 2026-10-31 — F4: števec + strogi premor. SharedPreferences namesto DataStore (D24). Odštevanje
+  se prekine ob `onPause`: trenje mora trajati, dokler impulz traja; nadaljevanje je takojšnje,
+  ker trenje velja samo v smeri šibkosti.

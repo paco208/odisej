@@ -27,4 +27,12 @@
     <string name="mode_overlay">Pokaži zaslon z blokado</string>
     <string name="mode_back">Takoj pojdi nazaj</string>
     <string name="allow_dm_reels">Dovoli reele, poslane v DM (naslednji je blokiran)</string>
+
+    <string name="stats">Blokirano danes: %1$d · skupaj: %2$d</string>
+    <string name="pause_title">Premor</string>
+    <string name="pause_explain">Za premor moraš 60 sekund počakati na tem zaslonu. Če odideš, se čakanje začne znova. Nato je blokiranje ustavljeno za 15 minut.</string>
+    <string name="pause_active">Blokiranje je ustavljeno do %1$s.</string>
+    <string name="btn_pause">Premor za 15 minut</string>
+    <string name="btn_pause_waiting">Počakaj %1$d s … (tapni za preklic)</string>
+    <string name="btn_resume">Takoj nadaljuj z blokiranjem</string>
 </resources>

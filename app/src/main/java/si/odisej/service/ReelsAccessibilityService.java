@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 
+import java.time.LocalDate;
+
 import si.odisej.BuildConfig;
 import si.odisej.action.BackAction;
 import si.odisej.action.BlockAction;
@@ -101,11 +103,18 @@ public class ReelsAccessibilityService extends AccessibilityService {
         }
         lastState = state;
 
+        if (prefs.isPaused(System.currentTimeMillis())) {
+            overlay.hide();
+            return;
+        }
         BlockAction action = BlockPolicy.decide(state, prefs.getMode(), prefs.isDmReelsAllowed());
         if (action == BlockAction.OVERLAY) {
             // Overlay je idempotenten (ostane, dokler smo v Reelsih), zato brez debounce.
-            if (overlay.show() && BuildConfig.DEBUG) {
-                Log.d(TAG, "overlay prikazan");
+            if (overlay.show()) {
+                recordBlock();
+                if (BuildConfig.DEBUG) {
+                    Log.d(TAG, "overlay prikazan");
+                }
             }
             return;
         }
@@ -114,9 +123,16 @@ public class ReelsAccessibilityService extends AccessibilityService {
             return;
         }
         boolean done = BackAction.perform(this, root, action);
+        if (done) {
+            recordBlock();
+        }
         if (BuildConfig.DEBUG) {
             Log.d(TAG, "ukrep " + action + (done ? " izveden" : " NI uspel"));
         }
+    }
+
+    private void recordBlock() {
+        prefs.recordBlock(LocalDate.now().toEpochDay());
     }
 
     /**

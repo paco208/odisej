@@ -4,7 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
- * Edino, kar Odisej shrani na disk (Z4): nastavitve. Nič o zaslonu, nobene zgodovine.
+ * Edino, kar Odisej shrani na disk (Z4): nastavitve, konec premora in števec blokad.
+ * Nič o zaslonu, nobene zgodovine. SharedPreferences namesto DataStore (D24).
  */
 public final class Prefs {
 
@@ -13,6 +14,13 @@ public final class Prefs {
     private static final String FILE = "odisej";
     private static final String KEY_MODE = "mode";
     private static final String KEY_ALLOW_DM_REELS = "allow_dm_reels";
+    private static final String KEY_PAUSED_UNTIL = "paused_until";
+    private static final String KEY_STATS_DAY = "stats_day";
+    private static final String KEY_STATS_TODAY = "stats_today";
+    private static final String KEY_STATS_TOTAL = "stats_total";
+    /** Stabilne vrednosti na disku (ne Enum.name(), ki bi ga lahko spremenilo preimenovanje). */
+    private static final String MODE_BACK = "back";
+    private static final String MODE_OVERLAY = "overlay";
 
     private final SharedPreferences sp;
 
@@ -21,11 +29,11 @@ public final class Prefs {
     }
 
     public Mode getMode() {
-        return Mode.BACK.name().equals(sp.getString(KEY_MODE, null)) ? Mode.BACK : Mode.OVERLAY;
+        return MODE_BACK.equals(sp.getString(KEY_MODE, MODE_OVERLAY)) ? Mode.BACK : Mode.OVERLAY;
     }
 
     public void setMode(Mode mode) {
-        sp.edit().putString(KEY_MODE, mode.name()).apply();
+        sp.edit().putString(KEY_MODE, mode == Mode.BACK ? MODE_BACK : MODE_OVERLAY).apply();
     }
 
     public boolean isDmReelsAllowed() {
@@ -34,5 +42,32 @@ public final class Prefs {
 
     public void setDmReelsAllowed(boolean allowed) {
         sp.edit().putBoolean(KEY_ALLOW_DM_REELS, allowed).apply();
+    }
+
+    /** Stenska ura (System.currentTimeMillis), ker mora preživeti ponovni zagon procesa. */
+    public long getPausedUntil() {
+        return sp.getLong(KEY_PAUSED_UNTIL, 0);
+    }
+
+    public boolean isPaused(long nowWallMs) {
+        return nowWallMs < getPausedUntil();
+    }
+
+    public void setPausedUntil(long wallMs) {
+        sp.edit().putLong(KEY_PAUSED_UNTIL, wallMs).apply();
+    }
+
+    public BlockStats getStats() {
+        return new BlockStats(sp.getLong(KEY_STATS_DAY, -1), sp.getInt(KEY_STATS_TODAY, 0),
+                sp.getInt(KEY_STATS_TOTAL, 0));
+    }
+
+    public void recordBlock(long epochDay) {
+        BlockStats next = getStats().record(epochDay);
+        sp.edit()
+                .putLong(KEY_STATS_DAY, next.day)
+                .putInt(KEY_STATS_TODAY, next.today)
+                .putInt(KEY_STATS_TOTAL, next.total)
+                .apply();
     }
 }

@@ -281,7 +281,13 @@ zlonamerne programske opreme in v nasprotju z zgodbo projekta.
 - **D22** DM izjema izvedljiva strukturno (brez zgodovine zaslonov): reel z vrstico za odgovor =
   REELS_FROM_DM → dovoljen; poteg na naslednjega → REELS_VIEWER → blokiran. Privzeto vklopljena.
 - **D23** Privzeti način = overlay (pove, kaj se dogaja, in ne posega v sklad "nazaj").
-- *(D24+)*
+- **D24** Števec v SharedPreferences: tri števila (dan zadnje blokade, danes, skupaj). DataStore je
+  za Kotlin korutine; iz Jave bi rabil še RxJava adapter — dve knjižnici za tri vrednosti.
+  Dan zadnje blokade se prepisuje (ni zgodovina), rabimo ga za ponastavitev "danes".
+- **D25** Strogi način: premor (15 min) zahteva 60 s odštevanja na zaslonu aplikacije; ob odhodu
+  z zaslona se odštevanje prekine. Nadaljevanje blokiranja je takojšnje. Konec premora je v
+  stenski uri (preživi ponovni zagon procesa).
+- *(D26+)*
 
 ## 12. Odprta vprašanja
 - Q1: ~~Kateri ID-ji so zanesljivi?~~ → D15 (za Instagram 453.0.0.57.79).

@@ -29,4 +29,12 @@
     <string name="mode_overlay">Show a blocking screen</string>
     <string name="mode_back">Go back immediately</string>
     <string name="allow_dm_reels">Allow reels sent to me in DMs (the next one is blocked)</string>
+
+    <string name="stats">Blocked today: %1$d · total: %2$d</string>
+    <string name="pause_title">Pause</string>
+    <string name="pause_explain">Pausing takes a 60-second wait on this screen. If you leave, the wait starts over. Then blocking pauses for 15 minutes.</string>
+    <string name="pause_active">Blocking is paused until %1$s.</string>
+    <string name="btn_pause">Pause for 15 minutes</string>
+    <string name="btn_pause_waiting">Wait %1$d s… (tap to cancel)</string>
+    <string name="btn_resume">Resume blocking now</string>
 </resources>
