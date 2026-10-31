@@ -11,6 +11,14 @@ adb shell dumpsys package com.instagram.android | grep versionName
 Verzijo Instagrama zapiši v tabelo spodaj — ID-ji veljajo za to verzijo.
 
 ## 1. Dump vsakega zaslona
+
+**Priporočeno: `scripts/collect-dumps.sh`** (debug build, servis vklopljen). Skripta te vodi
+po zaslonih, za vsakega pošlje servisu `am broadcast si.odisej.debug.DUMP` in shrani izpis
+dumperja v `dumps/<ime>.tree.txt` — samo ID-ji, razredi, meje in zastavice (`sel` izbran,
+`inv` neviden, `imp0` "not important", `clk` klikljiv). Besedil ni, `uiautomator` se ne
+uporablja, zato ne nastane datoteka z DM-ji. Na koncu sama testira Q2 (BACK iz Reels zavihka).
+
+Ročna alternativa z `uiautomator` (ustvari zasebni XML z besedili):
 Odpri zaslon v Instagramu in poženi (ime brez presledkov):
 ```bash
 scripts/dump-ui.sh reels-tab

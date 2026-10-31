@@ -1,12 +1,21 @@
 package si.odisej.service;
 
+import android.accessibilityservice.AccessibilityService;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Rect;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 
+import androidx.core.content.ContextCompat;
+
 import java.util.ArrayDeque;
+
+import si.odisej.detect.DetectionRules;
 
 /**
  * DEBUG različica (src/debug): izpiše drevo v Logcat s tagom OdisejDump (CONTEXT.md §6.4).
@@ -25,8 +34,46 @@ final class TreeDumper {
     /** Logcat odreže sporočila nad ~4 KB, zato vrstice združujemo v kose. */
     private static final int CHUNK_CHARS = 3000;
 
+    /** adb shell am broadcast -a si.odisej.debug.DUMP -p si.odisej */
+    static final String ACTION_DUMP = "si.odisej.debug.DUMP";
+    /** Pošlje lahko samo adb shell ali sistem (aplikacije DUMP ne dobijo). */
+    private static final String SENDER_PERMISSION = "android.permission.DUMP";
+
     private long lastDumpAt;
     private int dumpCount;
+    private BroadcastReceiver dumpReceiver;
+
+    /**
+     * Ročni izpis na ukaz iz adb: statični zasloni po logcat -c morda ne pošljejo dogodka,
+     * scripts/collect-dumps.sh pa rabi izpis točno takrat, ko je uporabnik na zaslonu.
+     */
+    void attach(AccessibilityService service) {
+        dumpReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                AccessibilityNodeInfo root = service.getRootInActiveWindow();
+                if (root == null) {
+                    Log.d(TAG, "manual: ni aktivnega okna");
+                    return;
+                }
+                CharSequence pkg = root.getPackageName();
+                if (pkg == null || !DetectionRules.INSTAGRAM_PACKAGE.contentEquals(pkg)) {
+                    onForeignRoot(pkg);
+                    return;
+                }
+                dump(root, "manual");
+            }
+        };
+        ContextCompat.registerReceiver(service, dumpReceiver, new IntentFilter(ACTION_DUMP),
+                SENDER_PERMISSION, null, ContextCompat.RECEIVER_EXPORTED);
+    }
+
+    void detach(AccessibilityService service) {
+        if (dumpReceiver != null) {
+            service.unregisterReceiver(dumpReceiver);
+            dumpReceiver = null;
+        }
+    }
 
     void onEvent(int eventType, AccessibilityNodeInfo root) {
         boolean stateChange = eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED;

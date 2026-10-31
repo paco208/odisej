@@ -37,3 +37,7 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
   - `allowBackup=false` ne ustavi prenosa med napravami na Android 12+, zato še
     `data_extraction_rules.xml`, ki izključi vse. Odstranjen androidx `ProfileInstallReceiver`
     (izvožen, ne rabimo ga). Servis `exported=false` — *na napravi še ni preverjeno* (D12).
+- 2026-10-31 — F1 priprava: `scripts/collect-dumps.sh` + debug-only ukaz za ročni izpis
+  (`am broadcast si.odisej.debug.DUMP`, pošlje ga lahko samo shell/sistem — dovoljenje `DUMP`).
+  Zakaj: dumper piše ob dogodkih, statičen zaslon po `logcat -c` morda ne pošlje nobenega.
+  Brez `uiautomator` ne nastane noben dump z besedili. Preverjeno: release dex nima `OdisejDump`.

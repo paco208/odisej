@@ -14,6 +14,18 @@ public class ReelsAccessibilityService extends AccessibilityService {
     private final TreeDumper dumper = new TreeDumper();
 
     @Override
+    protected void onServiceConnected() {
+        super.onServiceConnected();
+        dumper.attach(this);
+    }
+
+    @Override
+    public void onDestroy() {
+        dumper.detach(this);
+        super.onDestroy();
+    }
+
+    @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
         // Z2, obramba v globino: XML packageNames že filtrira, a ne zaupamo samo njemu.
         CharSequence pkg = event.getPackageName();
