@@ -18,6 +18,11 @@ branja besedil. Celotna zasnova: **CONTEXT.md** (vir resnice).
 5. Vsebine `dumps/` nikoli ne beri v commit, ne kopiraj v teste neočiščene
    (besedila, imena, sporočila odstrani).
 6. Vsa pravila zaznave (ID-ji, vzorci) živijo samo v `detect/DetectionRules.java`.
+7. adb ukazi, ki berejo stanje drugih aplikacij ali zaslona (`dumpsys activity top`,
+   `dumpsys window`, `uiautomator`, `screencap`, `screenrecord`), samo z Jakobovim
+   izrecnim dovoljenjem v tistem trenutku in samo, ko je spredaj Odisej. Brez vprašanja
+   sta dovoljena `adb install -r` in `adb logcat` z našimi tagi (`OdisejDump`,
+   `OdisejService`). `adb pull` samo za datoteke, ki jih Jakob poimenuje.
 
 ## Kako delava (Jakob se uči)
 - Pred kodo na kratko razloži **zakaj** (alternativa, kompromis). Nato koda.
