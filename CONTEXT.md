@@ -1,6 +1,7 @@
 # Odisej — projektni kontekst
 
 > Ime: **Odisej**. Paket: `si.odisej`. Jezik: Java. Build: Gradle (Kotlin DSL).
+> Stanje: **v1.0.0 objavljen** (F0–F4 končane), vzdrževanje.
 > Ta dokument je vir resnice za zasnovo. Ko se odločitev spremeni, jo popravi tukaj
 > in jo dopiši v poglavje 11 (Odločitve).
 
@@ -181,7 +182,10 @@ dovoli ta en reel; pri swipe-u na naslednjega blokiraj. Izvedljivost odvisna od 
 
 ## 8. Faze
 
-### F0 — Postavitev (pol dneva)
+Vse faze so končane in ročno preverjene na napravi (moto g86, Android 16, Instagram
+453.0.0.57.79). Objavljeno kot v1.0.0; podrobnosti v `docs/napredek.md`.
+
+### F0 — Postavitev (pol dneva) — ✅ končano
 - Android Studio projekt (Empty Views Activity, Java, Kotlin DSL, minSdk 26).
 - Z1: `tools:node="remove"` za INTERNET + preverjanje združenega manifesta.
 - Prazen `ReelsAccessibilityService` + XML konfiguracija + vnos v manifest
@@ -192,18 +196,18 @@ dovoli ta en reel; pri swipe-u na naslednjega blokiraj. Izvedljivost odvisna od 
   `Settings.ACTION_ACCESSIBILITY_SETTINGS`.
 - Debug dumper (6.4 točka 2).
 
-### F1 — Zaznava (1 dan)
+### F1 — Zaznava (1 dan) — ✅ končano
 - Dumpi vseh zaslonov iz 6.2, analiza, izbira signalov.
 - `UiNode`, `DetectionRules`, `ReelsDetector` + enotski testi na očiščenih drevesih.
 
-### F2 — MVP (1 dan)  → **v1**
+### F2 — MVP (1 dan)  → **v1** — ✅ končano
 - Servis: throttle, klasifikacija, `BackAction` z debounce, toast.
 - Ročni test: vsi zasloni iz 6.2 (zapis v `docs/napredek.md`).
 - Release APK (podpisan z lastnim ključem, ključ **ni** v repozitoriju).
 
-### F3 — Overlay + DM izjema → **v2**
+### F3 — Overlay + DM izjema → **v2** — ✅ končano
 
-### F4 — Števec, strogi način, README → **v3**
+### F4 — Števec, strogi način, README → **v3** — ✅ končano
 - Števec blokad v DataStore (Preferences) ali SharedPreferences — Room je za en
   števec preveč.
 - **Strogi način**: v aplikaciji gumb "Začasno izklopi" zahteva 60 s čakanja.
@@ -351,6 +355,18 @@ zlonamerne programske opreme in v nasprotju z zgodbo projekta.
   pot feed → Reels). Ker je sklad "nazaj" odvisen od poti, z zavihka Reels raje kliknemo
   `feed_tab` (D19).
 - Q3: ~~Ali je `flagIncludeNotImportantViews` potreben?~~ → da (D18).
-- Q4: Ali `getRootInActiveWindow()` kdaj vrne tuje okno ob Instagram dogodku? — med dumpi ni
+- Q4: Ali `getRootInActiveWindow()` kdaj vrne tuje okno ob Instagram dogodku? — *še odprto*: med dumpi ni
   bilo opaženo (izpis zajema le zadnji blok); koda vseeno preverja paket korena.
 - Q5: ~~Ali se reel iz DM odpre v istem viewerju?~~ → da, z dodano vrstico za odgovor.
+- Q6: ~~Kako zanesljivo šteti pogledane reele?~~ → sprememba `toIndex` v `TYPE_VIEW_SCROLLED` na
+  pagerju (D37); ročni test na napravi se ujema.
+
+## 13. Znane omejitve (v1.0.0)
+- Zaznava velja za Instagram 453.0.0.57.79; posodobitev Instagrama jo lahko zlomi, dokler ne
+  posodobimo `DetectionRules` (postopek v `docs/zaznava.md`).
+- Reel, ki se predvaja v feedu (ne čez cel zaslon), ni blokiran.
+- DM izjema: poteg na predlagan reel in nazaj prvotni reel znova dovoli.
+- Servis se vedno da izklopiti v sistemskih nastavitvah (namerno, 8.3).
+- Utišanje reela za overlayem je odvisno od tega, ali Instagram spoštuje zvočni fokus.
+- Med overlayem/sejo gledanja servis vsako sekundo prebere ime paketa aktivnega okna (D21, D37).
+- Ni objave na Play Store (pravilnik za Accessibility); samo GitHub Releases.

@@ -5,7 +5,7 @@ uporabnika vrne nazaj. Zasebnost po zasnovi: brez interneta, samo Instagram, bre
 branja besedil. Celotna zasnova: **CONTEXT.md** (vir resnice).
 
 ## Trenutna faza
-**v3 dokončan (F0–F4), ročno preverjen na napravi.** Naslednje: posnetki zaslona v README, push, Release. Stanje sproti v `docs/napredek.md`.
+**v1.0.0 objavljen** (F0–F4 končane), vzdrževanje. Ob posodobitvi Instagrama: `scripts/collect-dumps.sh` → `DetectionRules` + testi. Stanje sproti v `docs/napredek.md`.
 
 ## Zlata pravila (CONTEXT.md §4) — ne krši brez izrecnega dovoljenja
 1. Nikoli ne dodaj `INTERNET`, `ACCESS_NETWORK_STATE` ali mrežne/analitične knjižnice.
@@ -52,8 +52,10 @@ app/src/main/java/si/odisej/
   MainActivity.java                       stanje, števec, premor, nastavitve
   service/{ReelsAccessibilityService, ServiceStatus}.java
   detect/{UiNode, AccessibilityUiNode, DetectionRules, ReelsDetector, ScreenState}.java
-  action/{BlockPolicy, BlockAction, BackAction, BlockOverlay, Debouncer}.java
-  settings/{Prefs, BlockStats, PauseCountdown}.java
+  action/{BlockPolicy, BlockAction, BackAction, BlockOverlay, Debouncer, Cooldown, OverlayStep}.java
+  settings/{Prefs, BlockStats, DailyCounts, PauseCountdown, ProtectionStatus, WatchSession}.java
+  ui/{BreathCurve, BreathingCircleView, CountdownRingView, WeekBarsView, OverlayLayout, DurationText}.java
+  tile/StatusTileService.java             ploščica v hitrih nastavitvah
 app/src/debug/.../service/TreeDumper.java     debug dumper (OdisejDump); src/release = prazen
 app/src/main/res/xml/accessibility_service_config.xml
 app/src/test/java/si/odisej/              testi (detektor na drevesih, logika)
