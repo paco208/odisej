@@ -59,14 +59,35 @@ Dober signal je:
 - odsoten v DM, story, feed, profil, nova objava,
 - strukturen (vsebnik, view pager), ne dekorativen (ikona, ki jo lahko odstranijo).
 
-Zapiši:
-| Signal (ID) | Reels tab | Viewer (feed) | Viewer (DM) | DM | Story | Feed | Opomba |
-|---|---|---|---|---|---|---|---|
-| | | | | | | | |
+### Rezultat (2026-10-31)
 
-Instagram verzija: `…` · Datum: `…` · Naprava / Android: `…`
+Instagram `453.0.0.57.79` · Android 16 (API 36), Motorola moto g86 power 5G · jezik sl-SI.
+Vir: `scripts/collect-dumps.sh`, 15 zaslonov. ✓ = viden, (s) = v drevesu, a skrit (`inv`), – = ga ni.
+
+| Signal (ID, `com.instagram.android:id/…`) | Reels tab | Viewer feed | Viewer Explore | Reel iz DM | Naslednji v DM | Feed | Reel v feedu | Story | DM seznam | DM pogovor | Explore | Profil | Reels mreža | Nova objava |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| `clips_viewer_view_pager` | ✓ | ✓ | ✓ | ✓ | ✓ | (s) | (s) | (s) | (s) | – | (s) | (s) | (s) | – |
+| `clips_expanded_touch_view` | ✓ | ✓ | ✓ | ✓ | ✓ | – | – | – | – | – | – | – | – | – |
+| `clips_tab` izbran (`sel`) | ✓ | – | – | – | – | – | – | – | – | – | – | – | – | – |
+| `reel_viewer_message_composer` / `reply_bar_container` | – | – | – | ✓ | – | – | – | – | – | – | – | – | – | – |
+
+Ugotovitve:
+- **Vidnost je ključna.** Instagram drži fragment Reels zavihka (`root_clips_layout` →
+  `clips_viewer_view_pager`) v drevesu skoraj vseh zaslonov, skrit z ničelno ali negativno
+  širino. Brez preverjanja `isVisibleToUser()` bi blokirali feed, DM-je in profil.
+- Viewer iz feeda/Explore se odpre **nad** skritim zavihkom: v drevesu sta dva pagerja,
+  eden viden. Detektor zato poddrevesa skritih vozlišč preskoči.
+- Reel iz DM se odpre v **istem** viewerju (Q5), le z vrstico za odgovor pošiljatelju. Po
+  potegu na naslednji (predlagan) reel vrstica izgine (pojavi se `suggested_title`).
+- `tab_bar` in signali DM (`reply_bar_container`) so `imp0` → `flagIncludeNotImportantViews` je
+  potreben (Q3). Pager in zavihki so "important".
+- V tej verziji so DM-ji zavihek v spodnji vrstici (`direct_tab`), Home je `feed_tab`.
+- Q2: BACK iz zavihka Reels (prišel iz feeda) ostane v Instagramu in pristane na feedu.
+- Compose elementi imajo včasih ID brez paketa (`ig_text`, `search_row`) — to so `testTag`-i.
 
 ## 4. Testna drevesa
-Za enotske teste iz dumpa naredi **očiščeno** drevo: samo `resource-id`, `class` in
-gnezdenje. Brez `text`, brez `content-desc` (razen navigacijskih). Shrani v
-`app/src/test/resources/trees/<ime>.xml`. Preden commitaš, preglej datoteko z očmi.
+Izpis `collect-dumps.sh` je že v obliki testnega drevesa (samo ID, razred, meje, zastavice).
+Odstrani vrstici `BEGIN`/`END` in shrani v `app/src/test/resources/trees/<ime>.txt`, nato dodaj
+pričakovano stanje v `ReelsDetectorTreesTest`. `TreeFilesPrivacyTest` pade, če katerakoli
+vrstica ni v strogi obliki (npr. če se vanjo pritihotapi besedilo). Preden commitaš, preglej
+datoteko z očmi.

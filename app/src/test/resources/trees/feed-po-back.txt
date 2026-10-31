@@ -1,0 +1,599 @@
+- android.widget.FrameLayout [0,0,1220,2712]
+  - android.widget.LinearLayout [0,0,1220,2712] imp0
+    - android.widget.FrameLayout [0,0,1220,2712] imp0
+      com.instagram.android:id/action_bar_root android.widget.LinearLayout [0,0,1220,2712] imp0
+        android:id/content android.widget.FrameLayout [0,0,1220,2712] imp0
+          - android.widget.FrameLayout [0,0,1220,2712] imp0
+            com.instagram.android:id/swipe_navigation_container android.widget.FrameLayout [0,0,1220,2712] imp0
+              com.instagram.android:id/layout_container_left android.widget.FrameLayout [0,0,0,2712] inv imp0
+              com.instagram.android:id/layout_container_center_right_coordinator_layout android.view.ViewGroup [0,0,1220,2577] imp0
+                com.instagram.android:id/layout_container_right android.widget.FrameLayout [0,125,1220,2577] imp0
+                com.instagram.android:id/activity_and_camera_shared_views_main_container android.widget.FrameLayout [0,125,1220,2577] imp0
+                com.instagram.android:id/layout_container_main_panel android.view.ViewGroup [0,125,1220,2577] imp0
+                  com.instagram.android:id/layout_container_main_wrapper android.widget.FrameLayout [0,125,1220,2577] imp0
+                    com.instagram.android:id/layout_container_main android.widget.FrameLayout [0,125,1220,2442] imp0
+                    com.instagram.android:id/swipeable_tab_view_pager androidx.viewpager.widget.ViewPager [0,125,1220,2442]
+                      com.instagram.android:id/swipeable_nav_view_pager_inner_recycler_view androidx.recyclerview.widget.RecyclerView [0,125,1220,2442] imp0
+                        - android.widget.FrameLayout [0,125,1220,2442]
+                          com.instagram.android:id/layout_container_swipeable android.widget.FrameLayout [0,125,1220,2442] imp0
+                            - android.widget.FrameLayout [0,125,1220,2442] imp0
+                              com.instagram.android:id/sticky_header_list android.widget.FrameLayout [0,125,1220,2442] imp0
+                                com.instagram.android:id/refreshable_container android.widget.FrameLayout [0,125,1220,2442] imp0
+                                  android:id/list androidx.recyclerview.widget.RecyclerView [0,125,1220,2442]
+                                    com.instagram.android:id/gap_binder_group android.view.View [0,125,1220,282] imp0
+                                    - android.widget.LinearLayout [0,282,1220,658]
+                                      com.instagram.android:id/reels_tray_container android.widget.FrameLayout [0,282,1220,658] imp0
+                                        - androidx.recyclerview.widget.RecyclerView [0,282,1220,658]
+                                          com.instagram.android:id/outer_container android.widget.LinearLayout [0,282,315,658] clk
+                                            com.instagram.android:id/avatar_view android.widget.FrameLayout [0,282,315,586] imp0
+                                              - android.widget.Button [0,282,315,586] clk
+                                                com.instagram.android:id/avatar_container android.widget.FrameLayout [0,282,315,586] imp0
+                                                  com.instagram.android:id/avatar_image_view android.widget.ImageView [38,320,277,559]
+                                                  com.instagram.android:id/reel_empty_badge android.widget.ImageView [208,490,292,574] imp0
+                                            com.instagram.android:id/title_container android.view.ViewGroup [0,586,315,635] imp0
+                                              com.instagram.android:id/username android.widget.TextView [65,586,251,635] imp0
+                                          com.instagram.android:id/outer_container android.widget.LinearLayout [315,282,630,658] clk
+                                            com.instagram.android:id/avatar_view android.widget.FrameLayout [315,282,630,586] imp0
+                                              - android.widget.Button [315,282,630,586] clk
+                                                com.instagram.android:id/avatar_container android.widget.FrameLayout [315,282,630,586] imp0
+                                                  com.instagram.android:id/seen_state android.view.View [332,299,613,580] imp0
+                                                  com.instagram.android:id/avatar_image_view android.widget.ImageView [353,320,592,559]
+                                            com.instagram.android:id/title_container android.view.ViewGroup [315,586,630,635] imp0
+                                              com.instagram.android:id/username android.widget.TextView [346,586,599,635] imp0
+                                          com.instagram.android:id/outer_container android.widget.LinearLayout [630,282,945,658] clk
+                                            com.instagram.android:id/avatar_view android.widget.FrameLayout [630,282,945,586] imp0
+                                              - android.widget.Button [630,282,945,586] clk
+                                                com.instagram.android:id/avatar_container android.widget.FrameLayout [630,282,945,586] imp0
+                                                  com.instagram.android:id/seen_state android.view.View [647,299,928,580] imp0
+                                                  com.instagram.android:id/avatar_image_view android.widget.ImageView [668,320,907,559]
+                                            com.instagram.android:id/title_container android.view.ViewGroup [630,586,945,635] imp0
+                                              com.instagram.android:id/username android.widget.TextView [681,586,894,635] imp0
+                                          com.instagram.android:id/outer_container android.widget.LinearLayout [945,282,1220,658] clk
+                                            com.instagram.android:id/avatar_view android.widget.FrameLayout [945,282,1220,586] imp0
+                                              - android.widget.Button [945,282,1220,586] clk
+                                                com.instagram.android:id/avatar_container android.widget.FrameLayout [945,282,1220,586] imp0
+                                                  com.instagram.android:id/seen_state android.view.View [962,299,1220,580] imp0
+                                                  com.instagram.android:id/avatar_image_view android.widget.ImageView [983,320,1220,559]
+                                            com.instagram.android:id/title_container android.view.ViewGroup [945,586,1220,635] imp0
+                                              com.instagram.android:id/username android.widget.TextView [1021,586,1184,635] imp0
+                                    - android.view.ViewGroup [0,658,1220,2442]
+                                      com.instagram.android:id/video_container android.view.ViewGroup [0,658,1220,2442]
+                                        com.instagram.android:id/video_container android.view.ViewGroup [0,658,1220,2442]
+                                          - android.view.ViewGroup [0,658,1220,2442]
+                                            - android.widget.FrameLayout [0,658,1220,2442] imp0
+                                              - android.widget.FrameLayout [0,658,1220,2442] imp0
+                                            - android.widget.FrameLayout [0,658,1220,2442] imp0
+                                            - android.view.ViewGroup [610,1673,610,1673]
+                                            - android.view.ViewGroup [0,2572,1220,2442] inv
+                                              - android.view.ViewGroup [1064,2572,1220,2442] inv clk
+                                                - android.widget.LinearLayout [1103,2572,1181,2442] inv
+                                                  com.instagram.android:id/slideout_iconview_icon android.widget.ImageView [1123,2592,1162,2442] inv imp0
+                                            - android.view.ViewGroup [0,2689,1062,2442] inv
+                                        com.instagram.android:id/video_container android.widget.FrameLayout [0,658,1220,2442] imp0
+                                          com.instagram.android:id/media_group android.widget.FrameLayout [0,658,1220,2442] clk
+                                            - android.view.SurfaceView [0,658,1220,2442] imp0
+                                      - android.view.ViewGroup [0,658,1220,1010]
+                                      com.instagram.android:id/row_feed_profile_header android.view.ViewGroup [0,658,1220,804]
+                                        - android.widget.Button [0,658,137,804] clk
+                                          com.instagram.android:id/row_feed_photo_profile_imageview android.widget.ImageView [42,689,126,773]
+                                        com.instagram.android:id/row_feed_photo_profile_name android.widget.Button [137,658,862,730] clk
+                                        - android.view.ViewGroup [137,730,862,804] clk
+                                          com.instagram.android:id/secondary_label android.widget.Button [137,730,862,792] clk
+                                        com.instagram.android:id/inline_follow_button android.widget.TextView [862,683,1096,778] clk
+                                        com.instagram.android:id/media_option_button android.widget.ImageView [1096,663,1220,799] clk
+                                      com.instagram.android:id/secondary_label android.widget.Button [137,732,862,806]
+                              com.instagram.android:id/action_bar_LinearLayout android.widget.LinearLayout [0,125,1220,283] imp0
+                                com.instagram.android:id/main_feed_action_bar android.widget.FrameLayout [0,125,1220,283] imp0
+                                  com.instagram.android:id/action_bar_action_buttons android.widget.LinearLayout [0,125,1220,283] imp0
+                                    com.instagram.android:id/action_bar_buttons_container_left android.widget.LinearLayout [0,125,136,283] imp0
+                                      com.instagram.android:id/action_bar_left_button android.widget.ImageView [0,125,136,283] clk
+                                    com.instagram.android:id/action_bar_title_view android.widget.ViewAnimator [136,146,1084,262] clk
+                                      com.instagram.android:id/text_title_chevron_container android.widget.LinearLayout [465,146,754,225] imp0
+                                        com.instagram.android:id/title_text android.widget.TextView [465,146,700,225]
+                                        com.instagram.android:id/title_chevron android.widget.ImageView [720,168,754,202] imp0
+                                    com.instagram.android:id/action_bar_buttons_container_right android.widget.LinearLayout [1084,125,1220,283] imp0
+                                      com.instagram.android:id/notification android.widget.FrameLayout [1084,125,1220,283] clk
+                                        com.instagram.android:id/wrapper android.view.ViewGroup [1118,170,1186,238] imp0
+                                          com.instagram.android:id/container android.widget.FrameLayout [1118,170,1186,238] imp0
+                                            com.instagram.android:id/tab_icon android.widget.ImageView [1118,170,1186,238] imp0
+                        - android.widget.FrameLayout [1220,125,1220,2442] inv
+                          com.instagram.android:id/layout_container_swipeable android.widget.FrameLayout [1220,125,1220,2442] inv imp0
+                            com.instagram.android:id/root_clips_layout android.widget.FrameLayout [1220,125,1220,2442] inv imp0
+                              com.instagram.android:id/clips_linear_layout_container android.widget.LinearLayout [1220,125,1220,2442] inv imp0
+                                com.instagram.android:id/gesture_manager android.widget.FrameLayout [1220,125,1220,2442] inv
+                                  com.instagram.android:id/clips_viewer_debug_container android.widget.LinearLayout [1220,125,1220,125] inv imp0
+                                  com.instagram.android:id/clips_viewer_container android.widget.FrameLayout [1220,125,1220,2442] inv imp0
+                                    com.instagram.android:id/clips_swipe_refresh_container android.view.ViewGroup [1220,125,1220,2442] inv imp0
+                                      com.instagram.android:id/clips_viewer_view_pager androidx.viewpager.widget.ViewPager [1220,125,1220,2442] inv
+                                        - androidx.recyclerview.widget.RecyclerView [1220,125,1220,2442] inv imp0
+                                          - android.widget.FrameLayout [1220,125,1220,2442] inv
+                                            - android.view.ViewGroup [1220,125,1220,2442] inv
+                                              com.instagram.android:id/clips_media_component android.view.ViewGroup [1220,125,1220,2442] inv
+                                                com.instagram.android:id/clips_single_media_component android.view.ViewGroup [1220,125,1220,2442] inv
+                                                  - android.view.ViewGroup [1220,125,1220,2442] inv
+                                                    com.instagram.android:id/clips_viewer_video_layout android.widget.FrameLayout [1220,125,1220,2442] inv imp0
+                                                      com.instagram.android:id/clips_video_container android.widget.FrameLayout [1220,125,1220,2442] inv
+                                              - android.view.ViewGroup [1220,125,1220,2442] inv
+                                                com.instagram.android:id/clips_touchable_background android.view.ViewGroup [1220,125,1220,2442] inv clk
+                                                com.instagram.android:id/clips_item_overlay_component android.view.ViewGroup [1220,125,1220,2442] inv
+                                                  - android.widget.FrameLayout [1220,125,1220,2442] inv imp0
+                                                    - android.widget.FrameLayout [1220,125,1220,2442] inv imp0
+                                                  - android.view.ViewGroup [1830,1284,1220,1284] inv
+                                                - android.view.ViewGroup [1220,125,1220,2442] inv
+                                                  com.instagram.android:id/clips_media_info_component android.view.ViewGroup [1220,2124,1220,2414] inv
+                                                    - android.view.ViewGroup [1220,2124,1220,2375] inv
+                                                      - android.view.ViewGroup [1220,2124,1220,2375] inv
+                                                        - android.view.ViewGroup [1265,2124,1220,2124] inv
+                                                        - android.view.ViewGroup [1265,2124,1220,2124] inv
+                                                        - android.view.ViewGroup [1265,2124,1220,2375] inv
+                                                          - android.view.ViewGroup [1265,2124,1220,2281] inv
+                                                            com.instagram.android:id/clips_author_info_component android.view.ViewGroup [1265,2124,1220,2281] inv clk
+                                                              com.instagram.android:id/clips_author_profile_pic android.widget.Button [1265,2166,1220,2267] inv clk
+                                                              - android.view.ViewGroup [1366,2187,1220,2246] inv clk
+                                                                com.instagram.android:id/clips_author_username android.widget.Button [1366,2187,1220,2246] inv clk
+                                                            - android.view.ViewGroup [1551,2152,1220,2281] inv clk
+                                                              com.instagram.android:id/inline_follow_button android.widget.TextView [1568,2175,1220,2264] inv clk
+                                                          com.instagram.android:id/clips_caption_component android.view.ViewGroup [1265,2281,1220,2375] inv
+                                                            - android.widget.ScrollView [1265,2281,1220,2375] inv
+                                                              - android.view.ViewGroup [1265,2292,1220,2375] inv
+                                                                - android.view.ViewGroup [1265,2292,1220,2375] inv clk
+                                                  com.instagram.android:id/clips_ufi_component android.view.ViewGroup [2293,1153,1220,2414] inv
+                                                    - android.view.ViewGroup [2293,1153,1220,2369] inv
+                                                      - android.view.ViewGroup [2293,1153,1220,2369] inv
+                                                        com.instagram.android:id/like_button android.view.ViewGroup [2293,1153,1220,1277] inv clk
+                                                        com.instagram.android:id/like_count android.widget.Button [2293,1277,1220,1350] inv clk
+                                                        com.instagram.android:id/comment_button android.widget.Button [2293,1350,1220,1474] inv clk
+                                                        com.instagram.android:id/comment_count android.widget.Button [2293,1474,1220,1547] inv clk
+                                                        - android.widget.Button [2293,1547,1220,1671] inv clk
+                                                        com.instagram.android:id/repost_count android.widget.Button [2293,1671,1220,1744] inv clk
+                                                        com.instagram.android:id/direct_share_button android.widget.Button [2293,1744,1220,1868] inv clk
+                                                        com.instagram.android:id/ufi_text_component android.widget.Button [2293,1868,1220,1941] inv clk
+                                                        com.instagram.android:id/save_button android.widget.ImageView [2293,1941,1220,2065] inv clk
+                                                        com.instagram.android:id/save_count android.widget.Button [2293,2065,1220,2138] inv clk
+                                                        com.instagram.android:id/clips_ufi_more_button_component android.widget.Button [2293,2138,1220,2262] inv clk
+                                                        - android.view.ViewGroup [2313,2285,1220,2369] inv
+                                                          com.instagram.android:id/media_album_art_button android.widget.Button [2313,2285,1220,2369] inv clk
+                                                  - android.view.ViewGroup [1220,2414,1220,2414] inv
+                                                  - android.view.ViewGroup [1220,2414,1220,2442] inv
+                                                com.instagram.android:id/clips_bottom_legibility_gradient_component android.view.ViewGroup [1220,1920,1220,2442] inv
+                                                  - android.view.ViewGroup [1220,1920,1220,2442] inv
+                                                - android.view.ViewGroup [1220,2217,1220,2442] inv
+                                                  - android.widget.FrameLayout [1220,2397,1220,2442] inv imp0
+                                                    com.instagram.android:id/scrubber android.widget.SeekBar [1220,2414,1220,2442] inv
+                                  com.instagram.android:id/clips_viewer_action_bar android.widget.RelativeLayout [1220,125,1220,283] inv imp0
+                                    com.instagram.android:id/clips_action_bar_start_action_buttons android.widget.LinearLayout [1220,125,1220,283] inv imp0
+                                      - android.widget.ImageView [1220,150,1220,283] inv clk
+                                    com.instagram.android:id/clips_viewer_action_bar_title_container android.widget.LinearLayout [1449,125,1220,283] inv imp0
+                                      com.instagram.android:id/action_bar_tab_layout android.widget.HorizontalScrollView [1498,166,1220,267] inv
+                                        - android.widget.LinearLayout [1498,166,1220,267] inv imp0
+                                          - android.widget.LinearLayout [1498,166,1220,267] sel inv
+                                            - android.widget.LinearLayout [1504,166,1220,267] sel inv imp0
+                                              android:id/text1 android.widget.TextView [1504,166,1220,267] sel inv
+                                              android:id/icon android.widget.ImageView [1750,182,1220,250] sel inv imp0
+                                          - android.widget.LinearLayout [1806,166,1220,267] inv clk
+                                            - android.widget.LinearLayout [1812,166,1220,267] inv imp0
+                                              android:id/text1 android.widget.TextView [1812,166,1220,267] inv
+                                              android:id/icon android.widget.ImageView [2058,182,1220,250] inv imp0
+                                    com.instagram.android:id/clips_action_bar_end_action_buttons android.widget.LinearLayout [2417,125,1220,283] inv imp0
+                                com.instagram.android:id/clips_footer_mask_container android.widget.LinearLayout [1220,2442,1220,2442] inv imp0
+                        - android.widget.FrameLayout [2440,125,1220,2442] inv
+                          com.instagram.android:id/layout_container_swipeable android.widget.FrameLayout [2440,125,1220,2442] inv imp0
+                            com.instagram.android:id/container android.widget.FrameLayout [2440,125,1220,2442] inv imp0
+                              com.instagram.android:id/direct_inbox_action_bar android.widget.LinearLayout [2440,125,1220,283] inv imp0
+                                com.instagram.android:id/action_bar_start_action_buttons android.widget.LinearLayout [2463,125,1220,125] inv imp0
+                                com.instagram.android:id/action_bar_title_subtitle_container android.widget.LinearLayout [2632,164,1220,243] inv imp0
+                                  com.instagram.android:id/action_bar_title_notifications_container android.widget.LinearLayout [2778,164,1220,243] inv imp0
+                                    com.instagram.android:id/igds_action_bar_title android.widget.Button [2778,164,1220,243] inv clk
+                                com.instagram.android:id/action_bar_end_action_buttons android.widget.LinearLayout [3513,125,1220,283] inv imp0
+                                  - android.widget.ImageView [3513,125,1220,283] inv clk
+                              com.instagram.android:id/list_container android.widget.FrameLayout [2440,283,1220,2442] inv imp0
+                                com.instagram.android:id/refreshable_container android.widget.FrameLayout [2440,283,1220,2442] inv imp0
+                                  com.instagram.android:id/inbox_refreshable_thread_list_recyclerview androidx.recyclerview.widget.RecyclerView [2440,283,1220,2442] inv
+                                    - androidx.compose.ui.platform.ComposeView [2440,283,1220,468] inv
+                                      - android.view.View [2440,283,3660,468] imp0
+                                        search_row android.view.View [2440,283,3660,468] imp0
+                                          - android.view.View [2485,316,3615,451] clk
+                                            - android.view.View [2530,361,2575,406]
+                                            ig_text android.widget.TextView [2620,354,3615,414]
+                                            - android.widget.Button [2485,322,3615,445]
+                                    - android.widget.LinearLayout [2440,468,1220,907] inv
+                                      com.instagram.android:id/cf_hub_recycler_view androidx.recyclerview.widget.RecyclerView [2440,468,1220,907] inv
+                                        com.instagram.android:id/pog_root_view android.widget.Button [2474,485,1220,890] inv clk
+                                          com.instagram.android:id/pog_avatar_view android.view.ViewGroup [2474,485,1220,800] inv imp0
+                                            - android.view.ViewGroup [2474,485,1220,800] inv imp0
+                                              - android.view.ViewGroup [2474,485,1220,670] inv imp0
+                                                com.instagram.android:id/pog_note_bubble_view android.view.ViewGroup [2474,485,1220,670] inv imp0 clk
+                                                  com.instagram.android:id/pog_note_bubble_root_view android.widget.LinearLayout [2474,507,1220,670] inv imp0
+                                                    com.instagram.android:id/pog_note_bubble_card_view android.widget.FrameLayout [2497,518,1220,648] inv imp0
+                                                      com.instagram.android:id/pog_bubble_text_container android.widget.LinearLayout [2497,518,1220,648] inv imp0
+                                                        com.instagram.android:id/pog_bubble_text android.widget.TextView [2497,541,1220,625] inv
+                                              com.instagram.android:id/avatar_container android.view.ViewGroup [2511,597,1220,800] inv imp0
+                                                com.instagram.android:id/avatar android.widget.FrameLayout [2511,597,1220,800] inv imp0 clk
+                                                  - android.widget.FrameLayout [2511,597,1220,800] inv
+                                                    com.instagram.android:id/reel_viewer_front_avatar android.widget.ImageView [2511,597,1220,800] inv imp0
+                                          com.instagram.android:id/pog_subtext_container android.widget.LinearLayout [2474,817,1220,890] inv imp0
+                                            com.instagram.android:id/pog_name android.widget.TextView [2474,817,1220,863] inv imp0
+                                            com.instagram.android:id/location_text android.widget.Button [2496,863,1220,890] inv clk
+                                        com.instagram.android:id/map_pog_container android.view.ViewGroup [2750,485,1220,890] inv clk
+                                          com.instagram.android:id/heart_emitter_view android.widget.FrameLayout [2750,485,1220,890] inv imp0
+                                            - android.widget.FrameLayout [2750,485,1220,890] inv imp0
+                                          com.instagram.android:id/map_pog_bubble_view android.view.ViewGroup [2750,485,1220,672] inv imp0
+                                            com.instagram.android:id/pog_note_bubble_root_view android.widget.LinearLayout [2750,508,1220,672] inv imp0
+                                              com.instagram.android:id/pog_note_bubble_card_view android.widget.FrameLayout [2773,519,1220,649] inv imp0
+                                                com.instagram.android:id/pog_bubble_text_container android.widget.LinearLayout [2773,519,1220,649] inv imp0
+                                                  com.instagram.android:id/pog_bubble_text android.widget.TextView [2773,542,1220,626] inv
+                                          com.instagram.android:id/map_image android.widget.ImageView [2787,597,1220,800] inv imp0
+                                          com.instagram.android:id/map_nearby_user_pins_layout android.widget.RelativeLayout [2787,597,1220,800] inv imp0
+                                            - android.widget.ImageView [2831,641,1220,756] inv imp0
+                                          com.instagram.android:id/map_pog_label android.widget.TextView [2750,817,1220,863] inv imp0
+                                        com.instagram.android:id/pog_root_view android.view.ViewGroup [3026,485,1220,890] inv clk
+                                          com.instagram.android:id/pog_avatar_view android.view.ViewGroup [3027,485,1220,800] inv imp0
+                                            - android.view.ViewGroup [3027,485,1220,800] inv imp0
+                                              - android.view.ViewGroup [3027,576,1220,576] inv imp0
+                                              com.instagram.android:id/avatar_container android.view.ViewGroup [3063,597,1220,800] inv
+                                                com.instagram.android:id/avatar android.widget.FrameLayout [3063,597,1220,800] inv imp0
+                                                  - android.widget.FrameLayout [3063,597,1220,800] inv
+                                                    com.instagram.android:id/reel_viewer_front_avatar android.widget.ImageView [3063,597,1220,800] inv imp0
+                                                    com.instagram.android:id/reel_viewer_back_avatar android.widget.ImageView [3063,597,1220,670] inv imp0
+                                          com.instagram.android:id/pog_subtext_container android.widget.LinearLayout [3026,817,1220,890] inv imp0
+                                            com.instagram.android:id/pog_name android.widget.TextView [3026,817,1220,865] inv imp0
+                                            com.instagram.android:id/location_text android.widget.Button [3074,865,1220,890] inv clk
+                                    - androidx.compose.ui.platform.ComposeView [2440,907,1220,997] inv
+                                      - android.view.View [2440,907,3660,997] imp0
+                                        - android.widget.TextView [2485,922,2688,982]
+                                        - android.widget.ImageView [2688,907,2823,997] clk
+                                        - android.widget.TextView [3392,907,3615,997] clk
+                                    - androidx.compose.ui.platform.ComposeView [2440,997,1220,1211] inv
+                                      - android.view.View [2440,997,3660,1211] imp0
+                                        - android.view.View [2440,997,3660,1211] clk
+                                          - android.view.View [2440,997,3660,1211]
+                                          - android.view.View [2479,1017,2653,1191] clk
+                                            - android.view.View [2493,1031,2639,1177] imp0
+                                          - android.view.View [2692,1049,3017,1104] imp0
+                                            - android.widget.TextView [2692,1049,3017,1104]
+                                          - android.widget.TextView [2692,1104,3102,1159]
+                                          - android.widget.TextView [3113,1104,3159,1159]
+                                          - android.view.View [3167,1115,3201,1149] imp0
+                                          - android.widget.Button [2440,997,3660,1211]
+                                    - androidx.compose.ui.platform.ComposeView [2440,1211,1220,1425] inv
+                                      - android.view.View [2440,1211,3660,1425] imp0
+                                        - android.view.View [2440,1211,3660,1425] clk
+                                          - android.view.View [2440,1211,3660,1425]
+                                          - android.view.View [2479,1231,2653,1405] clk
+                                            - android.view.View [2493,1245,2639,1391] imp0
+                                          - android.view.View [2692,1263,2816,1318] imp0
+                                            - android.widget.TextView [2692,1263,2816,1318]
+                                          - android.widget.TextView [2692,1318,3432,1373]
+                                          - android.widget.TextView [3443,1318,3525,1373]
+                                          - android.widget.Button [2440,1211,3660,1425]
+                                    - androidx.compose.ui.platform.ComposeView [2440,1425,1220,1639] inv
+                                      - android.view.View [2440,1425,3660,1639] imp0
+                                        - android.view.View [2440,1425,3660,1639] clk
+                                          - android.view.View [2440,1425,3660,1639]
+                                          - android.view.View [2479,1445,2653,1619] clk
+                                            - android.view.View [2493,1459,2639,1605] imp0
+                                          - android.view.View [2692,1477,2980,1532] imp0
+                                            - android.widget.TextView [2692,1477,2980,1532]
+                                          - android.widget.TextView [2692,1532,3014,1587]
+                                          - android.widget.Button [2440,1425,3660,1639]
+                                    - androidx.compose.ui.platform.ComposeView [2440,1639,1220,1853] inv
+                                      - android.view.View [2440,1639,3660,1853] imp0
+                                        - android.view.View [2440,1639,3660,1853] clk
+                                          - android.view.View [2440,1639,3660,1853]
+                                          - android.view.View [2479,1659,2653,1833] clk
+                                            - android.view.View [2493,1673,2639,1819] imp0
+                                          - android.view.View [2692,1691,2797,1746] imp0
+                                            - android.widget.TextView [2692,1691,2797,1746]
+                                          - android.widget.TextView [2692,1746,2998,1801]
+                                          - android.widget.Button [2440,1639,3660,1853]
+                                    - androidx.compose.ui.platform.ComposeView [2440,1853,1220,2067] inv
+                                      - android.view.View [2440,1853,3660,2067] imp0
+                                        - android.view.View [2440,1853,3660,2067] clk
+                                          - android.view.View [2440,1853,3660,2067]
+                                          - android.view.View [2479,1873,2653,2047] clk
+                                            - android.view.View [2493,1887,2639,2033] imp0
+                                          - android.view.View [2692,1905,2904,1960] imp0
+                                            - android.widget.TextView [2692,1905,2904,1960]
+                                          - android.widget.TextView [2692,1960,2802,2015]
+                                          - android.widget.TextView [2813,1960,2869,2015]
+                                          - android.widget.Button [2440,1853,3660,2067]
+                                    - androidx.compose.ui.platform.ComposeView [2440,2067,1220,2281] inv
+                                      - android.view.View [2440,2067,3660,2281] imp0
+                                        - android.view.View [2440,2067,3660,2281] clk
+                                          - android.view.View [2440,2067,3660,2281]
+                                          - android.view.View [2479,2087,2653,2261] clk
+                                            - android.view.View [2493,2101,2639,2247] imp0
+                                          - android.view.View [2692,2119,2953,2174] imp0
+                                            - android.widget.TextView [2692,2119,2953,2174]
+                                          - android.widget.TextView [2692,2174,2815,2229]
+                                          - android.widget.TextView [2826,2174,2882,2229]
+                                          - android.widget.Button [2440,2067,3660,2281]
+                                    - androidx.compose.ui.platform.ComposeView [2440,2281,1220,2442] inv
+                                      - android.view.View [2440,2281,3660,2495] imp0
+                                        - android.view.View [2440,2281,3660,2495] clk
+                                          - android.view.View [2440,2281,3660,2495]
+                                          - android.view.View [2479,2301,2653,2475] clk
+                                            - android.view.View [2493,2315,2639,2461] imp0
+                                          - android.view.View [2692,2333,2799,2388] imp0
+                                            - android.widget.TextView [2692,2333,2799,2388]
+                                          - android.widget.TextView [2692,2388,3012,2443]
+                                          - android.widget.Button [2440,2281,3660,2495]
+                              - android.widget.LinearLayout [3475,1958,1220,2442] inv imp0
+                                com.instagram.android:id/direct_quick_snap_consumption_preview android.widget.FrameLayout [3475,1958,1220,2442] inv clk
+                                  com.instagram.android:id/image_stack_container android.widget.FrameLayout [3475,1958,1220,2442] inv imp0
+                                    com.instagram.android:id/first_image android.widget.FrameLayout [3486,2032,1220,2415] inv imp0
+                                      - android.widget.ImageView [3486,2032,1220,2415] inv imp0
+                                      - android.widget.FrameLayout [3528,2073,1220,2159] inv imp0
+                                        - android.widget.ImageView [3528,2073,1220,2159] inv
+                        - android.widget.FrameLayout [3660,125,1220,2442] inv
+                          com.instagram.android:id/layout_container_swipeable android.widget.FrameLayout [3660,125,1220,2442] inv imp0
+                            com.instagram.android:id/layout_recyclerview_parent_container android.widget.FrameLayout [3660,125,1220,2442] inv imp0
+                              com.instagram.android:id/refreshable_container android.widget.FrameLayout [3660,125,1220,2442] inv imp0
+                                com.instagram.android:id/recycler_view androidx.recyclerview.widget.RecyclerView [3660,125,1220,2442] inv
+                                  com.instagram.android:id/grid_card_layout_container android.widget.FrameLayout [3660,283,1220,821] inv clk
+                                    com.instagram.android:id/image_button android.widget.ImageView [3660,283,1220,819] inv clk
+                                    com.instagram.android:id/play_count_container android.view.ViewGroup [3660,725,1220,821] inv imp0
+                                      com.instagram.android:id/play_count_logo android.widget.ImageView [3683,756,1220,790] inv imp0
+                                      com.instagram.android:id/preview_clip_play_count android.widget.TextView [3728,748,1220,798] inv imp0
+                                  com.instagram.android:id/grid_card_layout_container android.widget.FrameLayout [4068,283,1220,821] inv clk
+                                    com.instagram.android:id/image_button android.widget.ImageView [4068,283,1220,819] inv clk
+                                    com.instagram.android:id/play_count_container android.view.ViewGroup [4068,725,1220,821] inv imp0
+                                      com.instagram.android:id/play_count_logo android.widget.ImageView [4091,756,1220,790] inv imp0
+                                      com.instagram.android:id/preview_clip_play_count android.widget.TextView [4136,748,1220,798] inv imp0
+                                  com.instagram.android:id/layout_container android.widget.FrameLayout [4476,283,1220,821] inv clk
+                                    com.instagram.android:id/image_preview android.widget.ImageView [4476,283,1220,819] inv clk
+                                    com.instagram.android:id/play_count_container android.view.ViewGroup [4476,725,1220,821] inv imp0
+                                      com.instagram.android:id/play_count_logo android.widget.ImageView [4499,756,1220,790] inv imp0
+                                      com.instagram.android:id/preview_clip_play_count android.widget.TextView [4544,748,1220,798] inv imp0
+                                    com.instagram.android:id/indicator_container android.widget.FrameLayout [4878,821,1220,821] inv imp0
+                                  com.instagram.android:id/layout_container android.widget.FrameLayout [3660,827,1220,1365] inv clk
+                                    com.instagram.android:id/image_preview android.widget.ImageView [3660,827,1220,1363] inv clk
+                                    com.instagram.android:id/play_count_container android.view.ViewGroup [3660,1269,1220,1365] inv imp0
+                                      com.instagram.android:id/play_count_logo android.widget.ImageView [3683,1300,1220,1334] inv imp0
+                                      com.instagram.android:id/preview_clip_play_count android.widget.TextView [3728,1292,1220,1342] inv imp0
+                                    com.instagram.android:id/indicator_container android.widget.FrameLayout [4062,1365,1220,1365] inv imp0
+                                  com.instagram.android:id/grid_card_layout_container android.widget.FrameLayout [4068,827,1220,1365] inv clk
+                                    com.instagram.android:id/image_button android.widget.ImageView [4068,827,1220,1363] inv clk
+                                  com.instagram.android:id/grid_card_layout_container android.widget.FrameLayout [4476,827,1220,1365] inv clk
+                                    com.instagram.android:id/image_button android.widget.ImageView [4476,827,1220,1363] inv clk
+                                    com.instagram.android:id/play_count_container android.view.ViewGroup [4476,1269,1220,1365] inv imp0
+                                      com.instagram.android:id/play_count_logo android.widget.ImageView [4499,1300,1220,1334] inv imp0
+                                      com.instagram.android:id/preview_clip_play_count android.widget.TextView [4544,1292,1220,1342] inv imp0
+                                  com.instagram.android:id/grid_card_layout_container android.widget.FrameLayout [3660,1371,1220,1909] inv clk
+                                    com.instagram.android:id/image_button android.widget.ImageView [3660,1371,1220,1907] inv clk
+                                    com.instagram.android:id/play_count_container android.view.ViewGroup [3660,1813,1220,1909] inv imp0
+                                      com.instagram.android:id/play_count_logo android.widget.ImageView [3683,1844,1220,1878] inv imp0
+                                      com.instagram.android:id/preview_clip_play_count android.widget.TextView [3728,1836,1220,1886] inv imp0
+                                  com.instagram.android:id/grid_card_layout_container android.widget.FrameLayout [4068,1371,1220,1909] inv clk
+                                    com.instagram.android:id/image_button android.widget.ImageView [4068,1371,1220,1907] inv clk
+                                    com.instagram.android:id/play_count_container android.view.ViewGroup [4068,1813,1220,1909] inv imp0
+                                      com.instagram.android:id/play_count_logo android.widget.ImageView [4091,1844,1220,1878] inv imp0
+                                      com.instagram.android:id/preview_clip_play_count android.widget.TextView [4136,1836,1220,1886] inv imp0
+                                  com.instagram.android:id/layout_container android.widget.FrameLayout [4476,1371,1220,1909] inv clk
+                                    com.instagram.android:id/image_preview android.widget.ImageView [4476,1371,1220,1907] inv clk
+                                    com.instagram.android:id/play_count_container android.view.ViewGroup [4476,1813,1220,1909] inv imp0
+                                      com.instagram.android:id/play_count_logo android.widget.ImageView [4499,1844,1220,1878] inv imp0
+                                      com.instagram.android:id/preview_clip_play_count android.widget.TextView [4544,1836,1220,1886] inv imp0
+                                    com.instagram.android:id/indicator_container android.widget.FrameLayout [4878,1909,1220,1909] inv imp0
+                                  com.instagram.android:id/layout_container android.widget.FrameLayout [3660,1915,1220,2442] inv clk
+                                    com.instagram.android:id/image_preview android.widget.ImageView [3660,1915,1220,2442] inv clk
+                                    com.instagram.android:id/play_count_container android.view.ViewGroup [3660,2357,1220,2442] inv imp0
+                                      com.instagram.android:id/play_count_logo android.widget.ImageView [3683,2388,1220,2422] inv imp0
+                                      com.instagram.android:id/preview_clip_play_count android.widget.TextView [3728,2380,1220,2430] inv imp0
+                                    com.instagram.android:id/indicator_container android.widget.FrameLayout [4062,2453,1220,2442] inv imp0
+                                  com.instagram.android:id/grid_card_layout_container android.widget.FrameLayout [4068,1915,1220,2442] inv clk
+                                    com.instagram.android:id/image_button android.widget.ImageView [4068,1915,1220,2442] inv clk
+                                    com.instagram.android:id/play_count_container android.view.ViewGroup [4068,2357,1220,2442] inv imp0
+                                      com.instagram.android:id/play_count_logo android.widget.ImageView [4091,2388,1220,2422] inv imp0
+                                      com.instagram.android:id/preview_clip_play_count android.widget.TextView [4136,2380,1220,2430] inv imp0
+                                  com.instagram.android:id/grid_card_layout_container android.widget.FrameLayout [4476,1915,1220,2442] inv clk
+                                    com.instagram.android:id/image_button android.widget.ImageView [4476,1915,1220,2442] inv clk
+                                    com.instagram.android:id/play_count_container android.view.ViewGroup [4476,2357,1220,2442] inv imp0
+                                      com.instagram.android:id/play_count_logo android.widget.ImageView [4499,2388,1220,2422] inv imp0
+                                      com.instagram.android:id/preview_clip_play_count android.widget.TextView [4544,2380,1220,2430] inv imp0
+                              com.instagram.android:id/explore_action_bar android.widget.FrameLayout [3660,125,1220,283] inv imp0
+                                com.instagram.android:id/explore_action_bar_container android.view.ViewGroup [3694,125,1220,232] inv imp0
+                                  com.instagram.android:id/action_bar_search_hints_text_layout android.widget.FrameLayout [3694,125,1220,232] inv imp0
+                                    com.instagram.android:id/action_bar_search_edit_text android.widget.Button [3694,125,1220,232] inv clk
+                                    - android.widget.TextView [3694,125,1220,232] inv
+                                  com.instagram.android:id/explore_action_bar_secondary_button_stub android.widget.ImageView [4665,145,1220,213] inv clk
+                                  com.instagram.android:id/explore_action_bar_right_button_stub android.widget.ImageView [4778,145,1220,213] inv clk
+                        - android.widget.FrameLayout [4880,125,1220,2442] inv
+                          com.instagram.android:id/layout_container_swipeable android.widget.FrameLayout [4880,125,1220,2442] inv imp0
+                            com.instagram.android:id/user_detail_fragment android.widget.FrameLayout [4880,125,1220,2442] inv imp0
+                              - android.widget.FrameLayout [4880,125,1220,2442] inv imp0
+                                com.instagram.android:id/coordinator_root_layout android.view.ViewGroup [4880,125,1220,2442] inv
+                                  - android.widget.FrameLayout [4880,125,1220,2442] inv imp0
+                                  com.instagram.android:id/swipe_refresh_animated_progressbar_container_background android.view.View [4880,125,1220,126] inv imp0
+                                  com.instagram.android:id/tab_appbar android.widget.LinearLayout [4880,283,1220,1712] inv imp0
+                                    com.instagram.android:id/profile_header_container android.widget.LinearLayout [4880,283,1220,1712] inv imp0
+                                      com.instagram.android:id/profile_header_fixed_list android.widget.LinearLayout [4880,283,1220,1576] inv imp0
+                                        com.instagram.android:id/row_profile_header android.view.ViewGroup [4880,283,1220,725] inv imp0
+                                          com.instagram.android:id/profile_header_avatar_container_top_left_stub android.view.ViewGroup [4925,283,1220,531] inv imp0
+                                            - android.view.ViewGroup [4925,283,1220,531] inv imp0
+                                              com.instagram.android:id/row_profile_header_imageview_frame_layout android.widget.FrameLayout [4945,303,1220,511] inv clk
+                                                com.instagram.android:id/row_profile_header_imageview android.widget.Button [4945,303,1220,511] inv
+                                          com.instagram.android:id/profile_header_full_name_above_vanity android.widget.TextView [5218,308,1220,363] inv
+                                          com.instagram.android:id/profile_header_metrics_full_width android.widget.LinearLayout [5218,363,1220,530] inv imp0
+                                            com.instagram.android:id/profile_header_post_count_front_familiar android.widget.LinearLayout [5218,363,1220,530] inv clk
+                                              com.instagram.android:id/profile_header_familiar_post_count_value android.widget.TextView [5218,386,1220,449] inv
+                                              com.instagram.android:id/profile_header_familiar_post_count_label android.widget.TextView [5218,449,1220,507] inv
+                                            com.instagram.android:id/profile_header_followers_stacked_familiar - [5440,363,1220,530] inv clk
+                                              com.instagram.android:id/profile_header_familiar_followers_value android.widget.TextView [5457,386,1220,449] inv
+                                              com.instagram.android:id/profile_header_familiar_followers_label android.widget.TextView [5457,449,1220,507] inv
+                                            com.instagram.android:id/profile_header_following_stacked_familiar - [5757,363,1220,530] inv clk
+                                              com.instagram.android:id/profile_header_familiar_following_value android.widget.TextView [5774,386,1220,449] inv
+                                              com.instagram.android:id/profile_header_familiar_following_label android.widget.TextView [5774,449,1220,507] inv
+                                          com.instagram.android:id/internal_only_badges android.widget.LinearLayout [4925,531,1220,531] inv imp0
+                                          com.instagram.android:id/profile_user_info_compose_view androidx.compose.ui.platform.ComposeView [4925,531,1220,589] inv
+                                            - android.view.View [4925,531,6055,589] imp0
+                                              - android.view.View [4925,531,6055,589] clk
+                                                - android.widget.TextView [4925,531,6055,589]
+                                          com.instagram.android:id/profile_links_view android.view.ViewGroup [4925,600,1220,600] inv imp0
+                                            com.instagram.android:id/button_1 android.widget.LinearLayout [4925,600,1220,600] inv imp0
+                                          com.instagram.android:id/banner_row android.widget.LinearLayout [4925,623,1220,691] inv imp0
+                                            - androidx.recyclerview.widget.RecyclerView [4925,623,1220,691] inv
+                                              - android.widget.Button [4925,623,1220,691] inv clk
+                                                com.instagram.android:id/igds_prism_chip_icon android.widget.ImageView [4948,640,1220,674] inv clk
+                                                com.instagram.android:id/igds_prism_chip_label android.widget.TextView [4993,634,1220,680] inv
+                                        - android.widget.LinearLayout [4880,725,1220,1576] inv imp0
+                                          com.instagram.android:id/profile_header_actions_top_row android.widget.LinearLayout [4880,725,1220,824] inv imp0
+                                            - android.view.ViewGroup [4913,725,1220,824] inv imp0
+                                              com.instagram.android:id/button_container android.widget.Button [4913,725,1220,824] inv clk
+                                                - android.widget.TextView [5051,745,1220,804] inv
+                                            - android.view.ViewGroup [5445,725,1220,824] inv imp0
+                                              com.instagram.android:id/button_container android.widget.Button [5445,725,1220,824] inv clk
+                                                - android.widget.TextView [5562,745,1220,804] inv
+                                            com.instagram.android:id/row_profile_header_button_chaining android.widget.Button [5977,725,1220,824] inv clk
+                                              com.instagram.android:id/chaining_button_image android.widget.ImageView [5977,725,1220,824] inv imp0
+                                          com.instagram.android:id/similar_accounts_container android.widget.LinearLayout [4880,858,1220,1576] inv imp0
+                                            - android.widget.LinearLayout [4880,858,1220,1576] inv imp0
+                                              com.instagram.android:id/similar_accounts_carousel_header android.view.ViewGroup [4880,858,1220,970] inv imp0
+                                                com.instagram.android:id/similar_accounts_carousel_title android.widget.TextView [4925,879,1220,938] inv
+                                                com.instagram.android:id/netego_carousel_cta android.widget.Button [5877,879,1220,938] inv clk
+                                              com.instagram.android:id/similar_accounts_carousel_recycler_view androidx.recyclerview.widget.RecyclerView [4880,970,1220,1553] inv
+                                                com.instagram.android:id/suggested_entity_card_top_frame android.widget.FrameLayout [4914,970,1220,1553] inv
+                                                  com.instagram.android:id/suggested_entity_card_container android.widget.LinearLayout [4914,970,1220,1553] inv clk
+                                                    com.instagram.android:id/suggested_entity_card_image_frame android.widget.FrameLayout [5009,1004,1220,1252] inv imp0
+                                                      com.instagram.android:id/suggested_entity_card_image android.widget.ImageView [5009,1004,1220,1252] inv imp0
+                                                    com.instagram.android:id/suggested_entity_card_name android.widget.TextView [5044,1286,1220,1341] inv
+                                                    com.instagram.android:id/suggested_entity_card_social_context_container android.widget.LinearLayout [4948,1349,1220,1395] inv imp0
+                                                      com.instagram.android:id/suggested_entity_card_context android.widget.TextView [5056,1349,1220,1395] inv
+                                                    com.instagram.android:id/suggested_user_card_follow_button android.widget.TextView [4948,1429,1220,1519] inv clk
+                                                  com.instagram.android:id/dismiss_button_prism_style android.widget.ImageView [5269,970,1220,1054] inv clk
+                                                com.instagram.android:id/suggested_entity_card_top_frame android.widget.FrameLayout [5364,970,1220,1553] inv
+                                                  com.instagram.android:id/suggested_entity_card_container android.widget.LinearLayout [5364,970,1220,1553] inv clk
+                                                    com.instagram.android:id/suggested_entity_card_image_frame android.widget.FrameLayout [5459,1004,1220,1252] inv imp0
+                                                      com.instagram.android:id/suggested_entity_card_image android.widget.ImageView [5459,1004,1220,1252] inv imp0
+                                                    com.instagram.android:id/suggested_entity_card_name android.widget.TextView [5421,1286,1220,1341] inv
+                                                    com.instagram.android:id/suggested_entity_card_social_context_container android.widget.LinearLayout [5398,1349,1220,1395] inv imp0
+                                                      com.instagram.android:id/suggested_entity_card_context android.widget.TextView [5484,1349,1220,1395] inv
+                                                    com.instagram.android:id/suggested_user_card_follow_button android.widget.TextView [5398,1429,1220,1519] inv clk
+                                                  com.instagram.android:id/dismiss_button_prism_style android.widget.ImageView [5719,970,1220,1054] inv clk
+                                                com.instagram.android:id/suggested_entity_card_top_frame android.widget.FrameLayout [5814,970,1220,1553] inv
+                                                  com.instagram.android:id/suggested_entity_card_container android.widget.LinearLayout [5814,970,1220,1553] inv clk
+                                                    com.instagram.android:id/suggested_entity_card_image_frame android.widget.FrameLayout [5909,1004,1220,1252] inv imp0
+                                                      com.instagram.android:id/suggested_entity_card_image android.widget.ImageView [5909,1004,1220,1252] inv imp0
+                                                    com.instagram.android:id/suggested_entity_card_name android.widget.TextView [5964,1286,1220,1341] inv
+                                                    com.instagram.android:id/suggested_entity_card_social_context_container android.widget.LinearLayout [5848,1349,1220,1395] inv imp0
+                                                      com.instagram.android:id/suggested_entity_card_context android.widget.TextView [5938,1349,1220,1395] inv
+                                                    com.instagram.android:id/suggested_user_card_follow_button android.widget.TextView [5848,1429,1220,1519] inv clk
+                                                  com.instagram.android:id/dismiss_button_prism_style android.widget.ImageView [6169,970,1220,1054] inv clk
+                                              com.instagram.android:id/footer_space android.view.View [4880,1553,1220,1576] inv imp0
+                                      com.instagram.android:id/profile_tabs_container android.widget.LinearLayout [4880,1576,1220,1712] inv imp0
+                                        com.instagram.android:id/profile_tab_layout android.widget.HorizontalScrollView [4880,1576,1220,1711] inv
+                                          - android.widget.LinearLayout [4880,1576,1220,1711] inv imp0
+                                            - android.widget.LinearLayout [4880,1576,1220,1711] sel inv
+                                              - android.widget.FrameLayout [4880,1576,1220,1711] sel inv
+                                                com.instagram.android:id/profile_tab_icon_view android.widget.ImageView [4880,1576,1220,1711] sel inv clk
+                                            - android.widget.LinearLayout [5286,1576,1220,1711] inv clk
+                                              - android.widget.FrameLayout [5286,1576,1220,1711] inv
+                                                com.instagram.android:id/profile_tab_icon_view android.widget.ImageView [5286,1576,1220,1711] inv clk
+                                            - android.widget.LinearLayout [5693,1576,1220,1711] inv clk
+                                              - android.widget.FrameLayout [5693,1576,1220,1711] inv clk
+                                                com.instagram.android:id/wrapper android.view.ViewGroup [5693,1576,1220,1711] inv imp0
+                                                  com.instagram.android:id/container android.widget.FrameLayout [5863,1610,1220,1678] inv imp0
+                                                    com.instagram.android:id/profile_tab_icon_view android.widget.ImageView [5863,1610,1220,1678] inv
+                                        com.instagram.android:id/profile_tabs_bottom_divider android.view.View [4880,1711,1220,1712] inv imp0
+                                  com.instagram.android:id/swipe_refresh_animated_progressbar_container android.view.View [5391,125,1220,322] inv imp0
+                                  com.instagram.android:id/profile_viewpager androidx.viewpager.widget.ViewPager [4880,1712,1220,2442] inv
+                                    android:id/list androidx.recyclerview.widget.RecyclerView [4880,1712,1220,2442] inv
+                                      com.instagram.android:id/empty_state_view_root android.widget.LinearLayout [4880,1712,1220,2442] inv clk
+                                        com.instagram.android:id/empty_state_headline_component android.widget.FrameLayout [4981,1774,1220,2416] inv imp0
+                                          - android.view.ViewGroup [4981,1774,1220,2416] inv imp0
+                                            com.instagram.android:id/igds_empty_state_image android.widget.ImageView [5490,1864,1220,1864] inv imp0
+                                            com.instagram.android:id/igds_empty_state_title android.widget.TextView [5071,1909,1220,1988] inv
+                                            com.instagram.android:id/igds_empty_state_body_text android.widget.TextView [5071,2011,1220,2066] inv
+                                            com.instagram.android:id/igds_empty_state_tertiary_text android.widget.TextView [5071,2111,1220,2157] inv
+                                            com.instagram.android:id/igds_empty_state_primary_action_button android.widget.Button [5360,2202,1220,2326] inv clk
+                                              - android.widget.TextView [5416,2234,1220,2293] inv
+                                      - android.widget.LinearLayout [4880,2478,1220,2442] inv
+                                        com.instagram.android:id/title android.widget.TextView [4880,2540,1220,2442] inv
+                                        com.instagram.android:id/progress android.widget.TextView [4880,2605,1220,2442] inv
+                                      - android.widget.HorizontalScrollView [4880,2696,1220,2442] inv
+                                        com.instagram.android:id/find_people_horizontal_layout android.widget.LinearLayout [4880,2696,1220,2442] inv imp0
+                                          - android.widget.LinearLayout [4911,2696,1220,2442] inv imp0
+                                            - android.widget.FrameLayout [4925,2696,1220,2442] inv imp0
+                                              - android.widget.LinearLayout [4925,2730,1220,2442] inv imp0
+                                                - android.widget.FrameLayout [5116,2775,1220,2442] inv imp0
+                                                  com.instagram.android:id/find_people_card_image android.widget.ImageView [5141,2775,1220,2442] inv imp0
+                                                com.instagram.android:id/find_people_card_title android.widget.TextView [5045,2967,1220,2442] inv
+                                                com.instagram.android:id/find_people_card_subtitle android.widget.TextView [4970,3017,1220,2442] inv
+                                              - android.widget.FrameLayout [5047,3163,1220,2442] inv imp0
+                                                com.instagram.android:id/find_people_card_button android.widget.Button [5047,3163,1220,2442] inv clk
+                                                  - android.widget.TextView [5092,3178,1220,2442] inv
+                                          - android.widget.LinearLayout [5530,2696,1220,2442] inv imp0
+                                            - android.widget.FrameLayout [5544,2696,1220,2442] inv imp0
+                                              - android.widget.LinearLayout [5544,2730,1220,2442] inv imp0
+                                                - android.widget.FrameLayout [5735,2775,1220,2442] inv imp0
+                                                  com.instagram.android:id/find_people_card_image android.widget.ImageView [5760,2775,1220,2442] inv imp0
+                                                  com.instagram.android:id/find_people_card_completed_image android.widget.ImageView [5875,2865,1220,2442] inv imp0
+                                                com.instagram.android:id/find_people_card_title android.widget.TextView [5698,2967,1220,2442] inv
+                                                com.instagram.android:id/find_people_card_subtitle android.widget.TextView [5589,3017,1220,2442] inv
+                                              - android.widget.FrameLayout [5685,3163,1220,2442] inv imp0
+                                                com.instagram.android:id/find_people_card_secondary_button android.widget.Button [5685,3163,1220,2442] inv clk
+                                                  - android.widget.TextView [5730,3178,1220,2442] inv
+                                          - android.widget.LinearLayout [6149,2696,1220,2442] inv imp0
+                                            - android.widget.FrameLayout [6163,2696,1220,2442] inv imp0
+                                              - android.widget.LinearLayout [6163,2730,1220,2442] inv imp0
+                                                - android.widget.FrameLayout [6354,2775,1220,2442] inv imp0
+                                                  com.instagram.android:id/find_people_card_image android.widget.ImageView [6379,2775,1220,2442] inv imp0
+                                                  com.instagram.android:id/find_people_card_completed_image android.widget.ImageView [6494,2865,1220,2442] inv imp0
+                                                com.instagram.android:id/find_people_card_title android.widget.TextView [6387,2967,1220,2442] inv
+                                                com.instagram.android:id/find_people_card_subtitle android.widget.TextView [6208,3017,1220,2442] inv
+                                              - android.widget.FrameLayout [6330,3163,1220,2442] inv imp0
+                                                com.instagram.android:id/find_people_card_secondary_button android.widget.Button [6330,3163,1220,2442] inv clk
+                                                  - android.widget.TextView [6375,3178,1220,2442] inv
+                                          - android.widget.LinearLayout [6768,2696,1220,2442] inv imp0
+                                            - android.widget.FrameLayout [6782,2696,1220,2442] inv imp0
+                                              - android.widget.LinearLayout [6782,2730,1220,2442] inv imp0
+                                                - android.widget.FrameLayout [6973,2775,1220,2442] inv imp0
+                                                  com.instagram.android:id/find_people_card_image android.widget.ImageView [6998,2775,1220,2442] inv imp0
+                                                  com.instagram.android:id/find_people_card_completed_image android.widget.ImageView [7113,2865,1220,2442] inv imp0
+                                                com.instagram.android:id/find_people_card_title android.widget.TextView [6884,2967,1220,2442] inv
+                                                com.instagram.android:id/find_people_card_subtitle android.widget.TextView [6827,3017,1220,2442] inv
+                                              - android.widget.FrameLayout [6923,3163,1220,2442] inv imp0
+                                                com.instagram.android:id/find_people_card_secondary_button android.widget.Button [6923,3163,1220,2442] inv clk
+                                                  - android.widget.TextView [6968,3178,1220,2442] inv
+                                      com.instagram.android:id/gap_binder_group android.view.View [4880,3298,1220,2442] inv imp0
+                                    com.instagram.android:id/clips_grid_shimmer_container android.widget.FrameLayout [6100,1712,1220,2442] inv imp0
+                                      com.instagram.android:id/clips_grid_recyclerview android.widget.GridView [6100,1712,1220,2442] inv
+                                      - android.widget.LinearLayout [6100,1712,1220,2163] inv imp0
+                                        com.instagram.android:id/clips_profile_tab_empty_view android.widget.FrameLayout [6100,1712,1220,2163] inv imp0
+                                          - android.view.ViewGroup [6100,1712,1220,2163] inv imp0
+                                            com.instagram.android:id/igds_headline_headline android.widget.TextView [6190,1802,1220,1881] inv
+                                            com.instagram.android:id/igds_headline_primary_action_button android.widget.FrameLayout [6190,1949,1220,2073] inv clk
+                                              - android.widget.TextView [6483,1981,1220,2040] inv
+                                  - android.widget.ScrollView [4880,1712,1220,2442] inv
+                                    com.instagram.android:id/bloks_profile_overlay android.widget.FrameLayout [4880,2634,1220,2442] inv imp0
+                                  com.instagram.android:id/loot_profile_entrypoint_container android.widget.FrameLayout [6100,2374,1220,2374] inv imp0
+                                  com.instagram.android:id/floating_banner_container android.widget.FrameLayout [4903,2408,1220,2408] inv imp0
+                                  com.instagram.android:id/unfollow_pill_container android.widget.FrameLayout [5490,2442,1220,2442] inv imp0
+                                com.instagram.android:id/profile_action_bar android.widget.FrameLayout [4880,125,1220,283] inv imp0
+                                  com.instagram.android:id/action_bar_layout android.widget.LinearLayout [4880,125,1220,283] inv imp0
+                                    com.instagram.android:id/left_action_bar_buttons android.widget.LinearLayout [4880,125,1220,283] inv imp0
+                                      com.instagram.android:id/profile_header_create_button android.widget.ImageView [4880,125,1220,283] inv clk
+                                    com.instagram.android:id/action_bar_username_container android.widget.LinearLayout [5061,125,1220,283] inv clk
+                                      - android.view.ViewGroup [5223,125,1220,283] inv imp0
+                                        com.instagram.android:id/action_bar_title android.widget.TextView [5223,125,1220,283] inv
+                                        com.instagram.android:id/action_bar_username_buttons_container android.widget.LinearLayout [5725,125,1220,283] inv imp0
+                                          com.instagram.android:id/action_bar_title_chevron android.widget.ImageView [5742,187,1220,221] inv imp0
+                                    com.instagram.android:id/right_action_bar_buttons android.widget.LinearLayout [5805,125,1220,283] inv imp0
+                                      - android.widget.ImageView [5805,125,1220,283] inv clk
+                                      - android.widget.ImageView [5941,125,1220,283] inv clk
+                    com.instagram.android:id/tab_bar_shadow android.view.View [0,2441,1220,2442] imp0
+                    com.instagram.android:id/tab_bar android.widget.LinearLayout [0,2442,1220,2577] imp0
+                      com.instagram.android:id/feed_tab android.widget.FrameLayout [0,2442,244,2577] sel clk
+                        com.instagram.android:id/tab_icon android.widget.ImageView [88,2475,156,2543] sel imp0
+                      com.instagram.android:id/clips_tab android.widget.FrameLayout [244,2442,488,2577] clk
+                        com.instagram.android:id/tab_icon android.widget.ImageView [332,2475,400,2543] imp0
+                      com.instagram.android:id/direct_tab android.widget.FrameLayout [488,2442,732,2577] clk
+                        com.instagram.android:id/tab_icon android.widget.ImageView [576,2475,644,2543] imp0
+                      com.instagram.android:id/search_tab android.widget.FrameLayout [732,2442,976,2577] clk
+                        com.instagram.android:id/tab_icon android.widget.ImageView [820,2475,888,2543] imp0
+                      com.instagram.android:id/profile_tab android.widget.FrameLayout [976,2442,1220,2577] clk
+                        com.instagram.android:id/wrapper android.view.ViewGroup [976,2442,1220,2577] imp0
+                          com.instagram.android:id/container android.widget.FrameLayout [1056,2468,1140,2552] imp0
+                            com.instagram.android:id/tab_avatar android.widget.ImageView [1056,2468,1140,2552] imp0
+              com.instagram.android:id/bottom_sheet_camera_container android.widget.FrameLayout [0,125,1220,2577] imp0
+            com.instagram.android:id/overlay_layout_container android.widget.FrameLayout [0,0,1220,2577] imp0

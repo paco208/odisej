@@ -259,11 +259,24 @@ zlonamerne programske opreme in v nasprotju z zgodbo projekta.
 - **D13** Debug dumper v ločenem source setu (`src/debug` / prazen `src/release`), ne za
   `BuildConfig.DEBUG` — release APK kode za izpis drevesa sploh ne vsebuje (Z5).
 - **D14** Brez `ProfileInstallReceiver` (androidx), vse izključeno v `data_extraction_rules` (Z6).
-- *(D15+: dejanski ID-ji in signali po F1)*
+- **D15** Signali (Instagram 453.0.0.57.79, Android 16, tabela v `docs/zaznava.md`):
+  Reels = **viden** `clips_viewer_view_pager` ali (rezerva) `clips_expanded_touch_view`;
+  REELS_TAB = izbran `clips_tab` (zadošča sam, neodvisno od viewerja); reel iz DM =
+  Reels + viden `reel_viewer_message_composer`/`reply_bar_container`. Detektor preskoči
+  poddrevesa skritih vozlišč, ker Instagram skrit fragment Reels drži v drevesu povsod.
+- **D16** Detektor ne bere niti `contentDescription` — ID-ji, vidnost in `isSelected()` zadoščajo
+  (strožje od Z3).
+- **D17** Testna drevesa so v obliki izpisa dumperja (`.txt`), ne XML: brez pretvorbe, oblika
+  nima polja za besedilo, `TreeFilesPrivacyTest` jo preverja z regexom.
+- **D18** `flagIncludeNotImportantViews` ostane (Q3): signal DM izjeme je `imp0`.
+- *(D19+)*
 
 ## 12. Odprta vprašanja
-- Q1: Kateri ID-ji so zanesljivi? (F1)
-- Q2: Kam vodi "nazaj" iz Reels zavihka?
-- Q3: Ali je `flagIncludeNotImportantViews` potreben?
-- Q4: Ali `getRootInActiveWindow()` kdaj vrne tuje okno ob Instagram dogodku?
-- Q5: Ali se reel iz DM odpre v istem viewerju kot iz zavihka?
+- Q1: ~~Kateri ID-ji so zanesljivi?~~ → D15 (za Instagram 453.0.0.57.79).
+- Q2: ~~Kam vodi "nazaj" iz Reels zavihka?~~ → ostane v Instagramu, na feed (preverjeno za
+  pot feed → Reels). Ker je sklad "nazaj" odvisen od poti, z zavihka Reels raje kliknemo
+  `feed_tab` (D19).
+- Q3: ~~Ali je `flagIncludeNotImportantViews` potreben?~~ → da (D18).
+- Q4: Ali `getRootInActiveWindow()` kdaj vrne tuje okno ob Instagram dogodku? — med dumpi ni
+  bilo opaženo (izpis zajema le zadnji blok); koda vseeno preverja paket korena.
+- Q5: ~~Ali se reel iz DM odpre v istem viewerju?~~ → da, z dodano vrstico za odgovor.

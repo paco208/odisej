@@ -9,12 +9,12 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
 - [x] Prazen `ReelsAccessibilityService` + XML konfiguracija + manifest
 - [x] `MainActivity`: stanje servisa + gumb v nastavitve dostopnosti
 - [x] Debug dumper (`OdisejDump`, samo ID-ji in razredi)
-- [ ] Servis vklopljen na napravi, dogodki iz Instagrama vidni v Logcatu
+- [x] Servis vklopljen na napravi, dogodki iz Instagrama vidni v Logcatu
 
 ## F1 — Zaznava
-- [ ] Dumpi vseh zaslonov (docs/zaznava.md)
-- [ ] Izbrani signali zapisani v CONTEXT.md §11
-- [ ] `UiNode`, `DetectionRules`, `ReelsDetector` + testi
+- [x] Dumpi vseh zaslonov (docs/zaznava.md)
+- [x] Izbrani signali zapisani v CONTEXT.md §11
+- [x] `UiNode`, `DetectionRules`, `ReelsDetector` + testi
 
 ## F2 — MVP (v1)
 - [ ] Throttle + klasifikacija v servisu
@@ -41,3 +41,9 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
   (`am broadcast si.odisej.debug.DUMP`, pošlje ga lahko samo shell/sistem — dovoljenje `DUMP`).
   Zakaj: dumper piše ob dogodkih, statičen zaslon po `logcat -c` morda ne pošlje nobenega.
   Brez `uiautomator` ne nastane noben dump z besedili. Preverjeno: release dex nima `OdisejDump`.
+- 2026-10-31 — F0 na napravi (moto g86, Android 16): servis z `exported=false` se pojavi in
+  vklopi, "Allow restricted settings" ni bil potreben (namestitev prek adb). D12 potrjen.
+- 2026-10-31 — F1: 15 dumpov, detektor + 28 testov. Glavna lekcija: `clips_viewer_view_pager`
+  je v drevesu skoraj povsod (skrit fragment zavihka), zato šteje samo **viden** — brez tega bi
+  blokirali feed in DM-je. Mutacijski test: brez preverjanja vidnosti pade 11 testov; vrstica z
+  besedilom v drevesu podre `TreeFilesPrivacyTest`. DM izjemo loči vrstica za odgovor.

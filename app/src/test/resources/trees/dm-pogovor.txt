@@ -1,0 +1,114 @@
+- android.widget.FrameLayout [0,0,1220,2712]
+  - android.widget.LinearLayout [0,0,1220,2712] imp0
+    - android.widget.FrameLayout [0,0,1220,2712] imp0
+      com.instagram.android:id/action_bar_root android.widget.LinearLayout [0,0,1220,2712] imp0
+        android:id/content android.widget.FrameLayout [0,0,1220,2712] imp0
+          com.instagram.android:id/layout_container_parent android.view.ViewGroup [0,0,1220,2712]
+            com.instagram.android:id/layout_container_main android.widget.FrameLayout [0,125,1220,2577] imp0
+              com.instagram.android:id/thread_fragment_container android.widget.FrameLayout [0,125,1220,2577]
+                com.instagram.android:id/thread_background_view_container android.widget.LinearLayout [0,125,1220,2577] imp0
+                  com.instagram.android:id/thread_background_view android.widget.ImageView [0,125,1220,2452] imp0
+                com.instagram.android:id/message_actions_fragment android.widget.FrameLayout [0,125,1220,2577] imp0
+                com.instagram.android:id/direct_thread_header android.widget.LinearLayout [0,125,1220,283] imp0
+                  com.instagram.android:id/header_left_button android.widget.ImageView [0,125,158,283] clk
+                  com.instagram.android:id/header_avatar android.widget.FrameLayout [191,153,292,254] imp0 clk
+                    com.instagram.android:id/header_avatar android.widget.ImageView [202,164,281,243] imp0
+                  com.instagram.android:id/header_title_subtitle_container android.widget.Button [325,156,894,251] clk
+                    com.instagram.android:id/header_title android.widget.Button [325,156,459,206] clk
+                    com.instagram.android:id/header_subtitle android.widget.Button [325,206,894,251] clk
+                  com.instagram.android:id/header_right_buttons android.widget.LinearLayout [927,125,1197,283] imp0
+                    - android.widget.ImageView [927,125,1062,283] clk
+                    - android.widget.ImageView [1062,125,1197,283] clk
+                com.instagram.android:id/direct_thread_content_below_action_bar android.view.ViewGroup [0,283,1220,2577] imp0
+                  com.instagram.android:id/thread_toggle_child_fragment_container android.widget.FrameLayout [0,283,1220,2577] imp0
+                    com.instagram.android:id/thread_view_root android.widget.LinearLayout [0,283,1220,2577] imp0
+                      com.instagram.android:id/message_thread_container android.widget.FrameLayout [0,283,1220,2577] imp0
+                        - android.widget.LinearLayout [1220,283,1220,283] inv imp0
+                        com.instagram.android:id/message_list_refresh_container android.widget.FrameLayout [0,283,1220,2485] imp0
+                          com.instagram.android:id/message_list androidx.recyclerview.widget.RecyclerView [0,283,1220,2485]
+                            com.instagram.android:id/message_content android.view.ViewGroup [0,283,1220,544]
+                              com.instagram.android:id/message_content_shortcut_buttons_container android.widget.LinearLayout [0,283,0,-95] inv imp0
+                              com.instagram.android:id/direct_context_reply_context_info_text_view android.widget.Button [201,283,1220,-46] inv clk
+                              com.instagram.android:id/message_context_line_view android.view.View [157,283,168,406] imp0
+                              com.instagram.android:id/context_reply_context_message_container android.widget.FrameLayout [201,283,440,406] imp0
+                                com.instagram.android:id/message_content_portrait_xma_container android.widget.FrameLayout [201,283,440,406]
+                                  com.instagram.android:id/reel_share_item_view android.widget.LinearLayout [201,283,440,406] imp0
+                                    com.instagram.android:id/media_constraint_layout android.view.ViewGroup [201,283,440,406] imp0
+                                      com.instagram.android:id/image android.widget.FrameLayout [201,283,440,406] imp0
+                                        - android.widget.ImageView [201,283,440,406] imp0
+                                        com.instagram.android:id/direct_reel_share_legibility_gradient_footer android.view.View [201,327,440,406] imp0
+                                      com.instagram.android:id/bottom_icon android.widget.ImageView [235,304,303,372] imp0
+                              com.instagram.android:id/direct_text_message_text_parent android.widget.LinearLayout [157,428,610,544] imp0
+                                com.instagram.android:id/direct_text_message_text_view android.widget.TextView [157,428,610,544]
+                              com.instagram.android:id/pills_view_container android.widget.LinearLayout [168,544,168,544] inv imp0
+                            com.instagram.android:id/message_content android.view.ViewGroup [0,578,1220,1217]
+                              com.instagram.android:id/message_content_shortcut_buttons_container android.widget.LinearLayout [0,578,0,578] inv imp0
+                              com.instagram.android:id/direct_context_reply_context_info_text_view android.widget.Button [201,578,1220,627] clk
+                              com.instagram.android:id/message_context_line_view android.view.View [157,649,168,1079] imp0
+                              com.instagram.android:id/context_reply_context_message_container android.widget.FrameLayout [201,649,440,1079] imp0
+                                com.instagram.android:id/message_content_portrait_xma_container android.widget.FrameLayout [201,649,440,1079]
+                                  com.instagram.android:id/reel_share_item_view android.widget.LinearLayout [201,649,440,1079] imp0
+                                    com.instagram.android:id/media_constraint_layout android.view.ViewGroup [201,649,440,1079] imp0
+                                      com.instagram.android:id/image android.widget.FrameLayout [201,649,440,1079] imp0
+                                        - android.widget.ImageView [201,649,440,1079] imp0
+                                        com.instagram.android:id/direct_reel_share_legibility_gradient_footer android.view.View [201,1000,440,1079] imp0
+                                      com.instagram.android:id/bottom_icon android.widget.ImageView [235,977,303,1045] imp0
+                              com.instagram.android:id/sender_avatar android.widget.ImageView [51,1138,130,1217] clk
+                              com.instagram.android:id/direct_text_message_text_parent android.widget.LinearLayout [157,1101,802,1217] imp0
+                                com.instagram.android:id/direct_text_message_text_view android.widget.TextView [157,1101,802,1217]
+                              com.instagram.android:id/pills_view_container android.widget.LinearLayout [168,1217,168,1217] inv imp0
+                            - android.widget.TextView [0,1251,1220,1346]
+                            com.instagram.android:id/message_content android.widget.FrameLayout [0,1380,1220,2240]
+                              com.instagram.android:id/message_content_horizontal_linear_layout android.widget.LinearLayout [0,1380,1197,2240] imp0
+                                com.instagram.android:id/message_content_vertical_linear_layout android.widget.LinearLayout [0,1380,1197,2240] imp0
+                                  com.instagram.android:id/message_placeholder_container android.widget.LinearLayout [606,1380,1197,2240] imp0
+                                    com.instagram.android:id/message_content_horizontal_placeholder_container android.widget.LinearLayout [606,1380,1197,2240] imp0
+                                      com.instagram.android:id/message_content_shortcut_buttons_container android.widget.LinearLayout [606,1765,696,1855] imp0
+                                        - android.widget.LinearLayout [606,1765,696,1855] imp0
+                                          com.instagram.android:id/forwarding_shortcut_button android.widget.ImageView [606,1765,696,1855] clk
+                                      com.instagram.android:id/message_content_portrait_xma_container android.widget.FrameLayout [719,1380,1197,2240]
+                                        com.instagram.android:id/reel_share_item_view android.widget.LinearLayout [719,1380,1197,2240] imp0
+                                          com.instagram.android:id/media_constraint_layout android.view.ViewGroup [719,1380,1197,2240] imp0
+                                            com.instagram.android:id/image android.widget.FrameLayout [719,1380,1197,2240] imp0
+                                              - android.widget.ImageView [719,1380,1197,2240] imp0
+                                              com.instagram.android:id/legibility_gradient_header android.view.View [719,1380,1197,1560] imp0
+                                              com.instagram.android:id/direct_reel_share_legibility_gradient_footer android.view.View [719,2161,1197,2240] imp0
+                                            com.instagram.android:id/profile_attribution_container android.widget.LinearLayout [753,1414,1163,1482] imp0
+                                              com.instagram.android:id/profile_attribution_picture android.widget.ImageView [753,1414,821,1482]
+                                              - android.widget.LinearLayout [844,1420,1149,1475] imp0
+                                                com.instagram.android:id/title_text android.widget.TextView [844,1420,1149,1475]
+                                            com.instagram.android:id/center_icon android.widget.ImageView [913,1765,1003,1855] imp0
+                                            com.instagram.android:id/bottom_icon android.widget.ImageView [753,2138,821,2206] imp0
+                                    com.instagram.android:id/message_pills_container android.widget.LinearLayout [696,2240,707,2240] inv imp0
+                                      com.instagram.android:id/pills_view_container android.widget.LinearLayout [696,2240,696,2240] inv imp0
+                            - com.facebook.compose.view.MetaComposeView [0,2274,1220,2390]
+                              - android.view.View [0,2274,1220,2390] imp0
+                                - android.view.View [51,2311,130,2390] imp0
+                                  - android.view.View [23,2283,158,2390] clk
+                                - android.widget.TextView [158,2274,1010,2390]
+                                - android.view.View [966,2274,1101,2390] imp0
+                        com.instagram.android:id/meta_ai_voice_container android.widget.FrameLayout [0,283,1220,2409] imp0
+                        - android.widget.LinearLayout [545,2385,674,2514] inv imp0
+                          - android.widget.ImageView [584,2424,635,2475] inv imp0
+                        com.instagram.android:id/floating_banner_container android.widget.FrameLayout [0,2403,1220,2403] inv imp0
+                  com.instagram.android:id/direct_command_picker_container android.widget.FrameLayout [0,283,1220,2390] imp0
+                    com.instagram.android:id/direct_command_picker_corner_layout android.widget.LinearLayout [23,2390,1197,2390] inv imp0
+                      com.instagram.android:id/direct_command_picker_constraint_layout android.view.ViewGroup [23,2390,1197,2390] inv imp0
+                        com.instagram.android:id/commands_list androidx.recyclerview.widget.RecyclerView [23,2390,1197,2390] inv
+                  com.instagram.android:id/message_composer_bar android.widget.FrameLayout [0,2390,1220,2577]
+                    com.instagram.android:id/message_composer_reply_bar_container android.widget.LinearLayout [0,2390,1220,2577]
+                      com.instagram.android:id/message_composer_tray_container android.widget.LinearLayout [0,2390,1220,2390] inv imp0
+                      com.instagram.android:id/row_thread_composer_container android.widget.FrameLayout [0,2390,1220,2577] imp0
+                        com.instagram.android:id/blurred_text_area_background android.widget.ImageView [23,2413,1197,2554] imp0
+                        - android.widget.LinearLayout [23,2413,1197,2554] imp0
+                          com.instagram.android:id/row_thread_composer_textarea_container android.widget.LinearLayout [23,2413,1197,2554] imp0
+                            com.instagram.android:id/row_thread_composer_shortcut_viewgroup android.widget.FrameLayout [40,2430,147,2537] imp0
+                              com.instagram.android:id/row_thread_composer_button_camera android.widget.ImageView [40,2430,147,2537] clk
+                            com.instagram.android:id/composer_content_container android.widget.LinearLayout [170,2413,721,2554] imp0
+                              com.instagram.android:id/row_thread_composer_edittext android.widget.EditText [170,2413,721,2554] clk
+                            com.instagram.android:id/row_thread_composer_buttons_container android.view.ViewGroup [721,2413,1177,2537] imp0
+                              com.instagram.android:id/row_thread_composer_voice android.widget.ImageView [721,2452,835,2520] clk
+                              com.instagram.android:id/row_thread_composer_button_gallery android.widget.ImageView [835,2452,949,2520] clk
+                              com.instagram.android:id/row_thread_composer_button_sticker android.widget.ImageView [949,2452,1063,2520] clk
+                              com.instagram.android:id/row_thread_composer_button_overflow android.widget.ImageView [1063,2452,1177,2520] clk
+                  com.instagram.android:id/banner_container android.widget.FrameLayout [0,2577,1220,2577] inv imp0

@@ -1,0 +1,140 @@
+- android.widget.FrameLayout [0,0,1220,2712]
+  - android.widget.LinearLayout [0,0,1220,2712] imp0
+    - android.widget.FrameLayout [0,0,1220,2712] imp0
+      com.instagram.android:id/action_bar_root android.widget.LinearLayout [0,0,1220,2712] imp0
+        android:id/content android.widget.FrameLayout [0,0,1220,2712] imp0
+          com.instagram.android:id/root android.widget.FrameLayout [0,0,1220,2712] imp0
+            com.instagram.android:id/layout_container_main android.widget.FrameLayout [0,125,1220,2577] imp0
+              - android.widget.FrameLayout [0,125,1220,2577] imp0
+                com.instagram.android:id/multi_destination_container android.widget.FrameLayout [0,125,1220,2577] imp0
+                  com.instagram.android:id/feed_destination_curation_container android.widget.FrameLayout [0,125,1220,2577] imp0
+                    - android.widget.LinearLayout [0,125,1220,2577] imp0
+                      - android.widget.LinearLayout [0,125,1220,282] imp0
+                        com.instagram.android:id/action_bar_cancel android.widget.ImageView [0,125,158,282] clk
+                        - android.widget.FrameLayout [158,125,1035,282] imp0
+                          com.instagram.android:id/photo_title android.widget.TextView [158,125,1035,282] inv
+                          com.instagram.android:id/video_title android.widget.TextView [158,125,1035,282] inv
+                          com.instagram.android:id/new_post_title android.widget.TextView [158,125,1035,282]
+                          com.instagram.android:id/pick_photo_title android.widget.TextView [158,125,1035,282] inv
+                          com.instagram.android:id/gallery_folder_menu android.widget.Spinner [158,125,476,282] inv clk
+                            com.instagram.android:id/spinner_title_text android.widget.TextView [203,125,419,282] inv
+                        com.instagram.android:id/next_button_textview android.widget.Button [1035,125,1220,282] clk
+                      com.instagram.android:id/gallery_picker_view android.widget.LinearLayout [0,282,1220,2577] imp0
+                        com.instagram.android:id/gallery_coordinator android.view.ViewGroup [0,282,1220,2577]
+                          com.instagram.android:id/feed_gallery_app_bar android.widget.LinearLayout [0,282,1220,1648] imp0
+                            com.instagram.android:id/preview_container android.widget.FrameLayout [0,282,1220,1502] imp0
+                              com.instagram.android:id/preview_content_wrapper android.widget.FrameLayout [0,282,1220,1502] imp0
+                                com.instagram.android:id/crop_image_view android.widget.ImageView [0,282,1220,1502]
+                                com.instagram.android:id/draft_image_view android.widget.ImageView [0,282,1220,1502] imp0
+                                com.instagram.android:id/loading_shimmer_view android.widget.FrameLayout [0,282,1220,1502] imp0
+                              com.instagram.android:id/croptype_toggle_button android.widget.ToggleButton [34,1367,135,1468] clk
+                              - android.widget.LinearLayout [1220,1468,1220,1468] inv imp0
+                            com.instagram.android:id/unified_camera_options_holder_horizontal_scroll_view android.widget.HorizontalScrollView [0,1502,1220,1648]
+                              com.instagram.android:id/unified_camera_options_holder android.widget.LinearLayout [0,1502,1220,1648] imp0
+                                com.instagram.android:id/gallery_folder_menu_container android.widget.FrameLayout [0,1502,362,1648] imp0
+                                  com.instagram.android:id/gallery_folder_menu_tv android.widget.Button [0,1539,362,1611] clk
+                                com.instagram.android:id/multi_select_slide_button_alt android.widget.LinearLayout [963,1529,1186,1621] clk
+                                  com.instagram.android:id/slideout_iconview_icon android.widget.ImageView [986,1552,1031,1597] imp0
+                                  com.instagram.android:id/slideout_iconview_text android.widget.TextView [1031,1552,1163,1598]
+                          com.instagram.android:id/media_picker_container android.widget.FrameLayout [0,1648,1220,2577] imp0
+                            com.instagram.android:id/media_picker_grid_view android.widget.GridView [0,1652,1220,2577]
+                              com.instagram.android:id/gallery_picker_grid_item_container android.view.ViewGroup [4,1652,304,1952] clk
+                                com.instagram.android:id/gallery_picker_grid_item_background android.widget.ImageView [4,1652,304,1952] imp0
+                              - android.view.ViewGroup [308,1652,608,1952] clk
+                                com.instagram.android:id/background_color android.widget.ImageView [308,1652,608,1952] imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [308,1652,608,1952] clk
+                                com.instagram.android:id/gallery_grid_item_selection_overlay android.view.View [308,1652,608,1952] imp0
+                              - android.view.ViewGroup [612,1652,912,1952] clk
+                                com.instagram.android:id/background_color android.widget.ImageView [612,1652,912,1952] imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [612,1652,912,1952] clk
+                              - android.view.ViewGroup [916,1652,1216,1952] clk
+                                com.instagram.android:id/background_color android.widget.ImageView [916,1652,1216,1952] imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [916,1652,1216,1952] clk
+                              - android.view.ViewGroup [4,1956,304,2256] clk
+                                com.instagram.android:id/background_color android.widget.ImageView [4,1956,304,2256] imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [4,1956,304,2256] clk
+                              - android.view.ViewGroup [308,1956,608,2256] clk
+                                com.instagram.android:id/background_color android.widget.ImageView [308,1956,608,2256] imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [308,1956,608,2256] clk
+                              - android.view.ViewGroup [612,1956,912,2256] clk
+                                com.instagram.android:id/background_color android.widget.ImageView [612,1956,912,2256] imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [612,1956,912,2256] clk
+                              - android.view.ViewGroup [916,1956,1216,2256] clk
+                                com.instagram.android:id/background_color android.widget.ImageView [916,1956,1216,2256] imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [916,1956,1216,2256] clk
+                              - android.view.ViewGroup [4,2260,304,2560] clk
+                                com.instagram.android:id/background_color android.widget.ImageView [4,2260,304,2560] imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [4,2260,304,2560] clk
+                              - android.view.ViewGroup [308,2260,608,2560] clk
+                                com.instagram.android:id/background_color android.widget.ImageView [308,2260,608,2560] imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [308,2260,608,2560] clk
+                              - android.view.ViewGroup [612,2260,912,2560] clk
+                                com.instagram.android:id/background_color android.widget.ImageView [612,2260,912,2560] imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [612,2260,912,2560] clk
+                              - android.view.ViewGroup [916,2260,1216,2560] clk
+                                com.instagram.android:id/background_color android.widget.ImageView [916,2260,1216,2560] imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [916,2260,1216,2560] clk
+                              - android.view.ViewGroup [4,2564,304,2577] clk
+                                com.instagram.android:id/background_color android.widget.ImageView [4,2564,304,2577] imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [4,2564,304,2577] clk
+                              - android.view.ViewGroup [308,2564,608,2577] clk
+                                com.instagram.android:id/background_color android.widget.ImageView [308,2564,608,2577] imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [308,2564,608,2577] clk
+                              - android.view.ViewGroup [612,2564,912,2577] clk
+                                com.instagram.android:id/background_color android.widget.ImageView [612,2564,912,2577] imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [612,2564,912,2577] clk
+                              - android.view.ViewGroup [916,2564,1216,2577] clk
+                                com.instagram.android:id/background_color android.widget.ImageView [916,2564,1216,2577] imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [916,2564,1216,2577] clk
+                              - android.view.ViewGroup [4,2868,304,2577] inv clk
+                                com.instagram.android:id/background_color android.widget.ImageView [4,2868,304,2577] inv imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [4,2868,304,2577] inv clk
+                              - android.view.ViewGroup [308,2868,608,2577] inv clk
+                                com.instagram.android:id/background_color android.widget.ImageView [308,2868,608,2577] inv imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [308,2868,608,2577] inv clk
+                              - android.view.ViewGroup [612,2868,912,2577] inv clk
+                                com.instagram.android:id/background_color android.widget.ImageView [612,2868,912,2577] inv imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [612,2868,912,2577] inv clk
+                              - android.view.ViewGroup [916,2868,1216,2577] inv clk
+                                com.instagram.android:id/background_color android.widget.ImageView [916,2868,1216,2577] inv imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [916,2868,1216,2577] inv clk
+                              - android.view.ViewGroup [4,3172,304,2577] inv clk
+                                com.instagram.android:id/background_color android.widget.ImageView [4,3172,304,2577] inv imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [4,3172,304,2577] inv clk
+                              - android.view.ViewGroup [308,3172,608,2577] inv clk
+                                com.instagram.android:id/background_color android.widget.ImageView [308,3172,608,2577] inv imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [308,3172,608,2577] inv clk
+                              - android.view.ViewGroup [612,3172,912,2577] inv clk
+                                com.instagram.android:id/background_color android.widget.ImageView [612,3172,912,2577] inv imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [612,3172,912,2577] inv clk
+                              - android.view.ViewGroup [916,3172,1216,2577] inv clk
+                                com.instagram.android:id/background_color android.widget.ImageView [916,3172,1216,2577] inv imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [916,3172,1216,2577] inv clk
+                              - android.view.ViewGroup [4,3476,304,2577] inv clk
+                                com.instagram.android:id/background_color android.widget.ImageView [4,3476,304,2577] inv imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [4,3476,304,2577] inv clk
+                              - android.view.ViewGroup [308,3476,608,2577] inv clk
+                                com.instagram.android:id/background_color android.widget.ImageView [308,3476,608,2577] inv imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [308,3476,608,2577] inv clk
+                              - android.view.ViewGroup [612,3476,912,2577] inv clk
+                                com.instagram.android:id/background_color android.widget.ImageView [612,3476,912,2577] inv imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [612,3476,912,2577] inv clk
+                              - android.view.ViewGroup [916,3476,1216,2577] inv clk
+                                com.instagram.android:id/background_color android.widget.ImageView [916,3476,1216,2577] inv imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [916,3476,1216,2577] inv clk
+                              - android.view.ViewGroup [4,3780,304,2577] inv clk
+                                com.instagram.android:id/background_color android.widget.ImageView [4,3780,304,2577] inv imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [4,3780,304,2577] inv clk
+                              - android.view.ViewGroup [308,3780,608,2577] inv clk
+                                com.instagram.android:id/background_color android.widget.ImageView [308,3780,608,2577] inv imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [308,3780,608,2577] inv clk
+                              - android.view.ViewGroup [612,3780,912,2577] inv clk
+                                com.instagram.android:id/background_color android.widget.ImageView [612,3780,912,2577] inv imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [612,3780,912,2577] inv clk
+                              - android.view.ViewGroup [916,3780,1216,2577] inv clk
+                                com.instagram.android:id/background_color android.widget.ImageView [916,3780,1216,2577] inv imp0
+                                com.instagram.android:id/gallery_grid_item_thumbnail android.widget.Button [916,3780,1216,2577] inv clk
+                            com.instagram.android:id/fast_scroll_container android.widget.FrameLayout [0,1652,1220,2577] imp0
+                              - android.widget.FrameLayout [0,1652,1220,2577] imp0
+                                com.instagram.android:id/fast_scroll android.widget.LinearLayout [906,1652,1220,1798]
+  android:id/navigationBarBackground android.view.View [0,2577,1220,2712] imp0
