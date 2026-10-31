@@ -14,4 +14,6 @@
 
     <string name="privacy_title">Zasebnost</string>
     <string name="privacy_body">• Brez dovoljenja za internet — nič ne more zapustiti telefona.\n• Spremlja samo Instagram.\n• Bere samo ID-je pogledov in imena razredov, nikoli besedil ali sporočil.\n• O zaslonu ne shrani ničesar.</string>
+
+    <string name="toast_blocked">Reelsi so blokirani — Odisej</string>
 </resources>

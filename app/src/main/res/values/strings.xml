@@ -16,4 +16,6 @@
 
     <string name="privacy_title">Privacy</string>
     <string name="privacy_body">• No internet permission — nothing can leave your phone.\n• Watches only Instagram.\n• Reads only view IDs and class names, never text or messages.\n• Stores nothing about your screen.</string>
+
+    <string name="toast_blocked">Reels are blocked — Odisej</string>
 </resources>

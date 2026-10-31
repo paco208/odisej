@@ -269,7 +269,12 @@ zlonamerne programske opreme in v nasprotju z zgodbo projekta.
 - **D17** Testna drevesa so v obliki izpisa dumperja (`.txt`), ne XML: brez pretvorbe, oblika
   nima polja za besedilo, `TreeFilesPrivacyTest` jo preverja z regexom.
 - **D18** `flagIncludeNotImportantViews` ostane (Q3): signal DM izjeme je `imp0`.
-- *(D19+)*
+- **D19** Z zavihka Reels kliknemo `feed_tab` (rezerva: BACK); iz viewerja BACK. BACK z zavihka je
+  odvisen od sklada (če IG odpreš naravnost v Reels, bi ga zaprl), klik na Home ni.
+- **D20** Trailing throttle 300 ms (dogodki v oknu → ena klasifikacija na koncu okna, nad
+  najnovejšim drevesom) + debounce 1500 ms po ukrepu. Logika v čisti Javi (`Debouncer`,
+  `BlockPolicy`) zaradi testov.
+- *(D21+)*
 
 ## 12. Odprta vprašanja
 - Q1: ~~Kateri ID-ji so zanesljivi?~~ → D15 (za Instagram 453.0.0.57.79).

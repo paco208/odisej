@@ -17,8 +17,8 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
 - [x] `UiNode`, `DetectionRules`, `ReelsDetector` + testi
 
 ## F2 — MVP (v1)
-- [ ] Throttle + klasifikacija v servisu
-- [ ] `BackAction` z debounce + toast
+- [x] Throttle + klasifikacija v servisu
+- [x] `BackAction` z debounce + toast
 - [ ] Ročni test vseh zaslonov iz CONTEXT.md §6.2
 - [ ] Podpisan release APK
 
@@ -47,3 +47,6 @@ Po vsakem koraku: datum, kaj je narejeno, kako preverjeno, kaj ostaja odprto.
   je v drevesu skoraj povsod (skrit fragment zavihka), zato šteje samo **viden** — brez tega bi
   blokirali feed in DM-je. Mutacijski test: brez preverjanja vidnosti pade 11 testov; vrstica z
   besedilom v drevesu podre `TreeFilesPrivacyTest`. DM izjemo loči vrstica za odgovor.
+- 2026-10-31 — F2: servis klasificira in ukrepa. Throttle je *trailing* (zadnji dogodek v oknu
+  se vedno obdela), ker *leading* throttle lahko izpusti končno stanje zaslona. Z zavihka Reels
+  klik na Home namesto BACK (D19). Na napravi še ni preverjeno.
